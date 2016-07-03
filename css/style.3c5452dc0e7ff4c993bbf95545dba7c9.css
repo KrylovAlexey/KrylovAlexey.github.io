@@ -100,7 +100,8 @@
   border: 1px solid #26a69a;
   border-radius: 10px;
   background: #26a69a; }
-.question-widget .btn {
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJqcy93aWRnZXRzL3JvdW5kV2lkZ2V0L3JvdW5kV2lkZ2V0LnNjc3MifQ== */.question-widget .btn {
   height: auto;
   line-height: 20px; }
 
@@ -6408,4 +6409,4 @@ input.invalid + label.active {
   top: 0.8rem;
   transform: translateY(-25px); }
 
-/*# sourceMappingURL=style.38f3de9745eaec1ebbac59faeeef6886.css.map*/
+/*# sourceMappingURL=style.3c5452dc0e7ff4c993bbf95545dba7c9.css.map*/
