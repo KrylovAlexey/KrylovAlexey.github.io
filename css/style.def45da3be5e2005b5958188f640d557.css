@@ -1164,8 +1164,7 @@ h2 {
 .game-page .game-container li {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8); }
+  overflow: hidden; }
 
 .game-page .game-container {
   padding-left: 10px;
