@@ -1,4 +1,43 @@
 /*  COLORS */
+.modal-overflow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+  .modal-overflow .modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    transition: opacity 0.3s ease; }
+  .modal-overflow .modal-scroll {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto; }
+  .modal-overflow .modal-body {
+    background: white;
+    overflow: hidden;
+    width: 290px;
+    margin: 0 auto;
+    padding: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.3s ease;
+    color: black; }
+  .modal-overflow.show .modal-backdrop {
+    opacity: 0.5;
+    transition: opacity 0.5s ease; }
+  .modal-overflow.show .modal-body {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.43s ease, transform 0.4s ease; }
+/*  COLORS */
+/*  COLORS */
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -802,10 +841,14 @@ html, body {
   overflow: hidden; }
 
 body {
-  background: url(/images/bg.e15efc.jpg) center;
+  background-position: center;
   background-size: cover;
   color: white;
-  font-family: Arial; }
+  font-family: Arial;
+  background-image: url(images/auth_day_bg.a7156a.jpg);
+  transition: backgraund-image 0.5s ease; }
+  body.auth {
+    background-image: url(images/bg.e15efc.jpg); }
 
 * {
   box-sizing: border-box; }
@@ -825,19 +868,6 @@ body {
   bottom: 0;
   top: 46px; }
 
-#page-container, #header-container {
-  transition: transform 0.5s ease; }
-
-body.menu-open #page-container, body.menu-open #header-container {
-  left: 200px; }
-
-body.menu-open #header-container {
-  z-index: 1; }
-
-.csstransforms body.menu-open #page-container, .csstransforms body.menu-open #header-container {
-  transform: translate(200px, 0);
-  left: 0; }
-
 h2 {
   font-size: 16px; }
 
@@ -850,20 +880,33 @@ h2 {
   border-radius: 21px;
   font-size: 15px;
   transition: background-color 0.3s ease; }
-  .btn.touchHover {
-    background-color: rgba(137, 144, 76, 0.8); }
-  .btn:disabled {
-    background-color: rgba(133, 144, 142, 0.8); }
-  .btn:focus {
-    outline: none; }
-  .btn .btn-arrow {
-    position: absolute;
-    top: 0;
-    right: 0;
+
+.btn-set {
+  line-height: 43px;
+  overflow: hidden; }
+  .btn-set > div {
     height: 100%;
-    width: 20px;
-    background: url(/images/arrow.f50629.png) no-repeat left center;
-    background-size: 6px 10px; }
+    border-right: 1px solid rgba(255, 255, 255, 0.8); }
+    .btn-set > div:last-child {
+      border-right: none; }
+
+.btn.touchHover, .btn-set > div.touchHover {
+  background-color: rgba(137, 144, 76, 0.8); }
+
+.btn:disabled, .btn-set > div:disabled {
+  background-color: rgba(133, 144, 142, 0.8); }
+
+.btn:focus, .btn-set > div:focus {
+  outline: none; }
+
+.btn .btn-arrow, .btn-set > div .btn-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 20px;
+  background: url(images/arrow.f50629.png) no-repeat left center;
+  background-size: 6px 10px; }
 
 .input {
   background-color: rgba(255, 255, 255, 0.8);
@@ -886,41 +929,41 @@ h2 {
 .status-icon {
   background-size: 100% 100%; }
   .status-icon[data-user-icon-id="0"] {
-    background-image: url(/images/smailey_0.462eac.png); }
+    background-image: url(images/smailey_0.462eac.png); }
   .status-icon[data-user-icon-id="1"] {
-    background-image: url(/images/smailey_1.affb87.png); }
+    background-image: url(images/smailey_1.affb87.png); }
   .status-icon[data-user-icon-id="2"] {
-    background-image: url(/images/smailey_2.feb792.png); }
+    background-image: url(images/smailey_2.feb792.png); }
   .status-icon[data-user-icon-id="3"] {
-    background-image: url(/images/smailey_3.9af0d7.png); }
+    background-image: url(images/smailey_3.9af0d7.png); }
   .status-icon[data-user-icon-id="4"] {
-    background-image: url(/images/smailey_4.f0e313.png); }
+    background-image: url(images/smailey_4.f0e313.png); }
   .status-icon[data-user-icon-id="5"] {
-    background-image: url(/images/smailey_5.a5dd53.png); }
+    background-image: url(images/smailey_5.a5dd53.png); }
   .status-icon[data-user-icon-id="6"] {
-    background-image: url(/images/smailey_6.a07cf1.png); }
+    background-image: url(images/smailey_6.a07cf1.png); }
   .status-icon[data-user-icon-id="7"] {
-    background-image: url(/images/smailey_7.01e88e.png); }
+    background-image: url(images/smailey_7.01e88e.png); }
   .status-icon[data-user-icon-id="8"] {
-    background-image: url(/images/smailey_8.2d504c.png); }
+    background-image: url(images/smailey_8.2d504c.png); }
   .status-icon[data-user-icon-id="9"] {
-    background-image: url(/images/smailey_9.05ad9d.png); }
+    background-image: url(images/smailey_9.05ad9d.png); }
   .status-icon[data-user-icon-id="10"] {
-    background-image: url(/images/smailey_10.b16e48.png); }
+    background-image: url(images/smailey_10.b16e48.png); }
   .status-icon[data-user-icon-id="11"] {
-    background-image: url(/images/smailey_11.97f597.png); }
+    background-image: url(images/smailey_11.97f597.png); }
   .status-icon[data-user-icon-id="12"] {
-    background-image: url(/images/smailey_12.6fd7df.png); }
+    background-image: url(images/smailey_12.6fd7df.png); }
   .status-icon[data-user-icon-id="13"] {
-    background-image: url(/images/smailey_13.709c35.png); }
+    background-image: url(images/smailey_13.709c35.png); }
   .status-icon[data-user-icon-id="14"] {
-    background-image: url(/images/smailey_14.fe738a.png); }
+    background-image: url(images/smailey_14.fe738a.png); }
   .status-icon[data-user-icon-id="15"] {
-    background-image: url(/images/smailey_15.de9eeb.png); }
+    background-image: url(images/smailey_15.de9eeb.png); }
   .status-icon[data-user-icon-id="16"] {
-    background-image: url(/images/smailey_16.9d326f.png); }
+    background-image: url(images/smailey_16.9d326f.png); }
   .status-icon[data-user-icon-id="17"] {
-    background-image: url(/images/smailey_17.a12df9.png); }
+    background-image: url(images/smailey_17.a12df9.png); }
 
 .list-container {
   background-color: rgba(48, 75, 58, 0.8);
@@ -942,21 +985,68 @@ h2 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
   #header-container .status-bar {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 46px;
-    background: grey; }
+    background: #484848; }
+  #header-container .open-menu-overflow {
+    position: relative;
+    width: 50px;
+    height: 100%;
+    cursor: pointer;
+    float: left; }
+  #header-container .menu-icon {
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: white;
+    top: 50%;
+    left: 10px; }
+    #header-container .menu-icon:before {
+      top: -7px; }
+    #header-container .menu-icon:after {
+      bottom: -7px; }
+    #header-container .menu-icon:after, #header-container .menu-icon:before {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 2px;
+      background: white;
+      width: 100%; }
   #header-container .menu-container {
     position: absolute;
     top: 0;
     left: -200px;
     width: 200px;
     height: 100%;
-    background: grey; }
+    background: #484848;
+    z-index: 2;
+    transform: translate(0, 0);
+    transition: transform 0.5s ease; }
+  #header-container .back-menu {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    background: black;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease; }
+  #header-container.menu-open .menu-container {
+    left: 0; }
+  #header-container.menu-open .back-menu {
+    left: 0;
+    opacity: 0.5; }
+
+.csstransforms #header-container.menu-open .menu-container {
+  transform: translate(200px, 0);
+  left: -200px; }
 /*  COLORS */
 .page {
   position: absolute;
@@ -967,7 +1057,7 @@ h2 {
   opacity: 0;
   transition: opacity 0.5s ease; }
   .page.bg-blur {
-    background: url(/images/bg-blur.368130.jpg) center;
+    background: url(images/bg-blur.368130.jpg) center;
     background-size: cover; }
   .page .scroll-content {
     position: relative;
@@ -988,7 +1078,7 @@ h2 {
     transition: opacity 0.2s ease; }
     .page .loading-block .loading-icon {
       position: absolute;
-      background: url(/images/loading.cf5105.png);
+      background: url(images/loading.cf5105.png);
       width: 112px;
       height: 112px;
       background-size: 100% 100%;
@@ -1017,45 +1107,6 @@ h2 {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
-/*  COLORS */
-.modal-overflow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-  .modal-overflow .modal-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: 0;
-    transition: opacity 0.3s ease; }
-  .modal-overflow .modal-scroll {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: auto; }
-  .modal-overflow .modal-body {
-    background: white;
-    overflow: hidden;
-    width: 290px;
-    margin: 0 auto;
-    padding: 20px;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.2s ease, transform 0.3s ease;
-    color: black; }
-  .modal-overflow.show .modal-backdrop {
-    opacity: 0.5;
-    transition: opacity 0.5s ease; }
-  .modal-overflow.show .modal-body {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.43s ease, transform 0.4s ease; }
-/*  COLORS */
 /*  COLORS */
 /*  COLORS */
 .index-page .game-container {
@@ -1244,6 +1295,7 @@ h2 {
     width: 23px; }
 /*  COLORS */
 /*  COLORS */
+/*  COLORS */
 .question-widget .img_question {
   position: relative;
   width: 100%;
@@ -1266,6 +1318,31 @@ h2 {
   cursor: pointer; }
 /*  COLORS */
 /*  COLORS */
+.black-list-page h1 {
+  margin: 10px 0 15px 0; }
+
+.black-list-page .black-list-item {
+  height: 40px; }
+
+.black-list-page .remove-item {
+  cursor: pointer; }
+/*  COLORS */
+/*  COLORS */
+.auth-page {
+  top: -46px; }
+  .auth-page .table-middle-block {
+    height: 50%;
+    bottom: 0;
+    position: absolute; }
+  .auth-page .icon {
+    background-position: center;
+    background-repeat: no-repeat; }
+  .auth-page .vk-icon {
+    background-image: url(images/vk.fcd300.png);
+    background-size: 23px 13px; }
+  .auth-page .fb-icon {
+    background-image: url(images/fb.12d324.png);
+    background-size: 10px 23px; }
 /*  COLORS */
 .loading-modal .modal-overflow .modal-content {
   background: black;
@@ -1275,5 +1352,19 @@ h2 {
     color: white;
     background: none; }
 /*  COLORS */
+.registration-page .table-middle-block {
+  height: 50%;
+  bottom: 0;
+  position: absolute; }
 /*  COLORS */
+.signin-page {
+  top: -46px; }
+  .signin-page .table-middle-block {
+    height: 50%;
+    bottom: 0;
+    position: absolute; }
 /*  COLORS */
+.restore-password-page .table-middle-block {
+  height: 50%;
+  bottom: 0;
+  position: absolute; }
