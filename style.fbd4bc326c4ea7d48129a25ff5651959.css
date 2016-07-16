@@ -884,22 +884,31 @@ h2 {
 .btn-set {
   line-height: 43px;
   overflow: hidden; }
-  .btn-set > div {
+  .btn-set > button {
     height: 100%;
+    color: white;
+    font-size: 15px;
+    background: none;
+    border: none;
     border-right: 1px solid rgba(255, 255, 255, 0.8); }
-    .btn-set > div:last-child {
-      border-right: none; }
+    .btn-set > button:first-child {
+      border-top-left-radius: 21px;
+      border-bottom-left-radius: 21px; }
+    .btn-set > button:last-child {
+      border-right: none;
+      border-top-right-radius: 21px;
+      border-top-right-radius: 21px; }
 
-.btn.touchHover, .btn-set > div.touchHover {
+.btn.touchHover, .btn-set > button.touchHover {
   background-color: rgba(137, 144, 76, 0.8); }
 
-.btn:disabled, .btn-set > div:disabled {
+.btn:disabled, .btn-set > button:disabled {
   background-color: rgba(133, 144, 142, 0.8); }
 
-.btn:focus, .btn-set > div:focus {
+.btn:focus, .btn-set > button:focus {
   outline: none; }
 
-.btn .btn-arrow, .btn-set > div .btn-arrow {
+.btn .btn-arrow, .btn-set > button .btn-arrow {
   position: absolute;
   top: 0;
   right: 0;
@@ -1294,6 +1303,37 @@ h2 {
     display: inline-block;
     width: 23px; }
 /*  COLORS */
+.game-result-page .iconL {
+  display: block;
+  width: 80px;
+  height: 80px;
+  float: right; }
+
+.game-result-page .iconR {
+  display: block;
+  width: 80px;
+  height: 80px;
+  float: left; }
+
+.game-result-page .score {
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto; }
+
+.game-result-page .game-center {
+  text-align: center; }
+
+.game-result-page .padding0 {
+  padding-right: 0;
+  padding-left: 0; }
+
+.game-result-page .center {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 30px; }
+
+.game-result-page .NameRow {
+  padding-bottom: 20px; }
 /*  COLORS */
 /*  COLORS */
 .question-widget .img_question {
@@ -1326,6 +1366,7 @@ h2 {
 
 .black-list-page .remove-item {
   cursor: pointer; }
+/*  COLORS */
 /*  COLORS */
 /*  COLORS */
 .auth-page {
