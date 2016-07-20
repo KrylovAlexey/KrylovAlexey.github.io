@@ -788,6 +788,30 @@ table {
   .col-lg-offset-0 {
     margin-left: 0%; } }
 
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src: url(fonts/opensans-regular-webfont.3d52d1.woff2) format("woff2"), url(fonts/opensans-regular-webfont.0a1bd8.woff) format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'OpenSans-Italic';
+  src: url(fonts/opensans-italic-webfont.157e36.woff2) format("woff2"), url(fonts/opensans-italic-webfont.032680.woff) format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'OpenSans-BoldItalic';
+  src: url(fonts/opensans-bolditalic-webfont.af86a3.woff2) format("woff2"), url(fonts/opensans-bolditalic-webfont.315ce2.woff) format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'OpenSans-Bold';
+  src: url(fonts/opensans-bold-webfont.b65b78.woff2) format("woff2"), url(fonts/opensans-bold-webfont.5d06a7.woff) format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
 .m-t-0 {
   margin-top: 0 !important; }
 
@@ -845,8 +869,9 @@ body {
   background-size: cover;
   color: white;
   font-family: Arial;
-  background-image: url(images/auth_day_bg.a7156a.jpg);
-  transition: backgraund-image 0.5s ease; }
+  background-image: url(images/auth_day_bg.602db1.jpg);
+  transition: backgraund-image 0.5s ease;
+  font-family: 'OpenSans-Regular'; }
   body.auth {
     background-image: url(images/bg.e15efc.jpg); }
 
@@ -1303,6 +1328,49 @@ h2 {
     display: inline-block;
     width: 23px; }
 /*  COLORS */
+.profile-page .profile-center {
+  text-align: center; }
+
+.profile-page .b {
+  font-weight: bold; }
+
+.profile-page .icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  margin: auto; }
+
+.profile-page .win-icon {
+  background-image: url(images/all_win_icon.8a2180.png);
+  background-size: 100% 100%; }
+
+.profile-page .all_game-icon {
+  background-image: url(images/all_game.de1c6b.png);
+  background-size: 100% 100%; }
+
+.profile-page .score-icon {
+  background-image: url(images/score_icon.e6f87a.png);
+  background-size: 100% 100%; }
+
+.profile-page .position-icon {
+  background-image: url(images/position_icon.4aac46.png);
+  background-size: 100% 100%; }
+
+.profile-page .sub-text {
+  font-size: 10px;
+  color: #909090; }
+
+.profile-page .score-text {
+  font-size: 18px; }
+
+.profile-page .avatar-icon {
+  background-image: url(images/position_icon.4aac46.png);
+  background-size: 100% 100%; }
+
+.profile-page .right-col {
+  padding-left: 0px; }
+/*  COLORS */
 .game-result-page .iconL {
   display: block;
   width: 80px;
@@ -1369,6 +1437,8 @@ h2 {
 /*  COLORS */
 /*  COLORS */
 /*  COLORS */
+/*  COLORS */
+/*  COLORS */
 .auth-page {
   top: -46px; }
   .auth-page .table-middle-block {
@@ -1384,14 +1454,6 @@ h2 {
   .auth-page .fb-icon {
     background-image: url(images/fb.12d324.png);
     background-size: 10px 23px; }
-/*  COLORS */
-.loading-modal .modal-overflow .modal-content {
-  background: black;
-  text-align: center; }
-  .loading-modal .modal-overflow .modal-content .modal-body {
-    display: inline-block;
-    color: white;
-    background: none; }
 /*  COLORS */
 .registration-page .table-middle-block {
   height: 50%;
