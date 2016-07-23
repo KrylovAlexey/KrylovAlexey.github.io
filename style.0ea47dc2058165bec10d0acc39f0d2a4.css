@@ -304,7 +304,7 @@ table {
   margin-right: -15px; }
 
 .container > .row, .container-fluid > .row {
-  margin-bottom: 5px; }
+  margin-bottom: 2px; }
   .container > .row:last-child, .container-fluid > .row:last-child {
     margin-bottom: 0; }
 
@@ -788,29 +788,94 @@ table {
   .col-lg-offset-0 {
     margin-left: 0%; } }
 
+/* BEGIN Light */
 @font-face {
-  font-family: 'OpenSans-Regular';
-  src: url(fonts/opensans-regular-webfont.3d52d1.woff2) format("woff2"), url(fonts/opensans-regular-webfont.0a1bd8.woff) format("woff");
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-Light.804037.eot);
+  src: url(fonts/OpenSans-Light.804037.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-Light.39d27e.woff2) format("woff2"), url(fonts/OpenSans-Light.963eb3.woff) format("woff"), url(fonts/OpenSans-Light.ecb457.ttf) format("truetype"), url(fonts/OpenSans-Light.b22164.svg#Light) format("svg");
+  font-weight: 300;
+  font-style: normal; }
+
+/* END Light */
+/* BEGIN Light Italic */
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-LightItalic.6725fc.eot);
+  src: url(fonts/OpenSans-LightItalic.6725fc.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-LightItalic.e7cc71.woff2) format("woff2"), url(fonts/OpenSans-LightItalic.97534d.woff) format("woff"), url(fonts/OpenSans-LightItalic.26f1e6.ttf) format("truetype"), url(fonts/OpenSans-LightItalic.336bcb.svg#LightItalic) format("svg");
+  font-weight: 300;
+  font-style: italic; }
+
+/* END Light Italic */
+/* BEGIN Regular */
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-Regular.a35546.eot);
+  src: url(fonts/OpenSans-Regular.a35546.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-Regular.558354.woff2) format("woff2"), url(fonts/OpenSans-Regular.ac327c.woff) format("woff"), url(fonts/OpenSans-Regular.cd7296.ttf) format("truetype"), url(fonts/OpenSans-Regular.bf4dde.svg#Regular) format("svg");
   font-weight: normal;
   font-style: normal; }
 
+/* END Regular */
+/* BEGIN Italic */
 @font-face {
-  font-family: 'OpenSans-Italic';
-  src: url(fonts/opensans-italic-webfont.157e36.woff2) format("woff2"), url(fonts/opensans-italic-webfont.032680.woff) format("woff");
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-Italic.e487b7.eot);
+  src: url(fonts/OpenSans-Italic.e487b7.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-Italic.383eba.woff2) format("woff2"), url(fonts/OpenSans-Italic.525074.woff) format("woff"), url(fonts/OpenSans-Italic.9b30f1.ttf) format("truetype"), url(fonts/OpenSans-Italic.2a9a30.svg#Italic) format("svg");
   font-weight: normal;
+  font-style: italic; }
+
+/* END Italic */
+/* BEGIN Semibold */
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-Semibold.0ea045.eot);
+  src: url(fonts/OpenSans-Semibold.0ea045.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-Semibold.08952b.woff2) format("woff2"), url(fonts/OpenSans-Semibold.9f2144.woff) format("woff"), url(fonts/OpenSans-Semibold.33f225.ttf) format("truetype"), url(fonts/OpenSans-Semibold.24aab5.svg#Semibold) format("svg");
+  font-weight: 600;
   font-style: normal; }
 
+/* END Semibold */
+/* BEGIN Semibold Italic */
 @font-face {
-  font-family: 'OpenSans-BoldItalic';
-  src: url(fonts/opensans-bolditalic-webfont.af86a3.woff2) format("woff2"), url(fonts/opensans-bolditalic-webfont.315ce2.woff) format("woff");
-  font-weight: normal;
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-SemiboldItalic.da0614.eot);
+  src: url(fonts/OpenSans-SemiboldItalic.da0614.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-SemiboldItalic.3343e5.woff2) format("woff2"), url(fonts/OpenSans-SemiboldItalic.ec55f2.woff) format("woff"), url(fonts/OpenSans-SemiboldItalic.1c0b4e.ttf) format("truetype"), url(fonts/OpenSans-SemiboldItalic.b46ff9.svg#SemiboldItalic) format("svg");
+  font-weight: 600;
+  font-style: italic; }
+
+/* END Semibold Italic */
+/* BEGIN Bold */
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-Bold.7ae9b8.eot);
+  src: url(fonts/OpenSans-Bold.7ae9b8.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-Bold.3326e4.woff2) format("woff2"), url(fonts/OpenSans-Bold.892667.woff) format("woff"), url(fonts/OpenSans-Bold.5a1009.ttf) format("truetype"), url(fonts/OpenSans-Bold.fedf49.svg#Bold) format("svg");
+  font-weight: bold;
   font-style: normal; }
 
+/* END Bold */
+/* BEGIN Bold Italic */
 @font-face {
-  font-family: 'OpenSans-Bold';
-  src: url(fonts/opensans-bold-webfont.b65b78.woff2) format("woff2"), url(fonts/opensans-bold-webfont.5d06a7.woff) format("woff");
-  font-weight: normal;
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-BoldItalic.ea0793.eot);
+  src: url(fonts/OpenSans-BoldItalic.ea0793.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-BoldItalic.5aacee.woff2) format("woff2"), url(fonts/OpenSans-BoldItalic.7be88e.woff) format("woff"), url(fonts/OpenSans-BoldItalic.c36b5a.ttf) format("truetype"), url(fonts/OpenSans-BoldItalic.a33a87.svg#BoldItalic) format("svg");
+  font-weight: bold;
+  font-style: italic; }
+
+/* END Bold Italic */
+/* BEGIN Extrabold */
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-ExtraBold.561e4b.eot);
+  src: url(fonts/OpenSans-ExtraBold.561e4b.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-ExtraBold.521106.woff2) format("woff2"), url(fonts/OpenSans-ExtraBold.12e2ed.woff) format("woff"), url(fonts/OpenSans-ExtraBold.19b56c.ttf) format("truetype"), url(fonts/OpenSans-ExtraBold.f108c9.svg#ExtraBold) format("svg");
+  font-weight: 800;
   font-style: normal; }
+
+/* END Extrabold */
+/* BEGIN Extrabold Italic */
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/OpenSans-ExtraBoldItalic.5f467e.eot);
+  src: url(fonts/OpenSans-ExtraBoldItalic.5f467e.eot?#iefix&v=1.1.0) format("embedded-opentype"), url(fonts/OpenSans-ExtraBoldItalic.bc511b.woff2) format("woff2"), url(fonts/OpenSans-ExtraBoldItalic.4f4407.woff) format("woff"), url(fonts/OpenSans-ExtraBoldItalic.4595d7.ttf) format("truetype"), url(fonts/OpenSans-ExtraBoldItalic.a84e85.svg#ExtraBoldItalic) format("svg");
+  font-weight: 800;
+  font-style: italic; }
 
 .m-t-0 {
   margin-top: 0 !important; }
@@ -823,6 +888,9 @@ table {
 
 .m-r-0 {
   margin-right: 0 !important; }
+
+.m-t-20 {
+  margin-top: 20px; }
 
 .p-t-0 {
   padding-top: 0 !important; }
@@ -856,7 +924,7 @@ table {
 
 .yellow-text {
   color: #fff17d;
-  text-shadow: 0 1px 0px black; }
+  text-shadow: 0 2px 0px #2b2b2b; }
 
 html, body {
   width: 100%;
@@ -868,10 +936,9 @@ body {
   background-position: center;
   background-size: cover;
   color: white;
-  font-family: Arial;
   background-image: url(images/auth_day_bg.602db1.jpg);
   transition: backgraund-image 0.5s ease;
-  font-family: 'OpenSans-Regular'; }
+  font-family: "Open Sans"; }
   body.auth {
     background-image: url(images/bg.e15efc.jpg); }
 
@@ -898,67 +965,98 @@ h2 {
 
 .btn {
   height: 43px;
-  background-color: rgba(48, 75, 58, 0.8);
+  line-height: 38px;
+  text-align: center;
+  background-color: rgba(61, 101, 86, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  color: white;
-  padding: 0 30px;
+  color: #fff;
   border-radius: 21px;
   font-size: 15px;
-  transition: background-color 0.3s ease; }
+  transition: background-color 0.3s ease;
+  font-family: "Open Sans"; }
+  .btn.touchHover {
+    background-color: rgba(36, 57, 49, 0.9);
+    border-color: rgba(36, 57, 49, 0.9); }
+  .btn:focus {
+    outline: none; }
+  .btn .size-small {
+    height: 30px;
+    font-size: 13px;
+    line-height: 27px; }
+  .btn.color-orange {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: #ffab56; }
+    .btn.color-orange.touchHover {
+      background-color: #ffab56; }
+  .btn.single {
+    margin-top: 15px;
+    margin-bottom: 10px; }
+  .btn .btn-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20px;
+    background: url(images/arrow.f50629.png) no-repeat left center;
+    background-size: 6px 10px; }
+  .btn .counter {
+    position: absolute;
+    display: inline-block;
+    height: 20px;
+    width: auto;
+    padding: 0 8px;
+    border-radius: 9px;
+    background: #cd5f57;
+    color: #fff;
+    text-align: center;
+    border: 2px solid #fff;
+    top: 50%;
+    margin-top: -10px;
+    right: 10px;
+    font-size: 12px;
+    line-height: 16px; }
+  .btn.disabled {
+    background-color: rgba(116, 119, 118, 0.9);
+    color: #2b2b2b; }
 
 .btn-set {
   line-height: 43px;
   overflow: hidden; }
-  .btn-set > button {
-    height: 100%;
-    color: white;
-    font-size: 15px;
-    background: none;
-    border: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.8); }
-    .btn-set > button:first-child {
+  .btn-set > .btn {
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 0; }
+    .btn-set > .btn:first-child {
       border-top-left-radius: 21px;
       border-bottom-left-radius: 21px; }
-    .btn-set > button:last-child {
-      border-right: none;
+    .btn-set > .btn:last-child {
       border-top-right-radius: 21px;
-      border-top-right-radius: 21px; }
+      border-bottom-right-radius: 21px; }
 
-.btn.touchHover, .btn-set > button.touchHover {
-  background-color: rgba(137, 144, 76, 0.8); }
-
-.btn:disabled, .btn-set > button:disabled {
-  background-color: rgba(133, 144, 142, 0.8); }
-
-.btn:focus, .btn-set > button:focus {
-  outline: none; }
-
-.btn .btn-arrow, .btn-set > button .btn-arrow {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 20px;
-  background: url(images/arrow.f50629.png) no-repeat left center;
-  background-size: 6px 10px; }
-
-.input {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(48, 75, 58, 0.8);
-  border-radius: 21px;
-  display: block;
-  height: 43px;
-  color: black;
-  text-indent: 10px;
-  font-size: 15px;
-  transition: background-color 0.3s ease; }
-  .input:focus {
-    outline: none;
-    background-color: rgba(173, 255, 171, 0.8); }
-  .input.invalid {
-    border-color: rgba(255, 0, 11, 0.8);
-    box-shadow: 0 0 3px rgba(255, 0, 11, 0.8);
-    color: rgba(255, 0, 11, 0.8); }
+label.input {
+  padding: 0; }
+  label.input span {
+    display: block;
+    text-align: center;
+    margin-bottom: 2px; }
+  label.input input {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 21px;
+    display: block;
+    height: 38px;
+    width: 100%;
+    color: #2b2b2b;
+    text-indent: 15px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    transition: background-color 0.3s ease; }
+    label.input input:focus {
+      outline: none;
+      border: 1px solid #2b2b2b; }
+    label.input input.invalid {
+      border-color: rgba(255, 0, 11, 0.8);
+      box-shadow: 0 0 3px rgba(255, 0, 11, 0.8);
+      color: rgba(255, 0, 11, 0.8); }
 
 .status-icon {
   background-size: 100% 100%; }
@@ -1000,9 +1098,9 @@ h2 {
     background-image: url(images/smailey_17.a12df9.png); }
 
 .list-container {
-  background-color: rgba(48, 75, 58, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  color: white;
+  background-color: rgba(61, 101, 86, 0.9);
+  border: 1px solid #2b2b2b;
+  color: #fff;
   padding: 0 7px;
   border-radius: 21px;
   font-size: 15px; }
@@ -1010,7 +1108,7 @@ h2 {
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.8); }
+    border-bottom: 1px solid #2b2b2b; }
     .list-container li:last-child {
       border: none; }
 /*  COLORS */
@@ -1027,7 +1125,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 46px;
-    background: #484848; }
+    background: #465153; }
   #header-container .open-menu-overflow {
     position: relative;
     width: 50px;
@@ -1058,7 +1156,7 @@ h2 {
     left: -200px;
     width: 200px;
     height: 100%;
-    background: #484848;
+    background: #465153;
     z-index: 2;
     transform: translate(0, 0);
     transition: transform 0.5s ease; }
@@ -1143,39 +1241,112 @@ h2 {
     transform: rotate(360deg); } }
 /*  COLORS */
 /*  COLORS */
-.index-page .game-container {
-  margin-top: 15px; }
-  .index-page .game-container h2 {
-    margin-bottom: 5px; }
+.index-page .user-info {
+  margin-top: 15px;
+  margin-bottom: 6px; }
+  .index-page .user-info p {
+    font-size: 14px; }
+  .index-page .user-info h2 {
+    font-weight: bold;
+    font-size: 17px; }
 
-.index-page .game-item .icon-container {
+.index-page h3 {
+  font-size: 16px; }
+
+.index-page .avatar {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  float: left;
+  margin-left: 5px;
+  background-image: url(images/1.c6150b.png); }
+
+.index-page .block-name {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  left: 75px; }
+
+.index-page .tips-header {
+  margin-top: 10px;
+  margin-bottom: 4px; }
+
+.index-page .tips-block {
+  height: 102px;
+  padding: 0 5px; }
+  .index-page .tips-block .tips-overflow {
+    width: 100%;
+    overflow: hidden; }
+  .index-page .tips-block .tips-item {
+    position: relative;
+    width: 20%;
+    float: left;
+    height: 43px;
+    margin-top: 10px; }
+  .index-page .tips-block .tips-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 1px solid #95ff81;
+    border-radius: 20px;
+    background-image: url(images/team-help.35fefd.png);
+    background-position: center;
+    background-repeat: no-repeat; }
+    .index-page .tips-block .tips-icon.disabled {
+      border-color: #ececec; }
+    .index-page .tips-block .tips-icon .counter {
+      border: 1px solid #fff;
+      color: #fff;
+      position: absolute;
+      background: #ffab56;
+      top: -6px;
+      right: 5px;
+      margin-top: 0;
+      display: inline-block;
+      height: 15px;
+      width: auto;
+      padding: 0 4px;
+      font-size: 10px;
+      line-height: 13px; }
+  .index-page .tips-block .color-orange {
+    margin: 12px auto 0 auto;
+    width: 160px; }
+/*  COLORS */
+.games-page .game-container {
+  margin-top: 15px; }
+
+.games-page h3 {
+  margin-top: 10px;
+  margin-bottom: 6px; }
+
+.games-page .game-item .icon-container {
   float: left;
   width: 40px;
   height: 40px;
   margin: 10px 0; }
 
-.index-page .game-item .text-container {
+.games-page .game-item .text-container {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 60px;
   right: 60px; }
-  .index-page .game-item .text-container p {
+  .games-page .game-item .text-container p {
     font-size: 12px; }
 
-.index-page .game-item .time-container {
+.games-page .game-item .time-container {
   float: right;
   width: 40px;
   height: 40px;
   margin: 10px 0; }
 
-.index-page .right-text {
+.games-page .right-text {
   position: absolute;
   top: 0;
   right: 0;
   cursor: pointer; }
 
-.index-page .icon {
+.games-page .icon {
   display: block;
   width: 40px;
   height: 40px; }
@@ -1471,3 +1642,77 @@ h2 {
   height: 50%;
   bottom: 0;
   position: absolute; }
+/*  COLORS */
+.profileDetail-page .profileDetail-center {
+  text-align: center; }
+
+.profileDetail-page .b {
+  font-weight: bold; }
+
+.profileDetail-page .icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  margin: auto; }
+
+.profileDetail-page .win-icon {
+  background-image: url(images/all_win_icon.8a2180.png);
+  background-size: 100% 100%; }
+
+.profileDetail-page .all_game-icon {
+  background-image: url(images/all_game.de1c6b.png);
+  background-size: 100% 100%; }
+
+.profileDetail-page .score-icon {
+  background-image: url(images/score_icon.e6f87a.png);
+  background-size: 100% 100%; }
+
+.profileDetail-page .position-icon {
+  background-image: url(images/position_icon.4aac46.png);
+  background-size: 100% 100%; }
+
+.profileDetail-page .sub-text {
+  font-size: 10px;
+  color: #909090; }
+
+.profileDetail-page .score-text {
+  font-size: 18px; }
+
+.profileDetail-page .avatar-icon {
+  background-image: url(images/position_icon.4aac46.png);
+  background-size: 100% 100%; }
+
+.profileDetail-page .padding0 {
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.profileDetail-page .padding5 {
+  padding-left: 7px;
+  padding-right: 7px; }
+
+.profileDetail-page .topic {
+  border-top: 1px solid black; }
+
+.profileDetail-page .progress-bar {
+  background-color: #1a1a1a;
+  height: 15px;
+  border-radius: 15px;
+  box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444; }
+
+.profileDetail-page .progress-bar span {
+  display: inline-block;
+  height: 15px;
+  border-radius: 15px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  transition: width .4s ease-in-out; }
+
+.profileDetail-page .blue span {
+  background-color: #34c2e3; }
+
+.profileDetail-page .green span {
+  background-color: #359035;
+  background-image: linear-gradient(top, #a5df41, #4ca916); }
+
+.profileDetail-page .shine span {
+  position: relative; }
