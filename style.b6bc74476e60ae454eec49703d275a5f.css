@@ -20,7 +20,7 @@
     height: 100%;
     overflow: auto; }
   .modal-overflow .modal-body {
-    background: white;
+    background: #fff;
     overflow: hidden;
     width: 290px;
     margin: 0 auto;
@@ -28,7 +28,9 @@
     opacity: 0;
     transform: scale(0.8);
     transition: opacity 0.2s ease, transform 0.3s ease;
-    color: black; }
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3); }
   .modal-overflow.show .modal-backdrop {
     opacity: 0.5;
     transition: opacity 0.5s ease; }
@@ -978,8 +980,7 @@ h2 {
   transition: background-color 0.3s ease;
   font-family: "Open Sans"; }
   .btn.touchHover {
-    background-color: rgba(36, 57, 49, 0.9);
-    border-color: rgba(36, 57, 49, 0.9); }
+    background-color: rgba(36, 57, 49, 0.9); }
   .btn:focus {
     outline: none; }
   .btn .size-small {
@@ -1020,7 +1021,8 @@ h2 {
     line-height: 16px; }
   .btn.disabled {
     background-color: rgba(116, 119, 118, 0.9);
-    color: #2b2b2b; }
+    color: #2b2b2b;
+    border-color: #2b2b2b; }
 
 .btn-set {
   line-height: 43px;
@@ -1079,16 +1081,214 @@ label.input {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; }
+  .user-icon[data-user-icon-status="0"] .avatar_bg {
+    background-color: rgba(0, 0, 0, 0.2); }
   .user-icon[data-user-icon-status="1"] .avatar_bg {
     background-color: #52be5d; }
   .user-icon[data-user-icon-status="2"] .avatar_bg {
     background-color: #ea5f56; }
   .user-icon[data-user-icon-status="3"] .avatar_bg {
     background-color: #eecf7e; }
-  .user-icon[data-user-icon-id="0"] .avatar {
-    background-image: url(images/0.9a09f1.png); }
   .user-icon[data-user-icon-id="1"] .avatar {
-    background-image: url(images/1.9a09f1.png); }
+    background-image: url(images/1.0b2830.png); }
+  .user-icon[data-user-icon-id="2"] .avatar {
+    background-image: url(images/2.ab01bb.png); }
+  .user-icon[data-user-icon-id="3"] .avatar {
+    background-image: url(images/3.0e87aa.png); }
+  .user-icon[data-user-icon-id="4"] .avatar {
+    background-image: url(images/4.dc9fe6.png); }
+  .user-icon[data-user-icon-id="5"] .avatar {
+    background-image: url(images/5.e97a86.png); }
+  .user-icon[data-user-icon-id="6"] .avatar {
+    background-image: url(images/6.30056c.png); }
+  .user-icon[data-user-icon-id="7"] .avatar {
+    background-image: url(images/7.9cdf92.png); }
+  .user-icon[data-user-icon-id="8"] .avatar {
+    background-image: url(images/8.607dc7.png); }
+  .user-icon[data-user-icon-id="9"] .avatar {
+    background-image: url(images/9.ffed70.png); }
+  .user-icon[data-user-icon-id="10"] .avatar {
+    background-image: url(images/10.a50e15.png); }
+  .user-icon[data-user-icon-id="11"] .avatar {
+    background-image: url(images/11.bc063e.png); }
+  .user-icon[data-user-icon-id="12"] .avatar {
+    background-image: url(images/12.bed7de.png); }
+  .user-icon[data-user-icon-id="13"] .avatar {
+    background-image: url(images/13.a41902.png); }
+  .user-icon[data-user-icon-id="14"] .avatar {
+    background-image: url(images/14.eb795e.png); }
+  .user-icon[data-user-icon-id="15"] .avatar {
+    background-image: url(images/15.bf1fe0.png); }
+  .user-icon[data-user-icon-id="16"] .avatar {
+    background-image: url(images/16.f8389e.png); }
+  .user-icon[data-user-icon-id="17"] .avatar {
+    background-image: url(images/17.3f4498.png); }
+  .user-icon[data-user-icon-id="18"] .avatar {
+    background-image: url(images/18.c41566.png); }
+  .user-icon[data-user-icon-id="19"] .avatar {
+    background-image: url(images/19.3b8d3b.png); }
+  .user-icon[data-user-icon-id="20"] .avatar {
+    background-image: url(images/20.51675c.png); }
+  .user-icon[data-user-icon-id="21"] .avatar {
+    background-image: url(images/21.c31fa5.png); }
+  .user-icon[data-user-icon-id="22"] .avatar {
+    background-image: url(images/22.903969.png); }
+  .user-icon[data-user-icon-id="23"] .avatar {
+    background-image: url(images/23.dfbafc.png); }
+  .user-icon[data-user-icon-id="24"] .avatar {
+    background-image: url(images/24.960021.png); }
+  .user-icon[data-user-icon-id="25"] .avatar {
+    background-image: url(images/25.8c8128.png); }
+  .user-icon[data-user-icon-id="26"] .avatar {
+    background-image: url(images/26.7da39e.png); }
+  .user-icon[data-user-icon-id="27"] .avatar {
+    background-image: url(images/27.895416.png); }
+  .user-icon[data-user-icon-id="28"] .avatar {
+    background-image: url(images/28.6ce430.png); }
+  .user-icon[data-user-icon-id="29"] .avatar {
+    background-image: url(images/29.c89a3e.png); }
+  .user-icon[data-user-icon-id="30"] .avatar {
+    background-image: url(images/30.8e9813.png); }
+  .user-icon[data-user-icon-id="31"] .avatar {
+    background-image: url(images/31.05fcb3.png); }
+  .user-icon[data-user-icon-id="32"] .avatar {
+    background-image: url(images/32.e1f6be.png); }
+  .user-icon[data-user-icon-id="33"] .avatar {
+    background-image: url(images/33.149cf6.png); }
+  .user-icon[data-user-icon-id="34"] .avatar {
+    background-image: url(images/34.597bdd.png); }
+  .user-icon[data-user-icon-id="35"] .avatar {
+    background-image: url(images/35.9b63b7.png); }
+  .user-icon[data-user-icon-id="36"] .avatar {
+    background-image: url(images/36.a1420f.png); }
+  .user-icon[data-user-icon-id="37"] .avatar {
+    background-image: url(images/37.2533c5.png); }
+  .user-icon[data-user-icon-id="38"] .avatar {
+    background-image: url(images/38.8d424e.png); }
+  .user-icon[data-user-icon-id="39"] .avatar {
+    background-image: url(images/39.8a7dc4.png); }
+  .user-icon[data-user-icon-id="40"] .avatar {
+    background-image: url(images/40.8eede9.png); }
+  .user-icon[data-user-icon-id="41"] .avatar {
+    background-image: url(images/41.1e0e35.png); }
+  .user-icon[data-user-icon-id="42"] .avatar {
+    background-image: url(images/42.5ce83f.png); }
+  .user-icon[data-user-icon-id="43"] .avatar {
+    background-image: url(images/43.f589d9.png); }
+  .user-icon[data-user-icon-id="44"] .avatar {
+    background-image: url(images/44.60e712.png); }
+  .user-icon[data-user-icon-id="45"] .avatar {
+    background-image: url(images/45.2ea670.png); }
+  .user-icon[data-user-icon-id="46"] .avatar {
+    background-image: url(images/46.2f00cf.png); }
+  .user-icon[data-user-icon-id="47"] .avatar {
+    background-image: url(images/47.356d0e.png); }
+  .user-icon[data-user-icon-id="48"] .avatar {
+    background-image: url(images/48.9c5c9e.png); }
+  .user-icon[data-user-icon-id="49"] .avatar {
+    background-image: url(images/49.852735.png); }
+  .user-icon[data-user-icon-id="50"] .avatar {
+    background-image: url(images/50.7fb2c8.png); }
+  .user-icon[data-user-icon-id="101"] .avatar {
+    background-image: url(images/101.0d0f95.png); }
+  .user-icon[data-user-icon-id="102"] .avatar {
+    background-image: url(images/102.ed335c.png); }
+  .user-icon[data-user-icon-id="103"] .avatar {
+    background-image: url(images/103.c28491.png); }
+  .user-icon[data-user-icon-id="104"] .avatar {
+    background-image: url(images/104.52b1ec.png); }
+  .user-icon[data-user-icon-id="105"] .avatar {
+    background-image: url(images/105.42b856.png); }
+  .user-icon[data-user-icon-id="106"] .avatar {
+    background-image: url(images/106.9ba900.png); }
+  .user-icon[data-user-icon-id="107"] .avatar {
+    background-image: url(images/107.1c3908.png); }
+  .user-icon[data-user-icon-id="108"] .avatar {
+    background-image: url(images/108.6ce624.png); }
+  .user-icon[data-user-icon-id="109"] .avatar {
+    background-image: url(images/109.87418e.png); }
+  .user-icon[data-user-icon-id="110"] .avatar {
+    background-image: url(images/110.1dbfe0.png); }
+  .user-icon[data-user-icon-id="111"] .avatar {
+    background-image: url(images/111.84ee69.png); }
+  .user-icon[data-user-icon-id="112"] .avatar {
+    background-image: url(images/112.9ec0d4.png); }
+  .user-icon[data-user-icon-id="113"] .avatar {
+    background-image: url(images/113.2110f6.png); }
+  .user-icon[data-user-icon-id="114"] .avatar {
+    background-image: url(images/114.34a8ef.png); }
+  .user-icon[data-user-icon-id="115"] .avatar {
+    background-image: url(images/115.ab9933.png); }
+  .user-icon[data-user-icon-id="116"] .avatar {
+    background-image: url(images/116.4a2318.png); }
+  .user-icon[data-user-icon-id="117"] .avatar {
+    background-image: url(images/117.38cfc6.png); }
+  .user-icon[data-user-icon-id="118"] .avatar {
+    background-image: url(images/118.38f831.png); }
+  .user-icon[data-user-icon-id="119"] .avatar {
+    background-image: url(images/119.f60296.png); }
+  .user-icon[data-user-icon-id="120"] .avatar {
+    background-image: url(images/120.bee566.png); }
+  .user-icon[data-user-icon-id="121"] .avatar {
+    background-image: url(images/121.f6fdc3.png); }
+  .user-icon[data-user-icon-id="122"] .avatar {
+    background-image: url(images/122.8b4170.png); }
+  .user-icon[data-user-icon-id="123"] .avatar {
+    background-image: url(images/123.f5f6bd.png); }
+  .user-icon[data-user-icon-id="124"] .avatar {
+    background-image: url(images/124.58a638.png); }
+  .user-icon[data-user-icon-id="125"] .avatar {
+    background-image: url(images/125.c89359.png); }
+  .user-icon[data-user-icon-id="126"] .avatar {
+    background-image: url(images/126.1c7e04.png); }
+  .user-icon[data-user-icon-id="127"] .avatar {
+    background-image: url(images/127.5b3327.png); }
+  .user-icon[data-user-icon-id="128"] .avatar {
+    background-image: url(images/128.4eb6c4.png); }
+  .user-icon[data-user-icon-id="129"] .avatar {
+    background-image: url(images/129.8eb58f.png); }
+  .user-icon[data-user-icon-id="130"] .avatar {
+    background-image: url(images/130.efcba8.png); }
+  .user-icon[data-user-icon-id="131"] .avatar {
+    background-image: url(images/131.62f350.png); }
+  .user-icon[data-user-icon-id="132"] .avatar {
+    background-image: url(images/132.537c6a.png); }
+  .user-icon[data-user-icon-id="133"] .avatar {
+    background-image: url(images/133.7dba58.png); }
+  .user-icon[data-user-icon-id="134"] .avatar {
+    background-image: url(images/134.39c7db.png); }
+  .user-icon[data-user-icon-id="135"] .avatar {
+    background-image: url(images/135.870b96.png); }
+  .user-icon[data-user-icon-id="136"] .avatar {
+    background-image: url(images/136.0c6f75.png); }
+  .user-icon[data-user-icon-id="137"] .avatar {
+    background-image: url(images/137.455a32.png); }
+  .user-icon[data-user-icon-id="138"] .avatar {
+    background-image: url(images/138.9dae2c.png); }
+  .user-icon[data-user-icon-id="139"] .avatar {
+    background-image: url(images/139.cbc737.png); }
+  .user-icon[data-user-icon-id="140"] .avatar {
+    background-image: url(images/140.921991.png); }
+  .user-icon[data-user-icon-id="141"] .avatar {
+    background-image: url(images/141.0f9d37.png); }
+  .user-icon[data-user-icon-id="142"] .avatar {
+    background-image: url(images/142.ee4cc3.png); }
+  .user-icon[data-user-icon-id="143"] .avatar {
+    background-image: url(images/143.156b03.png); }
+  .user-icon[data-user-icon-id="144"] .avatar {
+    background-image: url(images/144.3de193.png); }
+  .user-icon[data-user-icon-id="145"] .avatar {
+    background-image: url(images/145.f72ca6.png); }
+  .user-icon[data-user-icon-id="146"] .avatar {
+    background-image: url(images/146.69b568.png); }
+  .user-icon[data-user-icon-id="147"] .avatar {
+    background-image: url(images/147.9d03fe.png); }
+  .user-icon[data-user-icon-id="148"] .avatar {
+    background-image: url(images/148.ba3e7d.png); }
+  .user-icon[data-user-icon-id="149"] .avatar {
+    background-image: url(images/149.4ec622.png); }
+  .user-icon[data-user-icon-id="150"] .avatar {
+    background-image: url(images/150.72ca8f.png); }
 
 .status-icon {
   background-size: 100% 100%; }
@@ -1239,7 +1439,8 @@ label.input {
   right: 0;
   bottom: 0;
   opacity: 0;
-  transition: opacity 0.5s ease; }
+  transition: opacity 0.5s ease;
+  overflow: hidden; }
   .page.bg-blur {
     background: url(images/bg-blur.368130.jpg) center;
     background-size: cover; }
@@ -1247,7 +1448,8 @@ label.input {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow: auto; }
+    overflow: auto;
+    overflow-x: hidden; }
   .page.show {
     opacity: 1;
     transition: opacity 0.3s ease; }
@@ -1414,6 +1616,74 @@ label.input {
 /*  COLORS */
 /*  COLORS */
 /*  COLORS */
+/*  COLORS */
+.change-avatar-page .user-info {
+  margin-top: 15px;
+  margin-bottom: 6px; }
+  .change-avatar-page .user-info p {
+    font-size: 14px; }
+  .change-avatar-page .user-info h2 {
+    font-weight: bold;
+    font-size: 17px; }
+
+.change-avatar-page .user-icon {
+  float: left;
+  margin-left: 5px; }
+
+.change-avatar-page .block-name {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  left: 75px; }
+
+.change-avatar-page .tab-icon {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 22px;
+  border: 1px solid #fff;
+  display: inline-block;
+  margin: 10px; }
+  .change-avatar-page .tab-icon.men {
+    background-image: url(images/men.e2fac0.png); }
+  .change-avatar-page .tab-icon.women {
+    background-image: url(images/women.a49506.png); }
+  .change-avatar-page .tab-icon.active {
+    border-color: #fff17d; }
+    .change-avatar-page .tab-icon.active.men {
+      background-image: url(images/men_active.6d6aed.png); }
+    .change-avatar-page .tab-icon.active.women {
+      background-image: url(images/women_active.e7fd3a.png); }
+
+.change-avatar-page .avatars {
+  position: relative;
+  width: 200%;
+  text-align: center; }
+  .change-avatar-page .avatars .user-icon {
+    float: none;
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    margin: 5px; }
+    .change-avatar-page .avatars .user-icon.touchHover .avatar_bg {
+      background-color: rgba(36, 171, 125, 0.9); }
+    .change-avatar-page .avatars .user-icon.active .avatar_bg {
+      background-color: #52be5d; }
+  .change-avatar-page .avatars[data-state="1"] {
+    left: 0; }
+  .change-avatar-page .avatars[data-state="2"] {
+    left: -100%; }
+
+.csstransforms .change-avatar-page .avatars {
+  left: 0;
+  transition: transform 0.5s ease; }
+  .csstransforms .change-avatar-page .avatars[data-state="1"] {
+    transform: translate(0, 0); }
+  .csstransforms .change-avatar-page .avatars[data-state="2"] {
+    transform: translate(-50%, 0); }
 /*  COLORS */
 /*  COLORS */
 .search-user-page .result-container {
@@ -1644,6 +1914,8 @@ label.input {
   bottom: 0;
   position: absolute; }
 /*  COLORS */
+.blockTopics-page .blockTopics-item {
+  height: 50px; }
 /*  COLORS */
 .signin-page {
   top: -46px; }
