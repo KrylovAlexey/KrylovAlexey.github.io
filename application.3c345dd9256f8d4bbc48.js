@@ -17610,7 +17610,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.last20Games = exports.opponent = exports.parseUrl = exports.storageModel = exports.blackListCollection = exports.friendCollection = exports.userGameCollection = exports.topicCollection = exports.user = exports.emailRegexp = exports.api = exports.ValidateModel = undefined;
+	exports.last20GamesCollection = exports.opponent = exports.parseUrl = exports.storageModel = exports.blackListCollection = exports.friendCollection = exports.userGameCollection = exports.topicCollection = exports.user = exports.emailRegexp = exports.api = exports.ValidateModel = undefined;
 	
 	var _serverAPI = __webpack_require__(11);
 	
@@ -17648,9 +17648,9 @@
 	
 	var OpponentModel = _interopRequireDefault(_opponentModel).default;
 	
-	var _last20GamesModel = __webpack_require__(39);
+	var _last20GamesCollection = __webpack_require__(39);
 	
-	var Last20GamesModel = _interopRequireDefault(_last20GamesModel).default;
+	var Last20GamesCollection = _interopRequireDefault(_last20GamesCollection).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -17680,7 +17680,7 @@
 	    return parseUrl_result;
 	};
 	var opponent = exports.opponent = new OpponentModel();
-	var last20Games = exports.last20Games = new Last20GamesModel();
+	var last20GamesCollection = exports.last20GamesCollection = new Last20GamesCollection();
 
 /***/ },
 /* 11 */
@@ -20627,21 +20627,46 @@
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = Epoxy.Model.extend({
-	    defaults: {
-	        auth: false,
-	        sessionKey: '',
-	        sessionValue: '',
-	        server_time: ''
-	    }
 	
+	var _personModel = __webpack_require__(35);
+	
+	var last20GamesModel = _interopRequireDefault(_personModel).default;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = Backbone.Collection.extend({
+	    model: last20GamesModel,
+	
+	    initialize: function initialize() {
+	        this.ready = $.Deferred();
+	    },
+	    parse: function parse(data) {
+	        if (data && data.answer) {
+	            this.reset(_.map(data.answer, function (value) {
+	                value.u_login = value.enemy_login;
+	                return value;
+	            }));
+	        } else {
+	            this.reset([]);
+	        }
+	        this.ready.resolve();
+	    },
+	    update: function update() {
+	        var _this = this;
+	
+	        common.api.getLast20Games().done(function (data) {
+	            _this.parse(data);
+	        }).fail(function (err) {
+	            console.log(err.text);
+	        });
+	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
 /* 40 */
@@ -21027,6 +21052,7 @@
 	        });
 	        common.friendCollection.update();
 	        common.blackListCollection.update();
+	        common.last20GamesCollection.update();
 	    },
 	    onShowIndex: function onShowIndex() {
 	        this.showInsidePage(indexPage);
@@ -22530,52 +22556,52 @@
 /* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _last20gamesPage = __webpack_require__(301);
+	var _last20GamesPage = __webpack_require__(301);
 	
-	var template = _interopRequireDefault(_last20gamesPage).default;
+	var template = _interopRequireDefault(_last20GamesPage).default;
 	
 	__webpack_require__(302);
 	
-	var _last20GamesModel = __webpack_require__(39);
+	var _userWidget = __webpack_require__(287);
 	
-	var Last20GamesModel = _interopRequireDefault(_last20GamesModel).default;
+	var userWidget = _interopRequireDefault(_userWidget).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = MarionetteEpoxy.View.extend({
+	var FriendCollectionView = Marionette.CollectionView.extend({
+	    className: 'list-container',
+	    tagName: 'ul',
+	    childView: userWidget
+	});
+	
+	exports.default = MarionetteEpoxy.LayoutView.extend({
 	    template: template,
-	    className: 'last20games-page page load',
+	    className: 'new-game-page page',
 	
-	    ui: {},
-	    events: {},
+	    bindings: {},
+	    regions: {
+	        'friendsContainer': '[data-js-friend-list]'
+	    },
+	
 	    initialize: function initialize() {
-	        var _this = this;
-	
-	        this.model = new Last20GamesModel();
-	
-	        common.api.getLast20Games().always(function () {
-	            _this.$el.removeClass('load');
-	        }).done(function (data) {
-	            _this.renderRoundsInfo(data);
-	        }).fail(function (err) {
-	            console.log(err.text);
+	        this.model = common.user;
+	        this.friendCollection = new FriendCollectionView({
+	            collection: common.last20GamesCollection
 	        });
-	
-	        //this.epoxify();
+	        this.epoxify();
 	        common.headerModel.set({ backPath: 'newgame' });
 	    },
-	    renderRoundsInfo: function renderRoundsInfo(data) {
-	        this.model.set({});
-	        common.last20Games = this.model;
+	    onRender: function onRender() {
+	        this.friendsContainer.show(this.friendCollection);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(227), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(227), __webpack_require__(10)))
 
 /***/ },
 /* 301 */
@@ -22588,7 +22614,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><h2>last 20 game</h2></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"friends-header yellow-text\">20 последних игр</h3></div></div><div class=\"row\"><div data-js-friend-list class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -22691,7 +22717,7 @@
 	        this.onChangeRound();
 	
 	        this.epoxify();
-	        common.headerModel.set({ backPath: 'userGames' });
+	        common.headerModel.set({ backPath: 'index' });
 	    },
 	    onRender: function onRender() {
 	        if (this.model) {
@@ -22730,7 +22756,7 @@
 	            this.ui.roundsInfo.append(roundView.$el);
 	            roundView.render();
 	            userAnswerSuccess += roundView.getCounts().userAnswerSuccess;
-	            opponentAnswerSuccess += roundView.getCounts().opponentAnswerSuccess;
+	            if (roundView.model.get('userResults').length > 0) opponentAnswerSuccess += roundView.getCounts().opponentAnswerSuccess;
 	        }
 	        this.model.set({
 	            userAnswerSuccess: userAnswerSuccess,
@@ -22914,13 +22940,18 @@
 	buf.push("</div><div class=\"text-container\"><div class=\"game-round-center\"><span class=\"yellow-text\">Раунд " + (jade.escape((jade_interp = roundNumber + 1) == null ? '' : jade_interp)) + "</span></div></div><div class=\"time-container\">");
 	if ((startRound))
 	{
-	if ((!opponentResults.length))
+	if ((!opponentResults.length ))
 	{
 	buf.push("<span>Играет ...</span>");
 	}
 	else
 	{
+	if ((!userResults.length ))
+	{
+	buf.push("<span>...</span>");
 	}
+	else
+	{
 	// iterate opponentResults
 	;(function(){
 	  var $$obj = opponentResults;
@@ -22957,6 +22988,8 @@
 	  }
 	}).call(this);
 	
+	}
+	}
 	}
 	buf.push("</div>");}.call(this,"opponentResults" in locals_for_with?locals_for_with.opponentResults:typeof opponentResults!=="undefined"?opponentResults:undefined,"roundName" in locals_for_with?locals_for_with.roundName:typeof roundName!=="undefined"?roundName:undefined,"roundNumber" in locals_for_with?locals_for_with.roundNumber:typeof roundNumber!=="undefined"?roundNumber:undefined,"startRound" in locals_for_with?locals_for_with.startRound:typeof startRound!=="undefined"?startRound:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined,"userResults" in locals_for_with?locals_for_with.userResults:typeof userResults!=="undefined"?userResults:undefined));;return buf.join("");
 	}
@@ -24954,4 +24987,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.1c898e792fdd297f5ca1.js.map
+//# sourceMappingURL=application.3c345dd9256f8d4bbc48.js.map

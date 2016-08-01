@@ -1842,6 +1842,9 @@ li.user-widget {
 .search-user-page .result-container {
   padding: 10px 0; }
 /*  COLORS */
+.new-game-page .friends-header {
+  margin-top: 10px;
+  margin-bottom: 4px; }
 /*  COLORS */
 .game-page .main-block {
   position: relative; }
@@ -2254,4 +2257,4 @@ li.user-widget {
 .profileDetail-page .shine span {
   position: relative; }
 
-/*# sourceMappingURL=style.6c86506ed1c14ae665706ff5fd066ee9.css.map*/
+/*# sourceMappingURL=style.5278a85ffa827b12b071b0069c59ba7c.css.map*/
