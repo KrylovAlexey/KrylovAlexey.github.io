@@ -65,11 +65,11 @@
 	
 	var AppController = _interopRequireDefault(_AppController).default;
 	
-	var _AppRouter = __webpack_require__(387);
+	var _AppRouter = __webpack_require__(391);
 	
 	var AppRouter = _interopRequireDefault(_AppRouter).default;
 	
-	__webpack_require__(388);
+	__webpack_require__(392);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -17610,7 +17610,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.playerRatingCollection = exports.last20GamesCollection = exports.opponent = exports.parseUrl = exports.storageModel = exports.blackListCollection = exports.friendCollection = exports.userGameCollection = exports.topicCollection = exports.user = exports.emailRegexp = exports.api = exports.ValidateModel = undefined;
+	exports.neighborsCollection = exports.playerRatingCollection = exports.last20GamesCollection = exports.opponent = exports.parseUrl = exports.storageModel = exports.blackListCollection = exports.friendCollection = exports.userGameCollection = exports.topicCollection = exports.user = exports.emailRegexp = exports.api = exports.ValidateModel = undefined;
 	
 	var _serverAPI = __webpack_require__(11);
 	
@@ -17656,6 +17656,10 @@
 	
 	var PlayerRatingCollection = _interopRequireDefault(_playerRatingCollection).default;
 	
+	var _neighborsCollection = __webpack_require__(41);
+	
+	var NeighborsCollection = _interopRequireDefault(_neighborsCollection).default;
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var ValidateModel = exports.ValidateModel = validateModel;
@@ -17686,6 +17690,7 @@
 	var opponent = exports.opponent = new OpponentModel();
 	var last20GamesCollection = exports.last20GamesCollection = new Last20GamesCollection();
 	var playerRatingCollection = exports.playerRatingCollection = new PlayerRatingCollection();
+	var neighborsCollection = exports.neighborsCollection = new NeighborsCollection();
 
 /***/ },
 /* 11 */
@@ -17978,6 +17983,11 @@
 	    getTopPlayer: function getTopPlayer() {
 	        return ajaxController({
 	            action: 'get_free_top'
+	        });
+	    },
+	    getTopPlayerPaid: function getTopPlayerPaid() {
+	        return ajaxController({
+	            action: 'get_paid_top'
 	        });
 	    }
 	};
@@ -20493,7 +20503,13 @@
 	        is_friend: false,
 	        u_login: '',
 	        u_ava: 0,
-	        open: false
+	        open: false,
+	        u_win: 0,
+	        u_draw: 0,
+	        u_lose: 0,
+	        u_rate: 0,
+	        u_number_rate: 0
+	
 	    },
 	    computeds: {
 	        avatar: {
@@ -20504,6 +20520,12 @@
 	                    return 1;
 	                }
 	                return avaInt;
+	            }
+	        },
+	        u_all_games: {
+	            deps: ['u_win', 'u_lose', 'u_draw'],
+	            get: function get(u_win, u_lose, u_draw) {
+	                return +u_win + +u_lose + +u_draw;
 	            }
 	        }
 	    }
@@ -20656,21 +20678,32 @@
 	        this.ready = $.Deferred();
 	    },
 	    parse: function parse(data) {
+	        var _this = this;
+	
 	        if (data && data.answer) {
-	            this.reset(_.map(data.answer, function (value) {
-	                value.u_login = value.enemy_login;
-	                return value;
-	            }));
+	            (function () {
+	                var number_rate = 0;
+	                _this.reset(_.map(data.answer, function (value) {
+	                    value.u_login = value.enemy_login;
+	                    value.u_win = value.rr_is_winner_cnt;
+	                    value.u_draw = value.rr_is_draw_cnt;
+	                    value.u_lose = value.rr_is_looser_cnt;
+	                    value.u_rate = value.enemy_rate;
+	                    number_rate += 1;
+	                    value.u_number_rate = number_rate;
+	                    return value;
+	                }));
+	            })();
 	        } else {
 	            this.reset([]);
 	        }
 	        this.ready.resolve();
 	    },
 	    update: function update() {
-	        var _this = this;
+	        var _this2 = this;
 	
 	        common.api.getLast20Games().done(function (data) {
-	            _this.parse(data);
+	            _this2.parse(data);
 	        }).fail(function (err) {
 	            console.log(err.text);
 	        });
@@ -20688,9 +20721,9 @@
 	    value: true
 	});
 	
-	var _playerModel = __webpack_require__(41);
+	var _personModel = __webpack_require__(35);
 	
-	var playerModel = _interopRequireDefault(_playerModel).default;
+	var playerModel = _interopRequireDefault(_personModel).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20700,13 +20733,20 @@
 	    initialize: function initialize() {
 	        this.ready = $.Deferred();
 	    },
+	
+	    // dfgd
 	    parse: function parse(data) {
 	        var _this = this;
 	
 	        if (data && data.answer) {
-	            this.reset(_.map(data.answer.user_games, function (user_game) {
-	                return _this.getGameInfo(data, user_game);
-	            }));
+	            (function () {
+	                var number_rate = 0;
+	                _this.reset(_.map(data.answer.rate, function (value) {
+	                    number_rate += 1;
+	                    value.u_number_rate = number_rate;
+	                    return value;
+	                }));
+	            })();
 	        } else {
 	            this.reset([]);
 	        }
@@ -20729,23 +20769,55 @@
 /* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = Epoxy.Model.extend({
-	    defaults: {
-	        id: '',
-	        u_ava: null,
-	        u_fb_id: null,
-	        u_login: '',
-	        u_name: null,
-	        u_surname: null,
-	        u_vk_id: null
+	
+	var _personModel = __webpack_require__(35);
+	
+	var playerModel = _interopRequireDefault(_personModel).default;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = Backbone.Collection.extend({
+	    model: playerModel,
+	
+	    initialize: function initialize() {
+	        this.ready = $.Deferred();
+	    },
+	
+	    // dfgd
+	    parse: function parse(data) {
+	        var _this = this;
+	
+	        if (data && data.answer) {
+	            (function () {
+	                var number_rate = 0;
+	                _this.reset(_.map(data.answer.rate, function (value) {
+	                    number_rate += 1;
+	                    value.u_number_rate = number_rate;
+	                    return value;
+	                }));
+	            })();
+	        } else {
+	            this.reset([]);
+	        }
+	        this.ready.resolve();
+	    },
+	    update: function update() {
+	        var _this2 = this;
+	
+	        common.api.getTopPlayerPaid().done(function (data) {
+	            _this2.parse(data);
+	            _this2.ready.resolve();
+	        }).fail(function (err) {
+	            console.log(err.text);
+	        });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
 /* 42 */
@@ -21035,11 +21107,15 @@
 	
 	var signinPage = _interopRequireDefault(_signinPage).default;
 	
-	var _restorePasswordPage = __webpack_require__(379);
+	var _neighborsPage = __webpack_require__(379);
+	
+	var neighborsPage = _interopRequireDefault(_neighborsPage).default;
+	
+	var _restorePasswordPage = __webpack_require__(383);
 	
 	var restorePasswordPage = _interopRequireDefault(_restorePasswordPage).default;
 	
-	var _profileDetailPage = __webpack_require__(383);
+	var _profileDetailPage = __webpack_require__(387);
 	
 	var profileDetailPage = _interopRequireDefault(_profileDetailPage).default;
 	
@@ -21133,6 +21209,7 @@
 	        common.blackListCollection.update();
 	        common.last20GamesCollection.update();
 	        common.playerRatingCollection.update();
+	        common.neighborsCollection.update();
 	    },
 	    onShowIndex: function onShowIndex() {
 	        this.showInsidePage(indexPage);
@@ -21184,6 +21261,9 @@
 	    },
 	    onShowPlayerRankings: function onShowPlayerRankings() {
 	        this.showInsidePage(playerRankingsPage);
+	    },
+	    onShowNeighbors: function onShowNeighbors() {
+	        this.showInsidePage(neighborsPage);
 	    },
 	    onShowAccountSetting: function onShowAccountSetting() {
 	        this.showInsidePage(accountSettingPage);
@@ -22424,7 +22504,13 @@
 	    bindings: {
 	        '[data-js-user-icon]': 'setAvatarAttr: avatar',
 	        '[data-js-login]': 'text: u_login',
-	        ':el': 'classes: {open: open}'
+	        ':el': 'classes: {open: open}',
+	        '[data-js-lose]': 'text: u_lose',
+	        '[data-js-all-games]': 'text: u_all_games',
+	        '[data-js-draw]': 'text: u_draw',
+	        '[data-js-win]': 'text: u_win',
+	        '[data-js-score]': 'text: u_rate',
+	        '[data-js-number]': 'text: u_number_rate'
 	    },
 	    bindingHandlers: {
 	        setAvatarAttr: {
@@ -22466,7 +22552,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div data-js-label class=\"user-label\"><p class=\"number\">&nbsp</p><div data-js-user-icon data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><p data-js-login class=\"user-name text-ellipsis\"></p><p class=\"score text-ellipsis\">&nbsp</p><div class=\"arrow\"></div></div><div class=\"inside-block\"><div class=\"icon-block\"><div class=\"icon games\"></div><span>Игр</span><h2>0</h2></div><div class=\"icon-block\"><div class=\"icon dones\"></div><span>Побед</span><h2>0</h2></div><div class=\"icon-block\"><div class=\"icon draws\"></div><span>Ничьих</span><h2>0</h2></div><div class=\"icon-block\"><div class=\"icon fails\"></div><span>Поражений</span><h2>0</h2></div><div class=\"buttons-block\"><div data-js-detail class=\"btn size-small color-yellow\">Подробнее</div><div data-js-start-game class=\"btn size-small color-light\">Сразиться</div></div></div>");;return buf.join("");
+	buf.push("<div data-js-label class=\"user-label\"><p data-js-number class=\"number\">&nbsp</p><div data-js-user-icon data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><p data-js-login class=\"user-name text-ellipsis\"></p><p data-js-score class=\"score text-ellipsis\">&nbsp</p><div class=\"arrow\"></div></div><div class=\"inside-block\"><div class=\"icon-block\"><div class=\"icon games\"></div><span>Игр</span><h2 data-js-all-games>0</h2></div><div class=\"icon-block\"><div class=\"icon dones\"></div><span>Побед</span><h2 data-js-win>0</h2></div><div class=\"icon-block\"><div class=\"icon draws\"></div><span>Ничьих</span><h2 data-js-draw>0</h2></div><div class=\"icon-block\"><div class=\"icon fails\"></div><span>Поражений</span><h2 data-js-lose>0</h2></div><div class=\"buttons-block\"><div data-js-detail class=\"btn size-small color-yellow\">Подробнее</div><div data-js-start-game class=\"btn size-small color-light\">Сразиться</div></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -23154,7 +23240,7 @@
 	            console.log(err.text);
 	        });
 	        this.epoxify();
-	        common.headerModel.set({ backPath: 'userGames' });
+	        common.headerModel.set({ backPath: 'game/3' });
 	    },
 	    renderRoundsInfo: function renderRoundsInfo(data) {
 	
@@ -24209,12 +24295,14 @@
 	    ui: {
 	        'last20games': '[data-js-last20games]',
 	        'playerRankings': '[data-js-playerRankings]',
-	        'buttonProfile': '[data-js-statistics-profile]'
+	        'buttonProfile': '[data-js-statistics-profile]',
+	        'buttonNeighbors': '[data-js-neighbors]'
 	    },
 	    events: {
 	        'click @ui.last20games': 'onClickLast20games',
 	        'click @ui.playerRankings': 'onClickPlayerRankings',
-	        'click @ui.buttonProfile': 'onClickProfile'
+	        'click @ui.buttonProfile': 'onClickProfile',
+	        'click @ui.buttonNeighbors': 'onClickNeighbors'
 	    },
 	    bindings: {},
 	    initialize: function initialize() {
@@ -24228,6 +24316,9 @@
 	    },
 	    onClickProfile: function onClickProfile() {
 	        common.router.navigate('profile/' + common.user.get('id'), { trigger: true });
+	    },
+	    onClickNeighbors: function onClickNeighbors() {
+	        common.router.navigate('neighbors', { trigger: true });
 	    }
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
@@ -24243,7 +24334,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><button data-js-statistics-profile class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Успеваемость</span></button></div><div class=\"row\"><button class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Награды</span></button></div><div class=\"row\"><button data-js-playerRankings class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Рейтинг игроков</span></button></div><div class=\"row\"><button class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Соседи по рейтингу</span></button></div><div class=\"row\"><button data-js-last20games class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>20 последних игр</span></button></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><button data-js-statistics-profile class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Успеваемость</span></button></div><div class=\"row\"><button class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Награды</span></button></div><div class=\"row\"><button data-js-playerRankings class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Рейтинг игроков</span></button></div><div class=\"row\"><button data-js-neighbors class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Соседи по рейтингу</span></button></div><div class=\"row\"><button data-js-last20games class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>20 последних игр</span></button></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -24257,7 +24348,7 @@
 /* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -24269,19 +24360,40 @@
 	
 	__webpack_require__(358);
 	
+	var _userWidget = __webpack_require__(289);
+	
+	var userWidget = _interopRequireDefault(_userWidget).default;
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = MarionetteEpoxy.View.extend({
-	    template: template,
-	    className: 'playerRankings-page page',
+	var FriendCollectionView = Marionette.CollectionView.extend({
+	    className: 'list-container',
+	    tagName: 'ul',
+	    childView: userWidget
+	});
 	
-	    ui: {},
-	    events: {},
+	exports.default = MarionetteEpoxy.LayoutView.extend({
+	    template: template,
+	    className: 'new-game-page page',
+	
+	    bindings: {},
+	    regions: {
+	        'friendsContainer': '[data-js-friend-list]'
+	    },
+	
 	    initialize: function initialize() {
+	        this.model = common.user;
+	        this.friendCollection = new FriendCollectionView({
+	            collection: common.playerRatingCollection
+	        });
+	        this.epoxify();
 	        common.headerModel.set({ backPath: 'statistics' });
+	    },
+	    onRender: function onRender() {
+	        this.friendsContainer.show(this.friendCollection);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(229), __webpack_require__(10)))
 
 /***/ },
 /* 357 */
@@ -24294,7 +24406,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><h2>last 20 game</h2></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"friends-header yellow-text\">Рейтинг игроков</h3></div></div><div class=\"row\"><div data-js-friend-list class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -24756,17 +24868,89 @@
 /* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _neighborsPage = __webpack_require__(380);
+	
+	var template = _interopRequireDefault(_neighborsPage).default;
+	
+	__webpack_require__(381);
+	
+	var _userWidget = __webpack_require__(289);
+	
+	var userWidget = _interopRequireDefault(_userWidget).default;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var FriendCollectionView = Marionette.CollectionView.extend({
+	    className: 'list-container',
+	    tagName: 'ul',
+	    childView: userWidget
+	});
+	
+	exports.default = MarionetteEpoxy.LayoutView.extend({
+	    template: template,
+	    className: 'new-game-page page',
+	
+	    bindings: {},
+	    regions: {
+	        'friendsContainer': '[data-js-friend-list]'
+	    },
+	
+	    initialize: function initialize() {
+	        this.model = common.user;
+	        this.friendCollection = new FriendCollectionView({
+	            collection: common.neighborsCollection
+	        });
+	        this.epoxify();
+	        common.headerModel.set({ backPath: 'statistics' });
+	    },
+	    onRender: function onRender() {
+	        this.friendsContainer.show(this.friendCollection);
+	    }
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(229), __webpack_require__(10)))
+
+/***/ },
+/* 380 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(19);
+	
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"friends-header yellow-text\">Соседи по рейтингу</h3></div></div><div class=\"row\"><div data-js-friend-list class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	}
+
+/***/ },
+/* 381 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 382 */,
+/* 383 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _restorePasswordPage = __webpack_require__(380);
+	var _restorePasswordPage = __webpack_require__(384);
 	
 	var template = _interopRequireDefault(_restorePasswordPage).default;
 	
-	__webpack_require__(381);
+	__webpack_require__(385);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24826,7 +25010,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
 
 /***/ },
-/* 380 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(19);
@@ -24840,14 +25024,14 @@
 	}
 
 /***/ },
-/* 381 */
+/* 385 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 382 */,
-/* 383 */
+/* 386 */,
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24856,11 +25040,11 @@
 	    value: true
 	});
 	
-	var _profileDetailPage = __webpack_require__(384);
+	var _profileDetailPage = __webpack_require__(388);
 	
 	var template = _interopRequireDefault(_profileDetailPage).default;
 	
-	__webpack_require__(385);
+	__webpack_require__(389);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24886,7 +25070,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
 
 /***/ },
-/* 384 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(common) {var jade = __webpack_require__(19);
@@ -24907,7 +25091,7 @@
 	
 	var procent = Math.round( 100/topics.total_answers  * topics.right_answers )
 	var authenticated = "width: " + procent + "%"
-	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span>" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id].get("t_name")) ? "" : jade_interp)) + "</span><span>" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
+	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span>" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id - 1].get("t_name")) ? "" : jade_interp)) + "</span><span>" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
 	    }
 	
 	  } else {
@@ -24917,7 +25101,7 @@
 	
 	var procent = Math.round( 100/topics.total_answers  * topics.right_answers )
 	var authenticated = "width: " + procent + "%"
-	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span>" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id].get("t_name")) ? "" : jade_interp)) + "</span><span>" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
+	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span>" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id - 1].get("t_name")) ? "" : jade_interp)) + "</span><span>" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
 	    }
 	
 	  }
@@ -24928,14 +25112,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ },
-/* 385 */
+/* 389 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 386 */,
-/* 387 */
+/* 390 */,
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, Backbone) {'use strict';
@@ -24966,7 +25150,8 @@
 	        'statistics': 'onShowStatistics',
 	        'last20games': 'onShowLast20games',
 	        'playerRankings': 'onShowPlayerRankings',
-	        'profileDetail': 'onShowProfileDetail'
+	        'profileDetail': 'onShowProfileDetail',
+	        'neighbors': 'onShowNeighbors'
 	
 	    },
 	    navigate: function navigate(fragment, options) {
@@ -24982,7 +25167,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(5)))
 
 /***/ },
-/* 388 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, _, $, Backbone) {'use strict';
@@ -25067,4 +25252,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.18f1e6a7a3cd74e9f2f4.js.map
+//# sourceMappingURL=application.6e9185ec4588a892ad5f.js.map

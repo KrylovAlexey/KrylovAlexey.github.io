@@ -2134,6 +2134,9 @@ li.user-widget {
 /*  COLORS */
 /*  COLORS */
 /*  COLORS */
+.new-game-page .friends-header {
+  margin-top: 10px;
+  margin-bottom: 4px; }
 /*  COLORS */
 .auth-page {
   top: -47px; }
@@ -2177,6 +2180,10 @@ li.user-widget {
     height: 50%;
     bottom: 0;
     position: absolute; }
+/*  COLORS */
+.new-game-page .friends-header {
+  margin-top: 10px;
+  margin-bottom: 4px; }
 /*  COLORS */
 .restore-password-page .table-middle-block {
   height: 50%;
@@ -2257,4 +2264,4 @@ li.user-widget {
 .profileDetail-page .shine span {
   position: relative; }
 
-/*# sourceMappingURL=style.5278a85ffa827b12b071b0069c59ba7c.css.map*/
+/*# sourceMappingURL=style.b60ed9744ce20ba6bd135bb5e6823a2c.css.map*/
