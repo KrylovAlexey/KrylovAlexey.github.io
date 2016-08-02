@@ -94,9 +94,7 @@
 	app.addInitializer(function (options) {
 	    document.addEventListener("deviceready", onDeviceReady, false);
 	    function onDeviceReady() {
-	        document.addEventListener("backbutton", function () {
-	            alert('Нажатие на кнопку назад');
-	        }, false);
+	
 	        if (window.cordova.platformId == "browser") {
 	            facebookConnectPlugin.browserInit("1761962527353026");
 	        } else {
@@ -17982,7 +17980,7 @@
 	    },
 	    getTopPlayer: function getTopPlayer() {
 	        return ajaxController({
-	            action: 'get_free_top'
+	            action: 'get_paid_top'
 	        });
 	    },
 	    getTopPlayerPaid: function getTopPlayerPaid() {
@@ -20467,11 +20465,18 @@
 	        });
 	    },
 	    parse: function parse(data) {
+	        var _this3 = this;
+	
 	        if (data && data.answer && data.answer.user_friends) {
-	            this.reset(_.map(data.answer.user_friends, function (friendInfo) {
-	                friendInfo.user_id = friendInfo.id;
-	                return friendInfo;
-	            }));
+	            (function () {
+	                var number_rate = 0;
+	                _this3.reset(_.map(data.answer.user_friends, function (friendInfo) {
+	                    friendInfo.user_id = friendInfo.id;
+	                    number_rate += 1;
+	                    friendInfo.u_number_rate = number_rate;
+	                    return friendInfo;
+	                }));
+	            })();
 	        } else {
 	            this.reset([]);
 	        }
@@ -20500,6 +20505,7 @@
 	});
 	exports.default = Epoxy.Model.extend({
 	    defaults: {
+	        id: 0,
 	        is_friend: false,
 	        u_login: '',
 	        u_ava: 0,
@@ -20508,7 +20514,9 @@
 	        u_draw: 0,
 	        u_lose: 0,
 	        u_rate: 0,
-	        u_number_rate: 0
+	        u_number_rate: 0,
+	        u_tname: '',
+	        u_surname: ''
 	
 	    },
 	    computeds: {
@@ -20526,6 +20534,14 @@
 	            deps: ['u_win', 'u_lose', 'u_draw'],
 	            get: function get(u_win, u_lose, u_draw) {
 	                return +u_win + +u_lose + +u_draw;
+	            }
+	        },
+	        u_login_comp: {
+	            deps: ['u_login', 'u_name', 'u_surname'],
+	            get: function get(u_login, u_name, u_surname) {
+	                if (u_name != '' || u_surname != '') return u_name + ' ' + u_surname;
+	                if (u_login != '') return u_login;
+	                return u_login;
 	            }
 	        }
 	    }
@@ -20691,6 +20707,7 @@
 	                    value.u_rate = value.enemy_rate;
 	                    number_rate += 1;
 	                    value.u_number_rate = number_rate;
+	                    value.id = value.enemy_id;
 	                    return value;
 	                }));
 	            })();
@@ -20798,6 +20815,7 @@
 	                _this.reset(_.map(data.answer.rate, function (value) {
 	                    number_rate += 1;
 	                    value.u_number_rate = number_rate;
+	                    value.id = value.enemy_id;
 	                    return value;
 	                }));
 	            })();
@@ -21185,7 +21203,7 @@
 	    },
 	    isAuthWhichAction: function isAuthWhichAction() {
 	        if (!common.user.get('auth')) {
-	            common.router.navigate('', { trigger: true });
+	            common.router.navigate('auth', { trigger: true });
 	            return false;
 	        }
 	        return true;
@@ -21428,13 +21446,21 @@
 	        'click @ui.backButton': 'onClickBack'
 	    },
 	    bindings: {
-	        '@ui.backButton': 'classes: {hide: not(backPath)}'
+	        '@ui.backButton': 'classes: {hide: not(backPath)}',
+	        ':el': 'classes: {notAuth: not(auth)}'
 	    },
 	    initialize: function initialize() {
+	        var _this = this;
+	
 	        this.model = new Epoxy.Model({
 	            backPath: null
 	        });
+	        this.viewModel = common.user;
 	        this.epoxify();
+	
+	        document.addEventListener("backbutton", function () {
+	            _this.onClickBack();
+	        }, false);
 	    },
 	    onClickSettings: function onClickSettings() {
 	        common.router.navigate('settings');
@@ -21507,7 +21533,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"icons-left\"><div data-js-back class=\"icon back\"></div><div data-js-settings class=\"icon settings\"></div><div data-js-statistics class=\"icon statistics\"></div><div data-js-chat class=\"icon chat\"><div data-js-chat-counter class=\"counter\">12</div></div></div>");;return buf.join("");
+	buf.push("<div class=\"not-auth-label\"><p>БРОСЬ ВЫЗОВ ДРУЗЬЯМ.</p><p>КТО ИЗ ВАС ПОБЕДИТ?</p></div><div class=\"icons-left\"><div data-js-back class=\"icon back\"></div><div data-js-settings class=\"icon settings\"></div><div data-js-statistics class=\"icon statistics\"></div><div data-js-chat class=\"icon chat\"><div data-js-chat-counter class=\"counter\">12</div></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -22533,10 +22559,10 @@
 	        this.model.set({ open: !this.model.get('open') });
 	    },
 	    onClickStartGame: function onClickStartGame() {
-	        common.appController.startGame(this.model.get('user_id'));
+	        common.appController.startGame(this.model.get('id'));
 	    },
 	    onClickDetail: function onClickDetail() {
-	        common.router.navigate('profile/' + this.model.get('user_id'));
+	        common.router.navigate('profile/' + this.model.get('id'));
 	    }
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
@@ -23240,7 +23266,7 @@
 	            console.log(err.text);
 	        });
 	        this.epoxify();
-	        common.headerModel.set({ backPath: 'game/3' });
+	        common.headerModel.set({ backPath: 'statistics' });
 	    },
 	    renderRoundsInfo: function renderRoundsInfo(data) {
 	
@@ -24456,6 +24482,10 @@
 	        'click @ui.buttonSignin': 'onClickSignin',
 	        'click @ui.buttonGuest': 'onClickGuest'
 	    },
+	    initialize: function initialize() {
+	        common.headerModel.set({ backPath: null });
+	    },
+	
 	
 	    onClickVk: function onClickVk() {
 	
@@ -24614,6 +24644,7 @@
 	            '@ui.passwordRepeat': 'passwordRepeat'
 	        });
 	        this.epoxify();
+	        common.headerModel.set({ backPath: 'auth' });
 	    },
 	    onClickRegistration: function onClickRegistration(e) {
 	        e.preventDefault();
@@ -24816,7 +24847,9 @@
 	        'click @ui.buttonSignin': 'onClickSignIn',
 	        'submit @ui.form': 'onFormSubmit'
 	    },
-	
+	    initialize: function initialize() {
+	        common.headerModel.set({ backPath: 'auth' });
+	    },
 	    onClickRestorePassword: function onClickRestorePassword() {
 	        common.router.navigate('restorePassword', { trigger: true });
 	    },
@@ -24981,6 +25014,7 @@
 	      '@ui.email': 'email'
 	    });
 	    this.epoxify();
+	    common.headerModel.set({ backPath: 'auth' });
 	  },
 	  onClickRestore: function onClickRestore(e) {
 	    e.preventDefault();
@@ -25130,6 +25164,7 @@
 	exports.default = Marionette.AppRouter.extend({
 	    appRoutes: {
 	        '': 'onShowAuth',
+	        'auth': 'onShowAuth',
 	        'restorePassword': 'onShowRestorePassword',
 	        'registration': 'onShowRegistration',
 	        'signin': 'onShowSignin',
@@ -25252,4 +25287,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.6e9185ec4588a892ad5f.js.map
+//# sourceMappingURL=application.6f0bbc97acc35e17c7b9.js.map

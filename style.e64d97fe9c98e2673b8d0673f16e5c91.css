@@ -1468,6 +1468,27 @@ label.input {
           background-size: 41px 41px; }
         #header-container .icon.chat {
           background-size: 45px 36px; } }
+  #header-container .not-auth-label {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
+    color: #909090; }
+    #header-container .not-auth-label p {
+      line-height: 18px; }
+    @media (min-width: 640px) {
+      #header-container .not-auth-label {
+        top: 15px; }
+        #header-container .not-auth-label p {
+          line-height: 25px;
+          font-size: 20px; } }
+  #header-container.notAuth .not-auth-label {
+    display: block; }
+  #header-container.notAuth .settings, #header-container.notAuth .statistics, #header-container.notAuth .chat {
+    display: none; }
 /*  COLORS */
 .page {
   position: absolute;
@@ -1736,6 +1757,9 @@ label.input {
 .new-game-page .friends-header {
   margin-top: 10px;
   margin-bottom: 4px; }
+
+.new-game-page .list-container .number, .new-game-page .list-container .score {
+  visibility: hidden; }
 /*  COLORS */
 li.user-widget {
   padding: 0; }
@@ -2138,27 +2162,22 @@ li.user-widget {
   margin-top: 10px;
   margin-bottom: 4px; }
 /*  COLORS */
-.auth-page {
-  top: -47px; }
-  @media (min-width: 640px) {
-    .auth-page {
-      top: -77px; } }
-  @media (min-width: 768px) {
-    .auth-page {
-      top: -80px; } }
-  .auth-page .table-middle-block {
-    height: 50%;
-    bottom: 0;
-    position: absolute; }
-  .auth-page .icon {
-    background-position: center;
-    background-repeat: no-repeat; }
-  .auth-page .vk-icon {
-    background-image: url(images/vk.fcd300.png);
-    background-size: 23px 13px; }
-  .auth-page .fb-icon {
-    background-image: url(images/fb.12d324.png);
-    background-size: 10px 23px; }
+.auth-page .table-middle-block {
+  height: 50%;
+  bottom: 0;
+  position: absolute; }
+
+.auth-page .icon {
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.auth-page .vk-icon {
+  background-image: url(images/vk.fcd300.png);
+  background-size: 23px 13px; }
+
+.auth-page .fb-icon {
+  background-image: url(images/fb.12d324.png);
+  background-size: 10px 23px; }
 /*  COLORS */
 .registration-page .table-middle-block {
   height: 50%;
@@ -2168,18 +2187,10 @@ li.user-widget {
 .blockTopics-page .blockTopics-item {
   height: 50px; }
 /*  COLORS */
-.signin-page {
-  top: -47px; }
-  @media (min-width: 640px) {
-    .signin-page {
-      top: -77px; } }
-  @media (min-width: 768px) {
-    .signin-page {
-      top: -80px; } }
-  .signin-page .table-middle-block {
-    height: 50%;
-    bottom: 0;
-    position: absolute; }
+.signin-page .table-middle-block {
+  height: 50%;
+  bottom: 0;
+  position: absolute; }
 /*  COLORS */
 .new-game-page .friends-header {
   margin-top: 10px;
@@ -2264,4 +2275,4 @@ li.user-widget {
 .profileDetail-page .shine span {
   position: relative; }
 
-/*# sourceMappingURL=style.b60ed9744ce20ba6bd135bb5e6823a2c.css.map*/
+/*# sourceMappingURL=style.e64d97fe9c98e2673b8d0673f16e5c91.css.map*/
