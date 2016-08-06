@@ -55,21 +55,21 @@
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, Backbone) {'use strict';
 	
-	var _stringify = __webpack_require__(26);
+	var _stringify = __webpack_require__(27);
 	
 	var _JSON$stringify = _interopRequireDefault(_stringify).default;
 	
-	__webpack_require__(42);
+	__webpack_require__(49);
 	
-	var _AppController = __webpack_require__(225);
+	var _AppController = __webpack_require__(244);
 	
 	var AppController = _interopRequireDefault(_AppController).default;
 	
-	var _AppRouter = __webpack_require__(391);
+	var _AppRouter = __webpack_require__(397);
 	
 	var AppRouter = _interopRequireDefault(_AppRouter).default;
 	
-	__webpack_require__(392);
+	__webpack_require__(398);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -94,6 +94,9 @@
 	app.addInitializer(function (options) {
 	    document.addEventListener("deviceready", onDeviceReady, false);
 	    function onDeviceReady() {
+	
+	        //  Надо вставить эту строчку, когда приходит пуш нотификация о новой игре
+	        // common.userGameCollection.updateGames();
 	
 	        if (window.cordova.platformId == "browser") {
 	            facebookConnectPlugin.browserInit("1761962527353026");
@@ -17614,47 +17617,47 @@
 	
 	var serverApi = _interopRequireDefault(_serverAPI).default;
 	
-	var _validateModel = __webpack_require__(23);
+	var _validateModel = __webpack_require__(24);
 	
 	var validateModel = _interopRequireDefault(_validateModel).default;
 	
-	var _userModel = __webpack_require__(25);
+	var _userModel = __webpack_require__(26);
 	
 	var UserModel = _interopRequireDefault(_userModel).default;
 	
-	var _topicCollection = __webpack_require__(29);
+	var _topicCollection = __webpack_require__(30);
 	
 	var TopicCollection = _interopRequireDefault(_topicCollection).default;
 	
-	var _userGameCollection = __webpack_require__(31);
+	var _userGameCollection = __webpack_require__(32);
 	
 	var UserGameCollection = _interopRequireDefault(_userGameCollection).default;
 	
-	var _storageModel = __webpack_require__(33);
+	var _storageModel = __webpack_require__(41);
 	
 	var StorageModel = _interopRequireDefault(_storageModel).default;
 	
-	var _friendCollection = __webpack_require__(34);
+	var _friendCollection = __webpack_require__(42);
 	
 	var FriendCollection = _interopRequireDefault(_friendCollection).default;
 	
-	var _blackListCollection = __webpack_require__(36);
+	var _blackListCollection = __webpack_require__(44);
 	
 	var BlackListCollection = _interopRequireDefault(_blackListCollection).default;
 	
-	var _opponentModel = __webpack_require__(38);
+	var _opponentModel = __webpack_require__(45);
 	
 	var OpponentModel = _interopRequireDefault(_opponentModel).default;
 	
-	var _last20GamesCollection = __webpack_require__(39);
+	var _last20GamesCollection = __webpack_require__(46);
 	
 	var Last20GamesCollection = _interopRequireDefault(_last20GamesCollection).default;
 	
-	var _playerRatingCollection = __webpack_require__(40);
+	var _playerRatingCollection = __webpack_require__(47);
 	
 	var PlayerRatingCollection = _interopRequireDefault(_playerRatingCollection).default;
 	
-	var _neighborsCollection = __webpack_require__(41);
+	var _neighborsCollection = __webpack_require__(48);
 	
 	var NeighborsCollection = _interopRequireDefault(_neighborsCollection).default;
 	
@@ -18005,11 +18008,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _infoModal = __webpack_require__(18);
+	var _infoModal = __webpack_require__(19);
 	
 	var template = _interopRequireDefault(_infoModal).default;
 	
-	__webpack_require__(21);
+	__webpack_require__(22);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -18093,10 +18096,11 @@
 /* 15 */,
 /* 16 */,
 /* 17 */,
-/* 18 */
+/* 18 */,
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -18107,7 +18111,7 @@
 	}
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18327,7 +18331,7 @@
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(20).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(21).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -18359,20 +18363,20 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy, common, _) {'use strict';
@@ -18451,10 +18455,10 @@
 	        return result;
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(10), __webpack_require__(6)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Backbone.Epoxy
@@ -19874,7 +19878,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy, common) {'use strict';
@@ -19883,7 +19887,7 @@
 	    value: true
 	});
 	
-	var _stringify = __webpack_require__(26);
+	var _stringify = __webpack_require__(27);
 	
 	var _JSON$stringify = _interopRequireDefault(_stringify).default;
 	
@@ -20006,33 +20010,33 @@
 	        common.router.navigate('', { trigger: true });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(10)))
-
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(27), __esModule: true };
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25), __webpack_require__(10)))
 
 /***/ },
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(28)
+	module.exports = { "default": __webpack_require__(28), __esModule: true };
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(29)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, common) {'use strict';
@@ -20041,7 +20045,7 @@
 	    value: true
 	});
 	
-	var _topicModel = __webpack_require__(30);
+	var _topicModel = __webpack_require__(31);
 	
 	var topicModel = _interopRequireDefault(_topicModel).default;
 	
@@ -20090,7 +20094,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -20110,10 +20114,10 @@
 	        isBlock: 0
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, common, _) {'use strict';
@@ -20122,7 +20126,7 @@
 	    value: true
 	});
 	
-	var _userGameModel = __webpack_require__(32);
+	var _userGameModel = __webpack_require__(33);
 	
 	var userGameModel = _interopRequireDefault(_userGameModel).default;
 	
@@ -20133,7 +20137,7 @@
 	
 	    initialize: function initialize() {
 	        this.ready = $.Deferred();
-	        this.countUpdate = 1;
+	        // this.countUpdate = 1;
 	    },
 	    forceUpdate: function forceUpdate() {
 	        this.startSync();
@@ -20142,12 +20146,13 @@
 	        var _this = this;
 	
 	        this.stopSync();
-	        this.countUpdate++;
-	        if (this.countUpdate % 3 == 0) {
-	            this.updateGames();
-	        } else {
-	            this.updateStatus();
-	        }
+	        // this.countUpdate++;
+	        // if(this.countUpdate%3 == 0) {
+	        //     this.updateGames();
+	        // } else {
+	        //     this.updateStatus();
+	        // }
+	        this.updateStatus();
 	        this.timer = setTimeout(function () {
 	            _this.startSync();
 	        }, 10000);
@@ -20236,14 +20241,21 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Epoxy, common) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(Epoxy, common, _) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	
+	var _roundWidget = __webpack_require__(34);
+	
+	var roundWidget = _interopRequireDefault(_roundWidget).default;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	exports.default = Epoxy.Model.extend({
 	    defaults: {
 	        r_is_active: '',
@@ -20263,7 +20275,9 @@
 	        rr_leader_start_round: null,
 	        rr_slave_end_round: null,
 	        rr_slave_start_round: null,
-	        currentTime: 0
+	
+	        currentTime: 0,
+	        rounds: []
 	    },
 	
 	    computeds: {
@@ -20380,15 +20394,287 @@
 	
 	    initialize: function initialize() {
 	        this.updateCurTime();
+	        this.listenTo(this, 'change:rr_leader_end_round change:rr_slave_end_round', this.onChangeRound);
+	        this.onChangeRound();
 	    },
 	    updateCurTime: function updateCurTime() {
 	        this.set({ currentTime: parseInt(new Date().getTime() / 1000) });
+	    },
+	    onChangeRound: function onChangeRound() {
+	        var _this = this;
+	
+	        common.api.getInfoByRoom(this.get('room_id')).done(function (data) {
+	            _this.setRoundsInfo(data);
+	        });
+	    },
+	    setRoundsInfo: function setRoundsInfo(data) {
+	        var rounds = _.map(data.answer, function (value, key) {
+	            return value;
+	        });
+	        var userAnswerSuccess = 0;
+	        var opponentAnswerSuccess = 0;
+	        for (var i = 0; i <= 5; i++) {
+	            var roundView = new roundWidget({ data: rounds, number: i });
+	            userAnswerSuccess += roundView.getCounts().userAnswerSuccess;
+	            opponentAnswerSuccess += roundView.getCounts().opponentAnswerSuccess;
+	        }
+	        this.set({
+	            rounds: rounds,
+	            userAnswerSuccess: userAnswerSuccess,
+	            opponentAnswerSuccess: opponentAnswerSuccess
+	        });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 33 */
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(Epoxy, MarionetteEpoxy, _, common) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _roundWidget = __webpack_require__(36);
+	
+	var template = _interopRequireDefault(_roundWidget).default;
+	
+	__webpack_require__(39);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var roundModel = Epoxy.Model.extend({
+	    default: {}
+	});
+	
+	exports.default = MarionetteEpoxy.LayoutView.extend({
+	    template: template,
+	    tagName: 'li',
+	    className: 'round-widget',
+	
+	    initialize: function initialize(option) {
+	        var data = option.data[option.number];
+	        var userResults = [];
+	        var opponentResults = [];
+	        var startRound = data ? true : false;
+	        var userAnswerSuccess = 0;
+	        var opponentAnswerSuccess = 0;
+	        var roundName = 'Общие положения и основы безопастности';
+	        if (startRound) {
+	            _.each(data.round_results, function (result) {
+	                roundName = common.topicCollection.get(result.rr_topic_id).get('t_name');
+	                if (result.rrr_answerer_user_id == common.user.get('id')) {
+	                    userResults.push(result.rrr_is_right_answer);
+	                    if (result.rrr_is_right_answer == '1') {
+	                        userAnswerSuccess++;
+	                    }
+	                } else {
+	                    opponentResults.push(result.rrr_is_right_answer);
+	                    if (result.rrr_is_right_answer == '1') {
+	                        opponentAnswerSuccess++;
+	                    }
+	                }
+	            });
+	        }
+	        this.model = new roundModel({
+	            roundNumber: option.number,
+	            userResults: userResults,
+	            opponentResults: opponentResults,
+	            startRound: startRound,
+	            roundName: roundName
+	
+	        });
+	        this.counts = { userAnswerSuccess: userAnswerSuccess, opponentAnswerSuccess: opponentAnswerSuccess };
+	    },
+	    getCounts: function getCounts() {
+	        return this.counts;
+	    }
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25), __webpack_require__(35), __webpack_require__(6), __webpack_require__(10)))
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(_, Marionette) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.CompositeView = exports.CollectionView = exports.LayoutView = exports.View = undefined;
+	
+	var _backbone = __webpack_require__(25);
+	
+	var Epoxy = _interopRequireDefault(_backbone).default;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var epoxyMethods = {
+	  epoxify: function epoxify() {
+	    var _this = this;
+	
+	    Epoxy.View.mixin(this);
+	    var binding = {};
+	    this.bindings = _.each(this.bindings, function (value, key) {
+	      var keyUi = key.split('@ui.');
+	      if (keyUi[1]) {
+	        binding[_this.ui[keyUi[1]]] = value;
+	        return;
+	      }
+	      binding[key] = value;
+	    });
+	    this.bindings = binding;
+	    this.listenTo(this, "ui:bind", this.applyBindings);
+	    this.listenTo(this, "before:close", this.removeBindings);
+	  },
+	  // Override Marionette's impl so we can trigger our own event
+	  bindUIElements: function bindUIElements() {
+	    this.trigger("ui:bind");
+	    Marionette.View.prototype.bindUIElements.apply(this, arguments);
+	  }
+	};
+	
+	var View = exports.View = Marionette.ItemView.extend(epoxyMethods);
+	var LayoutView = exports.LayoutView = Marionette.LayoutView.extend(epoxyMethods);
+	var CollectionView = exports.CollectionView = Marionette.CollectionView.extend(epoxyMethods);
+	var CompositeView = exports.CompositeView = Marionette.CompositeView.extend(epoxyMethods);
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(4)))
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(20);
+	
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (opponentResults, roundName, roundNumber, startRound, undefined, userResults) {
+	buf.push("<div class=\"game-round-name-container\"><span>" + (jade.escape((jade_interp = roundName) == null ? '' : jade_interp)) + "</span></div><div class=\"icon-container\">");
+	if ((startRound))
+	{
+	// iterate userResults
+	;(function(){
+	  var $$obj = userResults;
+	  if ('number' == typeof $$obj.length) {
+	
+	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+	      var item = $$obj[$index];
+	
+	if ((item == '0'))
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	}
+	else
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	}
+	    }
+	
+	  } else {
+	    var $$l = 0;
+	    for (var $index in $$obj) {
+	      $$l++;      var item = $$obj[$index];
+	
+	if ((item == '0'))
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	}
+	else
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	}
+	    }
+	
+	  }
+	}).call(this);
+	
+	if ((!userResults.length))
+	{
+	buf.push("<span>Ваш ход ...</span>");
+	}
+	}
+	buf.push("</div><div class=\"text-container\"><div class=\"game-round-center\"><span class=\"yellow-text\">Раунд " + (jade.escape((jade_interp = roundNumber + 1) == null ? '' : jade_interp)) + "</span></div></div><div class=\"time-container\">");
+	if ((startRound))
+	{
+	if ((!opponentResults.length ))
+	{
+	buf.push("<span>Играет ...</span>");
+	}
+	else
+	{
+	if ((!userResults.length ))
+	{
+	buf.push("<span>...</span>");
+	}
+	else
+	{
+	// iterate opponentResults
+	;(function(){
+	  var $$obj = opponentResults;
+	  if ('number' == typeof $$obj.length) {
+	
+	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+	      var item = $$obj[$index];
+	
+	if ((item == '0'))
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	}
+	else
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	}
+	    }
+	
+	  } else {
+	    var $$l = 0;
+	    for (var $index in $$obj) {
+	      $$l++;      var item = $$obj[$index];
+	
+	if ((item == '0'))
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	}
+	else
+	{
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	}
+	    }
+	
+	  }
+	}).call(this);
+	
+	}
+	}
+	}
+	buf.push("</div>");}.call(this,"opponentResults" in locals_for_with?locals_for_with.opponentResults:typeof opponentResults!=="undefined"?opponentResults:undefined,"roundName" in locals_for_with?locals_for_with.roundName:typeof roundName!=="undefined"?roundName:undefined,"roundNumber" in locals_for_with?locals_for_with.roundNumber:typeof roundNumber!=="undefined"?roundNumber:undefined,"startRound" in locals_for_with?locals_for_with.startRound:typeof startRound!=="undefined"?startRound:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined,"userResults" in locals_for_with?locals_for_with.userResults:typeof userResults!=="undefined"?userResults:undefined));;return buf.join("");
+	}
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/red_light.d47fe2.png";
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/green_light.a93c35.png";
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 40 */,
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -20397,7 +20683,7 @@
 	    value: true
 	});
 	
-	var _stringify = __webpack_require__(26);
+	var _stringify = __webpack_require__(27);
 	
 	var _JSON$stringify = _interopRequireDefault(_stringify).default;
 	
@@ -20419,10 +20705,10 @@
 	        window.localStorage.setItem('appData', _JSON$stringify(this.toJSON()));
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 34 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, common, _) {'use strict';
@@ -20431,7 +20717,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(35);
+	var _personModel = __webpack_require__(43);
 	
 	var personModel = _interopRequireDefault(_personModel).default;
 	
@@ -20495,7 +20781,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 35 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -20546,10 +20832,10 @@
 	        }
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 36 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, common, _) {'use strict';
@@ -20558,14 +20844,14 @@
 	    value: true
 	});
 	
-	var _blackListModel = __webpack_require__(37);
+	var _personModel = __webpack_require__(43);
 	
-	var blackListModel = _interopRequireDefault(_blackListModel).default;
+	var personModel = _interopRequireDefault(_personModel).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = Backbone.Collection.extend({
-	    model: blackListModel,
+	    model: personModel,
 	
 	    initialize: function initialize() {
 	        this.ready = $.Deferred();
@@ -20608,29 +20894,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = Epoxy.Model.extend({
-	    defaults: {
-	        id: '',
-	        u_ava: null,
-	        u_fb_id: null,
-	        u_login: '',
-	        u_name: null,
-	        u_surname: null,
-	        u_vk_id: null
-	    }
-	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
-
-/***/ },
-/* 38 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -20669,10 +20933,10 @@
 	        u_id: null
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 39 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
@@ -20681,7 +20945,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(35);
+	var _personModel = __webpack_require__(43);
 	
 	var last20GamesModel = _interopRequireDefault(_personModel).default;
 	
@@ -20729,7 +20993,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 40 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
@@ -20738,7 +21002,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(35);
+	var _personModel = __webpack_require__(43);
 	
 	var playerModel = _interopRequireDefault(_personModel).default;
 	
@@ -20783,7 +21047,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 41 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
@@ -20792,7 +21056,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(35);
+	var _personModel = __webpack_require__(43);
 	
 	var playerModel = _interopRequireDefault(_personModel).default;
 	
@@ -20838,19 +21102,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 42 */
+/* 49 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
 /* 50 */,
 /* 51 */,
 /* 52 */,
@@ -21026,7 +21283,26 @@
 /* 222 */,
 /* 223 */,
 /* 224 */,
-/* 225 */
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, $) {'use strict';
@@ -21035,13 +21311,13 @@
 	    value: true
 	});
 	
-	var _AppLayout = __webpack_require__(226);
+	var _AppLayout = __webpack_require__(245);
 	
 	var AppLayout = _interopRequireDefault(_AppLayout).default;
 	
-	__webpack_require__(241);
+	__webpack_require__(259);
 	
-	var _selectTopicModal = __webpack_require__(245);
+	var _selectTopicModal = __webpack_require__(262);
 	
 	var selectTopicModal = _interopRequireDefault(_selectTopicModal).default;
 	
@@ -21049,95 +21325,95 @@
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _indexPage = __webpack_require__(250);
+	var _indexPage = __webpack_require__(267);
 	
 	var indexPage = _interopRequireDefault(_indexPage).default;
 	
-	var _gamesPage = __webpack_require__(259);
+	var _gamesPage = __webpack_require__(276);
 	
 	var gamesPage = _interopRequireDefault(_gamesPage).default;
 	
-	var _settingsPage = __webpack_require__(269);
+	var _settingsPage = __webpack_require__(286);
 	
 	var settingsPage = _interopRequireDefault(_settingsPage).default;
 	
-	var _changeAvatarPage = __webpack_require__(277);
+	var _changeAvatarPage = __webpack_require__(294);
 	
 	var changeAvatarPage = _interopRequireDefault(_changeAvatarPage).default;
 	
-	var _newGamePage = __webpack_require__(285);
+	var _newGamePage = __webpack_require__(302);
 	
 	var newGamePage = _interopRequireDefault(_newGamePage).default;
 	
-	var _searchUserPage = __webpack_require__(297);
+	var _searchUserPage = __webpack_require__(314);
 	
 	var searchUserPage = _interopRequireDefault(_searchUserPage).default;
 	
-	var _last20gamesPage = __webpack_require__(302);
+	var _last20gamesPage = __webpack_require__(319);
 	
 	var last20gamesPage = _interopRequireDefault(_last20gamesPage).default;
 	
-	var _gamePage = __webpack_require__(306);
+	var _gamePage = __webpack_require__(323);
 	
 	var gamePage = _interopRequireDefault(_gamePage).default;
 	
-	var _profilePage = __webpack_require__(316);
+	var _profilePage = __webpack_require__(327);
 	
 	var profilePage = _interopRequireDefault(_profilePage).default;
 	
-	var _gameResultPage = __webpack_require__(324);
+	var _gameResultPage = __webpack_require__(331);
 	
 	var gameResultPage = _interopRequireDefault(_gameResultPage).default;
 	
-	var _questionsPage = __webpack_require__(328);
+	var _questionsPage = __webpack_require__(335);
 	
 	var questionsPage = _interopRequireDefault(_questionsPage).default;
 	
-	var _blackListPage = __webpack_require__(339);
+	var _blackListPage = __webpack_require__(346);
 	
 	var blackListPage = _interopRequireDefault(_blackListPage).default;
 	
-	var _settingsPageAcc = __webpack_require__(344);
+	var _settingsPageAcc = __webpack_require__(350);
 	
 	var accountSettingPage = _interopRequireDefault(_settingsPageAcc).default;
 	
-	var _statisticsPage = __webpack_require__(352);
+	var _statisticsPage = __webpack_require__(358);
 	
 	var statisticsPage = _interopRequireDefault(_statisticsPage).default;
 	
-	var _playerRankingsPage = __webpack_require__(356);
+	var _playerRankingsPage = __webpack_require__(362);
 	
 	var playerRankingsPage = _interopRequireDefault(_playerRankingsPage).default;
 	
-	var _authPage = __webpack_require__(360);
+	var _authPage = __webpack_require__(366);
 	
 	var authPage = _interopRequireDefault(_authPage).default;
 	
-	var _registrationPage = __webpack_require__(366);
+	var _registrationPage = __webpack_require__(372);
 	
 	var registrationPage = _interopRequireDefault(_registrationPage).default;
 	
-	var _blockTopicsPage = __webpack_require__(370);
+	var _blockTopicsPage = __webpack_require__(376);
 	
 	var blockTopicsPage = _interopRequireDefault(_blockTopicsPage).default;
 	
-	var _signinPage = __webpack_require__(375);
+	var _signinPage = __webpack_require__(381);
 	
 	var signinPage = _interopRequireDefault(_signinPage).default;
 	
-	var _neighborsPage = __webpack_require__(379);
+	var _neighborsPage = __webpack_require__(385);
 	
 	var neighborsPage = _interopRequireDefault(_neighborsPage).default;
 	
-	var _restorePasswordPage = __webpack_require__(383);
+	var _restorePasswordPage = __webpack_require__(389);
 	
 	var restorePasswordPage = _interopRequireDefault(_restorePasswordPage).default;
 	
-	var _profileDetailPage = __webpack_require__(387);
+	var _profileDetailPage = __webpack_require__(393);
 	
 	var profileDetailPage = _interopRequireDefault(_profileDetailPage).default;
 	
-	var _questionCollection = __webpack_require__(337);
+	var _questionCollection = __webpack_require__(344);
 	
 	var questionCollection = _interopRequireDefault(_questionCollection).default;
 	
@@ -21185,6 +21461,7 @@
 	            roomId: data.answer.room_id,
 	            roundId: data.answer.round_id
 	        });
+	        common.userGameCollection.updateGames();
 	    },
 	    showModal: function showModal(modal) {
 	        return this.appLayout.showModal(modal);
@@ -21311,7 +21588,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 226 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, $) {'use strict';
@@ -21320,11 +21597,11 @@
 	    value: true
 	});
 	
-	var _AppLayout = __webpack_require__(227);
+	var _AppLayout = __webpack_require__(246);
 	
 	var template = _interopRequireDefault(_AppLayout).default;
 	
-	var _headerWidget = __webpack_require__(228);
+	var _headerWidget = __webpack_require__(247);
 	
 	var headerWidget = _interopRequireDefault(_headerWidget).default;
 	
@@ -21400,10 +21677,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 227 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -21414,7 +21691,7 @@
 	}
 
 /***/ },
-/* 228 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Epoxy, common) {'use strict';
@@ -21423,11 +21700,11 @@
 	    value: true
 	});
 	
-	var _headerWidget = __webpack_require__(230);
+	var _headerWidget = __webpack_require__(248);
 	
 	var template = _interopRequireDefault(_headerWidget).default;
 	
-	__webpack_require__(231);
+	__webpack_require__(249);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21447,13 +21724,15 @@
 	    },
 	    bindings: {
 	        '@ui.backButton': 'classes: {hide: not(backPath)}',
+	        '[data-js-content-header]': 'classes: {hide: hideMode}',
 	        ':el': 'classes: {notAuth: not(auth)}'
 	    },
 	    initialize: function initialize() {
 	        var _this = this;
 	
 	        this.model = new Epoxy.Model({
-	            backPath: null
+	            backPath: null,
+	            hideMode: false
 	        });
 	        this.viewModel = common.user;
 	        this.epoxify();
@@ -21472,96 +21751,47 @@
 	        common.router.navigate(this.model.get('backPath'));
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(24), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(25), __webpack_require__(10)))
 
 /***/ },
-/* 229 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(_, Marionette) {'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.CompositeView = exports.CollectionView = exports.LayoutView = exports.View = undefined;
-	
-	var _backbone = __webpack_require__(24);
-	
-	var Epoxy = _interopRequireDefault(_backbone).default;
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var epoxyMethods = {
-	  epoxify: function epoxify() {
-	    var _this = this;
-	
-	    Epoxy.View.mixin(this);
-	    var binding = {};
-	    this.bindings = _.each(this.bindings, function (value, key) {
-	      var keyUi = key.split('@ui.');
-	      if (keyUi[1]) {
-	        binding[_this.ui[keyUi[1]]] = value;
-	        return;
-	      }
-	      binding[key] = value;
-	    });
-	    this.bindings = binding;
-	    this.listenTo(this, "ui:bind", this.applyBindings);
-	    this.listenTo(this, "before:close", this.removeBindings);
-	  },
-	  // Override Marionette's impl so we can trigger our own event
-	  bindUIElements: function bindUIElements() {
-	    this.trigger("ui:bind");
-	    Marionette.View.prototype.bindUIElements.apply(this, arguments);
-	  }
-	};
-	
-	var View = exports.View = Marionette.ItemView.extend(epoxyMethods);
-	var LayoutView = exports.LayoutView = Marionette.LayoutView.extend(epoxyMethods);
-	var CollectionView = exports.CollectionView = Marionette.CollectionView.extend(epoxyMethods);
-	var CompositeView = exports.CompositeView = Marionette.CompositeView.extend(epoxyMethods);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(4)))
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"not-auth-label\"><p>БРОСЬ ВЫЗОВ ДРУЗЬЯМ.</p><p>КТО ИЗ ВАС ПОБЕДИТ?</p></div><div class=\"icons-left\"><div data-js-back class=\"icon back\"></div><div data-js-settings class=\"icon settings\"></div><div data-js-statistics class=\"icon statistics\"></div><div data-js-chat class=\"icon chat\"><div data-js-chat-counter class=\"counter\">12</div></div></div>");;return buf.join("");
+	buf.push("<div data-js-content-header class=\"content\"><div class=\"not-auth-label\"><p>БРОСЬ ВЫЗОВ ДРУЗЬЯМ.</p><p>КТО ИЗ ВАС ПОБЕДИТ?</p></div><div class=\"icons-left\"><div data-js-back class=\"icon back\"></div><div data-js-settings class=\"icon settings\"></div><div data-js-statistics class=\"icon statistics\"></div><div data-js-chat class=\"icon chat hide\"><div data-js-chat-counter class=\"counter\">12</div></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 231 */
+/* 249 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */
+/* 260 */,
+/* 261 */,
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Marionette, common) {'use strict';
@@ -21574,24 +21804,23 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _selectTopicModal = __webpack_require__(246);
+	var _selectTopicModal = __webpack_require__(263);
 	
 	var template = _interopRequireDefault(_selectTopicModal).default;
 	
-	__webpack_require__(247);
+	__webpack_require__(264);
 	
-	var _topicItem = __webpack_require__(249);
+	var _topicItem = __webpack_require__(266);
 	
 	var topicTemplate = _interopRequireDefault(_topicItem).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var TopicItemView = MarionetteEpoxy.View.extend({
-	    tagName: "li",
 	    className: 'collection-item',
 	    template: topicTemplate,
 	    events: {
-	        'click': 'onClickEl'
+	        'click .btn': 'onClickEl'
 	    },
 	    onClickEl: function onClickEl() {
 	        this.trigger('select:item', this.model);
@@ -21612,7 +21841,7 @@
 	
 	exports.default = Modal.extend({
 	    template: template,
-	    className: 'select-topic-modal',
+	    className: 'select-topic-modal full-modal',
 	
 	    regions: {
 	        topicContainer: '[data-js-topic-container]'
@@ -21631,45 +21860,45 @@
 	        this.ok(topic);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(4), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(4), __webpack_require__(10)))
 
 /***/ },
-/* 246 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><h4>Выберите тему</h4><ul data-js-topic-container class=\"list-container\"></ul></div></div></div></div></div>");;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Выберите тему</h3></div><div data-js-topic-container></div></div></div></div></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 247 */
+/* 264 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 248 */,
-/* 249 */
+/* 265 */,
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (t_name) {
-	buf.push("<button class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">" + (jade.escape((jade_interp = t_name) == null ? '' : jade_interp)) + "</button>");}.call(this,"t_name" in locals_for_with?locals_for_with.t_name:typeof t_name!=="undefined"?t_name:undefined));;return buf.join("");
+	buf.push("<div class=\"line\"><div class=\"btn col-xs-12\">" + (jade.escape((jade_interp = t_name) == null ? '' : jade_interp)) + "<div class=\"btn-arrow\"></div></div></div>");}.call(this,"t_name" in locals_for_with?locals_for_with.t_name:typeof t_name!=="undefined"?t_name:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 250 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, Epoxy) {'use strict';
@@ -21678,13 +21907,13 @@
 	    value: true
 	});
 	
-	var _indexPage = __webpack_require__(251);
+	var _indexPage = __webpack_require__(268);
 	
 	var template = _interopRequireDefault(_indexPage).default;
 	
-	__webpack_require__(252);
+	__webpack_require__(269);
 	
-	var _tipsWidget = __webpack_require__(254);
+	var _tipsWidget = __webpack_require__(271);
 	
 	var tipsWidget = _interopRequireDefault(_tipsWidget).default;
 	
@@ -21743,31 +21972,31 @@
 	        common.router.navigate('userGames', { trigger: true });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10), __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(25)))
 
 /***/ },
-/* 251 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 user-info\"><div data-js-user-avatar data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><div class=\"block-name\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p class=\"yellow-text\">В сети как</p><h2 data-js-user-name class=\"yellow-text\"></h2></div></div></div></div></div><div class=\"row\"><div data-js-new-game class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Новая игра</div></div><div class=\"row\"><div data-js-request-game class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Заявки на битву<div data-js-request-counter class=\"counter\">55</div></div></div><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"tips-header yellow-text\">Все подсказки</h3></div></div><div class=\"row\"><div data-js-tips-widget class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 tips-block\"></div></div><div class=\"row m-t-20\"><div data-js-games class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Все игры<div data-js-gemes-count class=\"counter\">55</div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 user-info\"><div data-js-user-avatar data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><div class=\"block-name\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p class=\"yellow-text\">В сети как</p><h2 data-js-user-name class=\"yellow-text\"></h2></div></div></div></div></div><div class=\"line\"><div data-js-new-game class=\"btn col-xs-12\">Новая игра</div></div><div class=\"line\"><div data-js-request-game class=\"btn col-xs-12\">Заявки на битву<div data-js-request-counter class=\"counter\">55</div></div></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Все подсказки</h3></div></div><div class=\"line\"><div data-js-tips-widget class=\"btn col-xs-12 tips-block\"></div></div><div class=\"line m-t-20\"><div data-js-games class=\"btn col-xs-12\">Все игры<div data-js-gemes-count class=\"counter\">55</div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 252 */
+/* 269 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 253 */,
-/* 254 */
+/* 270 */,
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy) {'use strict';
@@ -21776,11 +22005,11 @@
 	    value: true
 	});
 	
-	var _tipsWidget = __webpack_require__(255);
+	var _tipsWidget = __webpack_require__(272);
 	
 	var template = _interopRequireDefault(_tipsWidget).default;
 	
-	__webpack_require__(256);
+	__webpack_require__(273);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21792,13 +22021,13 @@
 	        this.render();
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)))
 
 /***/ },
-/* 255 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -21809,38 +22038,38 @@
 	}
 
 /***/ },
-/* 256 */
+/* 273 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 257 */,
-/* 258 */,
-/* 259 */
+/* 274 */,
+/* 275 */,
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, _, $) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Backbone, _, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _gamesPage = __webpack_require__(260);
+	var _gamesPage = __webpack_require__(277);
 	
 	var template = _interopRequireDefault(_gamesPage).default;
 	
-	__webpack_require__(261);
+	__webpack_require__(278);
 	
-	var _userGameItem = __webpack_require__(263);
+	var _userGameItem = __webpack_require__(280);
 	
 	var userGameTemplate = _interopRequireDefault(_userGameItem).default;
 	
-	var _userGameCollection = __webpack_require__(264);
+	var _userGameCollection = __webpack_require__(281);
 	
 	var userGameCollection = _interopRequireDefault(_userGameCollection).default;
 	
-	var _answerModal = __webpack_require__(265);
+	var _answerModal = __webpack_require__(282);
 	
 	var answerModal = _interopRequireDefault(_answerModal).default;
 	
@@ -21877,39 +22106,10 @@
 	        }
 	    },
 	    initialize: function initialize() {
-	        this.listenTo(this.model, 'change:rr_leader_end_round change:rr_slave_end_round', this.onChangeRound);
-	        this.onChangeRound();
 	        this.epoxify();
 	    },
 	    onClickItem: function onClickItem() {
 	        this.trigger('click:game', this.model);
-	    },
-	    onChangeRound: function onChangeRound() {
-	        var _this = this;
-	
-	        common.api.getInfoByRoom(this.roomId).done(function (data) {
-	            _this.renderRoundsInfo(data);
-	        });
-	    },
-	    renderRoundsInfo: function renderRoundsInfo(data) {
-	        var rounds = _.map(data.answer, function (value, key) {
-	            return value;
-	        });
-	        var userAnswerSuccess = 0;
-	        var opponentAnswerSuccess = 0;
-	        this.clearRoundInfo();
-	        for (var i = 0; i <= 5; i++) {
-	            var roundView = new roundWidget({ data: rounds, number: i });
-	            this.roundInfoWidgets.push(roundView);
-	            this.ui.roundsInfo.append(roundView.$el);
-	            roundView.render();
-	            userAnswerSuccess += roundView.getCounts().userAnswerSuccess;
-	            opponentAnswerSuccess += roundView.getCounts().opponentAnswerSuccess;
-	        }
-	        this.model.set({
-	            userAnswerSuccess: userAnswerSuccess,
-	            opponentAnswerSuccess: opponentAnswerSuccess
-	        });
 	    }
 	});
 	
@@ -21933,14 +22133,23 @@
 	        'click:game': 'onClickGame'
 	    },
 	    initialize: function initialize(options) {
+	        this.collection = new Backbone.Collection();
 	        this.name = options.name;
 	        this.type = options.type;
-	        this.render();
-	        this.listenTo(this.collection, 'all', this.onChangeCollection);
+	        this.mainCollection = options.mainCollection;
+	        this.filterCollection = options.filterCollection;
+	        this.listenTo(this.mainCollection, 'all', this.onChangeCollection);
 	        this.onChangeCollection();
 	    },
 	    onChangeCollection: function onChangeCollection() {
-	        if ($.isEmptyObject(this.children._views)) {
+	        var models = [];
+	        _.each(this.mainCollection.models, function (model) {
+	            if (this.filterCollection(model)) {
+	                models.push(model);
+	            }
+	        }, this);
+	        this.collection.reset(models);
+	        if (!models.length) {
 	            this.$el.addClass('hide');
 	        } else {
 	            this.$el.removeClass('hide');
@@ -21950,11 +22159,11 @@
 	        this.trigger('click:game', game);
 	    },
 	    onClickCloseGames: function onClickCloseGames() {
-	        var _this2 = this;
+	        var _this = this;
 	
 	        new answerModal({ message: 'Скрыть все завершенные игры?' }).showModal().done(function () {
-	            var currentRoomsId = _.map(_this2.children._views, function (view) {
-	                return view.model.get('room_id');
+	            var currentRoomsId = _.map(_this.collection.models, function (model) {
+	                return model.get('room_id');
 	            });
 	            common.api.hideRooms(currentRoomsId).always(function () {
 	                common.userGameCollection.remove(currentRoomsId);
@@ -21973,24 +22182,24 @@
 	
 	    initialize: function initialize() {
 	        this.userGameCollectionView = new UserGameCollectionView({
-	            filter: function filter(child, index, collection) {
+	            filterCollection: function filterCollection(child, index, collection) {
 	                return child.get('myTurn') && !child.get('isGameClose');
 	            },
-	            collection: common.userGameCollection,
+	            mainCollection: common.userGameCollection,
 	            name: 'Наш ход'
 	        });
 	        this.userGameCollectionView2 = new UserGameCollectionView({
-	            filter: function filter(child, index, collection) {
+	            filterCollection: function filterCollection(child, index, collection) {
 	                return !child.get('myTurn') && !child.get('isGameClose');
 	            },
-	            collection: common.userGameCollection,
+	            mainCollection: common.userGameCollection,
 	            name: 'Ждем'
 	        });
 	        this.userGameCollectionView3 = new UserGameCollectionView({
-	            filter: function filter(child, index, collection) {
+	            filterCollection: function filterCollection(child, index, collection) {
 	                return child.get('isGameClose');
 	            },
-	            collection: common.userGameCollection,
+	            mainCollection: common.userGameCollection,
 	            name: 'Завершенные игры',
 	            type: 'game-closed'
 	        });
@@ -22003,6 +22212,9 @@
 	        this.ui.gameContainer.append(this.userGameCollectionView.$el);
 	        this.ui.gameContainer.append(this.userGameCollectionView2.$el);
 	        this.ui.gameContainer.append(this.userGameCollectionView3.$el);
+	        this.userGameCollectionView.render();
+	        this.userGameCollectionView2.render();
+	        this.userGameCollectionView3.render();
 	    },
 	    onClickGame: function onClickGame(game) {
 	        if (game.get('isGameClose')) {
@@ -22012,13 +22224,13 @@
 	        }
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10), __webpack_require__(6), __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(5), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 260 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22029,17 +22241,17 @@
 	}
 
 /***/ },
-/* 261 */
+/* 278 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 262 */,
-/* 263 */
+/* 279 */,
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22050,17 +22262,17 @@
 	}
 
 /***/ },
-/* 264 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (name, type) {
-	buf.push("<div class=\"row game-container\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"yellow-text\">" + (jade.escape((jade_interp = name) == null ? '' : jade_interp)) + "");
+	buf.push("<div class=\"line game-container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">" + (jade.escape((jade_interp = name) == null ? '' : jade_interp)) + "");
 	if ((type == 'game-closed'))
 	{
 	buf.push("<span data-js-close-games class=\"right-text\">&times;</span>");
@@ -22069,7 +22281,7 @@
 	}
 
 /***/ },
-/* 265 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22082,11 +22294,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _answerModal = __webpack_require__(266);
+	var _answerModal = __webpack_require__(283);
 	
 	var template = _interopRequireDefault(_answerModal).default;
 	
-	__webpack_require__(267);
+	__webpack_require__(284);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22123,10 +22335,10 @@
 	});
 
 /***/ },
-/* 266 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22137,14 +22349,14 @@
 	}
 
 /***/ },
-/* 267 */
+/* 284 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 268 */,
-/* 269 */
+/* 285 */,
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -22153,15 +22365,15 @@
 	    value: true
 	});
 	
-	var _buyModal = __webpack_require__(270);
+	var _buyModal = __webpack_require__(287);
 	
 	var buyModal = _interopRequireDefault(_buyModal).default;
 	
-	var _settingsPage = __webpack_require__(274);
+	var _settingsPage = __webpack_require__(291);
 	
 	var template = _interopRequireDefault(_settingsPage).default;
 	
-	__webpack_require__(275);
+	__webpack_require__(292);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22208,10 +22420,10 @@
 	        common.router.navigate('changeAvatar', { trigger: true });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 270 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22224,11 +22436,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _buyModal = __webpack_require__(271);
+	var _buyModal = __webpack_require__(288);
 	
 	var template = _interopRequireDefault(_buyModal).default;
 	
-	__webpack_require__(272);
+	__webpack_require__(289);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22255,10 +22467,10 @@
 	});
 
 /***/ },
-/* 271 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22269,35 +22481,35 @@
 	}
 
 /***/ },
-/* 272 */
+/* 289 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 273 */,
-/* 274 */
+/* 290 */,
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div data-js-account-settings class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Настройки аккаунта<div class=\"btn-arrow\"></div></div></div><div class=\"row\"><div data-js-change-avatar class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Изменить аватар<div class=\"btn-arrow\"></div></div></div><div class=\"row\"><div data-js-change-diz class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Поменять фон<div class=\"btn-arrow\"></div></div></div><div class=\"row\"><div data-js-buy class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Купить премиум версию<div class=\"btn-arrow\"></div></div></div><div class=\"row\"><div data-js-black-list class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Черный список<div class=\"btn-arrow\"></div></div></div><div class=\"row\"><div data-js-blockTopics class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Заблокировать тему<div class=\"btn-arrow\"></div></div></div><br><br><br><div class=\"row\"><button data-js-buy class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Отказаться от рекламы</span></button></div><div class=\"row\"><button data-js-logout class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Выйти</span></button></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div data-js-account-settings class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-settings\"></div>Настройки аккаунта<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-change-avatar class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-change-avatar\"></div>Изменить аватар<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-change-diz class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-change-themes\"></div>Поменять фон<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-buy class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-buy-pro\"></div>Купить премиум версию<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-black-list class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-user-blacklist\"></div>Черный список<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-blockTopics class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-block-subject\"></div>Заблокировать тему<div class=\"btn-arrow\"></div></div></div><br><br><br><div class=\"line\"><button data-js-buy class=\"btn col-xs-12\"><span>Отказаться от рекламы</span></button></div><div class=\"line\"><button data-js-logout class=\"btn col-xs-12\"><span>Выйти</span></button></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 275 */
+/* 292 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 276 */,
-/* 277 */
+/* 293 */,
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, $) {'use strict';
@@ -22306,11 +22518,11 @@
 	    value: true
 	});
 	
-	var _changeAvatarPage = __webpack_require__(278);
+	var _changeAvatarPage = __webpack_require__(295);
 	
 	var template = _interopRequireDefault(_changeAvatarPage).default;
 	
-	__webpack_require__(279);
+	__webpack_require__(296);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22371,20 +22583,20 @@
 	        common.user.set({ u_ava: $(e.currentTarget).data('user-icon-id') });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10), __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 278 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 user-info\"><div data-js-user-avatar data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><div class=\"block-name\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p class=\"yellow-text\">В сети как</p><h2 data-js-user-name class=\"yellow-text\"></h2></div></div></div></div></div><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 text-center\"><div data-js-men data-state=\"1\" class=\"tab-icon men active\"></div><div data-js-women data-state=\"2\" class=\"tab-icon women\"></div></div></div><div class=\"row\"><div data-js-avatars data-state=\"1\" class=\"avatars\"><div class=\"col-xs-6\">");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div class=\"col-xs-12 user-info\"><div data-js-user-avatar data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><div class=\"block-name\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p class=\"yellow-text\">В сети как</p><h2 data-js-user-name class=\"yellow-text\"></h2></div></div></div></div></div><div class=\"line\"><div class=\"col-xs-12 text-center\"><div data-js-men data-state=\"1\" class=\"tab-icon men active\"></div><div data-js-women data-state=\"2\" class=\"tab-icon women\"></div></div></div><div class=\"line\"><div data-js-avatars data-state=\"1\" class=\"avatars\"><div class=\"col-xs-6\">");
 	for (var i=1; i<=50; i++) {
 	{
 	buf.push("<div" + (jade.attr("data-user-icon-id", "" + (i) + "", true, true)) + " data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div>");
@@ -22398,18 +22610,18 @@
 	}
 
 /***/ },
-/* 279 */
+/* 296 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -22418,13 +22630,13 @@
 	    value: true
 	});
 	
-	var _newGamePage = __webpack_require__(286);
+	var _newGamePage = __webpack_require__(303);
 	
 	var template = _interopRequireDefault(_newGamePage).default;
 	
-	__webpack_require__(287);
+	__webpack_require__(304);
 	
-	var _userWidget = __webpack_require__(289);
+	var _userWidget = __webpack_require__(306);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -22476,31 +22688,31 @@
 	        common.appController.startGame();
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 286 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><button data-js-search-rival class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Найти соперника<i class=\"material-icons right\"> </i></button></div><div class=\"row\"><button data-js-new-game-fb class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Новая игра FB</button></div><div class=\"row\"><button data-js-new-game-vk class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Новая игра VK</button></div><div class=\"row\"><button data-js-random-rival class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Случайный соперник<i class=\"material-icons right\"> </i></button></div><div class=\"row\"><button data-js-last20-games class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">20 последних игр</button></div><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"friends-header yellow-text\">Список друзей</h3></div></div><div class=\"row\"><div data-js-friend-list class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div data-js-search-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-search\"></div>Найти соперника<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-fb class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-facebook\"></div>Новая игра FB<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-vk class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-vk-icon\"></div>Новая игра VK<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-random-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-random\"></div>Случайный соперник<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-last20-games class=\"btn col-xs-12\">20 последних игр<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Список друзей</h3></div></div><div class=\"line\"><div data-js-friend-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 287 */
+/* 304 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 288 */,
-/* 289 */
+/* 305 */,
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -22509,11 +22721,11 @@
 	    value: true
 	});
 	
-	var _userWidget = __webpack_require__(290);
+	var _userWidget = __webpack_require__(307);
 	
 	var template = _interopRequireDefault(_userWidget).default;
 	
-	__webpack_require__(291);
+	__webpack_require__(308);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22530,7 +22742,7 @@
 	    bindings: {
 	        '[data-js-user-icon]': 'setAvatarAttr: avatar',
 	        '[data-js-login]': 'text: u_login',
-	        ':el': 'classes: {open: open}',
+	        ':el': 'classes: {open: open, "no-number": not(u_number_rate), "no-rating": not(u_rate)}',
 	        '[data-js-lose]': 'text: u_lose',
 	        '[data-js-all-games]': 'text: u_all_games',
 	        '[data-js-draw]': 'text: u_draw',
@@ -22565,13 +22777,13 @@
 	        common.router.navigate('profile/' + this.model.get('id'));
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 290 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22582,18 +22794,18 @@
 	}
 
 /***/ },
-/* 291 */
+/* 308 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, _, common, $) {'use strict';
@@ -22602,17 +22814,17 @@
 	    value: true
 	});
 	
-	var _searchUserPage = __webpack_require__(298);
+	var _searchUserPage = __webpack_require__(315);
 	
 	var template = _interopRequireDefault(_searchUserPage).default;
 	
-	__webpack_require__(299);
+	__webpack_require__(316);
 	
-	var _userWidget = __webpack_require__(289);
+	var _userWidget = __webpack_require__(306);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
-	var _rivalCollection = __webpack_require__(301);
+	var _rivalCollection = __webpack_require__(318);
 	
 	var rivalCollection = _interopRequireDefault(_rivalCollection).default;
 	
@@ -22659,31 +22871,31 @@
 	        this.rivalCollection.setSearch(str);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(229), __webpack_require__(6), __webpack_require__(10), __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(6), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 298 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Введите имя для поиска</span><input type=\"text\" data-js-user-name></label></div><div class=\"row result-container\"><div data-js-rival-list class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><label class=\"input col-xs-12\"><span>Введите имя для поиска</span><input type=\"text\" data-js-user-name></label></div><div class=\"line result-container\"><div data-js-rival-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 299 */
+/* 316 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 300 */,
-/* 301 */
+/* 317 */,
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, common, _) {'use strict';
@@ -22692,7 +22904,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(35);
+	var _personModel = __webpack_require__(43);
 	
 	var personModel = _interopRequireDefault(_personModel).default;
 	
@@ -22729,7 +22941,10 @@
 	        }
 	    },
 	    parse: function parse(data) {
-	        this.reset(data.answer);
+	        this.reset(_.map(data.answer, function (item) {
+	            item.id = item.user_id;
+	            return item;
+	        }));
 	    },
 	    onChangeOpen: function onChangeOpen(model, open) {
 	        if (open) {
@@ -22745,7 +22960,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 302 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -22754,13 +22969,13 @@
 	    value: true
 	});
 	
-	var _last20GamesPage = __webpack_require__(303);
+	var _last20GamesPage = __webpack_require__(320);
 	
 	var template = _interopRequireDefault(_last20GamesPage).default;
 	
-	__webpack_require__(304);
+	__webpack_require__(321);
 	
-	var _userWidget = __webpack_require__(289);
+	var _userWidget = __webpack_require__(306);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -22774,7 +22989,7 @@
 	
 	exports.default = MarionetteEpoxy.LayoutView.extend({
 	    template: template,
-	    className: 'new-game-page page',
+	    className: 'last20-game-page page',
 	
 	    bindings: {},
 	    regions: {
@@ -22793,50 +23008,50 @@
 	        this.friendsContainer.show(this.friendCollection);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 303 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"friends-header yellow-text\">20 последних игр</h3></div></div><div class=\"row\"><div data-js-friend-list class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">20 последних игр</h3></div></div><div class=\"line\"><div data-js-friend-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 304 */
+/* 321 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 305 */,
-/* 306 */
+/* 322 */,
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, _) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _gamePage = __webpack_require__(307);
+	var _gamePage = __webpack_require__(324);
 	
 	var template = _interopRequireDefault(_gamePage).default;
 	
-	__webpack_require__(308);
+	__webpack_require__(325);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _roundWidget = __webpack_require__(310);
+	var _roundWidget = __webpack_require__(34);
 	
 	var roundWidget = _interopRequireDefault(_roundWidget).default;
 	
@@ -22905,13 +23120,12 @@
 	            });
 	            return false;
 	        }
-	        this.listenTo(this.model, 'change:rr_leader_end_round change:rr_slave_end_round', this.onChangeRound);
-	        this.onChangeRound();
-	
+	        this.listenTo(this.model, 'change:rounds', this.renderRoundsInfo);
 	        this.epoxify();
-	        common.headerModel.set({ backPath: 'index' });
+	        common.headerModel.set({ backPath: 'userGames' });
 	    },
 	    onRender: function onRender() {
+	        this.renderRoundsInfo();
 	        if (this.model) {
 	            this.checkFriend();
 	        }
@@ -22928,17 +23142,8 @@
 	        common.friendCollection.add({ id: this.model.get('opponentId') });
 	        this.checkFriend();
 	    },
-	    onChangeRound: function onChangeRound() {
-	        var _this = this;
-	
-	        common.api.getInfoByRoom(this.roomId).done(function (data) {
-	            _this.renderRoundsInfo(data);
-	        });
-	    },
-	    renderRoundsInfo: function renderRoundsInfo(data) {
-	        var rounds = _.map(data.answer, function (value, key) {
-	            return value;
-	        });
+	    renderRoundsInfo: function renderRoundsInfo() {
+	        var rounds = this.model.get('rounds');
 	        var userAnswerSuccess = 0;
 	        var opponentAnswerSuccess = 0;
 	        this.clearRoundInfo();
@@ -22984,229 +23189,31 @@
 	        common.router.navigate('profile/' + common.user.get('id'), { trigger: true });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10), __webpack_require__(6)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 307 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row main-block\"><div class=\"half-block\"><div data-js-user-icon class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><h2 data-js-user-name class=\"yellow-text\"></h2></div><div class=\"half-block\"><div data-js-opponent-icon class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><h2 data-js-opponent-name class=\"yellow-text\"></h2></div><div class=\"score-block yellow-text\"><span data-js-user-score></span>&nbsp;:&nbsp;<span data-js-opponent-score></span></div></div><div class=\"row\"><ul data-js-rounds-info class=\"list-container\"></ul></div><div data-js-game-finish-block class=\"row\"><div class=\"btn-set col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"><div data-js-results class=\"btn col-xs-4\">Счет</div><div data-js-replay class=\"btn col-xs-4\">Реванш</div><div data-js-add-friend class=\"btn col-xs-4\">+ Друг</div></div></div><div data-js-game-process-block class=\"row\"><div class=\"btn-set col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"><div data-js-surrender class=\"btn col-xs-4\">Сдаться</div><div data-js-play class=\"btn col-xs-4\">Играть</div><div data-js-add-friend class=\"btn col-xs-4\">+ Друг</div></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line main-block\"><div class=\"half-block\"><div data-js-user-icon class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><h2 data-js-user-name class=\"yellow-text\"></h2></div><div class=\"half-block\"><div data-js-opponent-icon class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><h2 data-js-opponent-name class=\"yellow-text\"></h2></div><div class=\"score-block yellow-text\"><span data-js-user-score></span>&nbsp;:&nbsp;<span data-js-opponent-score></span></div></div><div class=\"row\"><ul data-js-rounds-info class=\"list-container\"></ul></div><div data-js-game-finish-block class=\"line\"><div class=\"btn-set col-xs-12 p-l-0 p-r-0\"><div data-js-results class=\"btn col-xs-4\">Счет</div><div data-js-replay class=\"btn col-xs-4\">Реванш</div><div data-js-add-friend class=\"btn col-xs-4\">+ Друг</div></div></div><div data-js-game-process-block class=\"line\"><div class=\"btn-set col-xs-12 p-l-0 p-r-0\"><div data-js-surrender class=\"btn col-xs-4\">Сдаться</div><div data-js-play class=\"btn col-xs-4\">Играть</div><div data-js-add-friend class=\"btn col-xs-4\">+ Друг</div></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 308 */
+/* 325 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 309 */,
-/* 310 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(Epoxy, MarionetteEpoxy, _, common) {'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _roundWidget = __webpack_require__(311);
-	
-	var template = _interopRequireDefault(_roundWidget).default;
-	
-	__webpack_require__(314);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var roundModel = Epoxy.Model.extend({
-	    default: {}
-	});
-	
-	exports.default = MarionetteEpoxy.LayoutView.extend({
-	    template: template,
-	    tagName: 'li',
-	    className: 'round-widget',
-	
-	    initialize: function initialize(option) {
-	        var data = option.data[option.number];
-	        var userResults = [];
-	        var opponentResults = [];
-	        var startRound = data ? true : false;
-	        var userAnswerSuccess = 0;
-	        var opponentAnswerSuccess = 0;
-	        var roundName = 'Общие положения и основы безопастности';
-	        if (startRound) {
-	            _.each(data.round_results, function (result) {
-	                roundName = common.topicCollection.get(result.rr_topic_id).get('t_name');
-	                if (result.rrr_answerer_user_id == common.user.get('id')) {
-	                    userResults.push(result.rrr_is_right_answer);
-	                    if (result.rrr_is_right_answer == '1') {
-	                        userAnswerSuccess++;
-	                    }
-	                } else {
-	                    opponentResults.push(result.rrr_is_right_answer);
-	                    if (result.rrr_is_right_answer == '1') {
-	                        opponentAnswerSuccess++;
-	                    }
-	                }
-	            });
-	        }
-	        this.model = new roundModel({
-	            roundNumber: option.number,
-	            userResults: userResults,
-	            opponentResults: opponentResults,
-	            startRound: startRound,
-	            roundName: roundName
-	
-	        });
-	        this.counts = { userAnswerSuccess: userAnswerSuccess, opponentAnswerSuccess: opponentAnswerSuccess };
-	    },
-	    getCounts: function getCounts() {
-	        return this.counts;
-	    }
-	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(229), __webpack_require__(6), __webpack_require__(10)))
-
-/***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(19);
-	
-	module.exports = function template(locals) {
-	var buf = [];
-	var jade_mixins = {};
-	var jade_interp;
-	;var locals_for_with = (locals || {});(function (opponentResults, roundName, roundNumber, startRound, undefined, userResults) {
-	buf.push("<div class=\"game-round-name-container\"><span>" + (jade.escape((jade_interp = roundName) == null ? '' : jade_interp)) + "</span></div><div class=\"icon-container\">");
-	if ((startRound))
-	{
-	// iterate userResults
-	;(function(){
-	  var $$obj = userResults;
-	  if ('number' == typeof $$obj.length) {
-	
-	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-	      var item = $$obj[$index];
-	
-	if ((item == '0'))
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(312), true, true)) + " class=\"icon-score column line-height\">");
-	}
-	else
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(313), true, true)) + " class=\"icon-score colum line-height\">");
-	}
-	    }
-	
-	  } else {
-	    var $$l = 0;
-	    for (var $index in $$obj) {
-	      $$l++;      var item = $$obj[$index];
-	
-	if ((item == '0'))
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(312), true, true)) + " class=\"icon-score column line-height\">");
-	}
-	else
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(313), true, true)) + " class=\"icon-score colum line-height\">");
-	}
-	    }
-	
-	  }
-	}).call(this);
-	
-	if ((!userResults.length))
-	{
-	buf.push("<span>Ваш ход ...</span>");
-	}
-	}
-	buf.push("</div><div class=\"text-container\"><div class=\"game-round-center\"><span class=\"yellow-text\">Раунд " + (jade.escape((jade_interp = roundNumber + 1) == null ? '' : jade_interp)) + "</span></div></div><div class=\"time-container\">");
-	if ((startRound))
-	{
-	if ((!opponentResults.length ))
-	{
-	buf.push("<span>Играет ...</span>");
-	}
-	else
-	{
-	if ((!userResults.length ))
-	{
-	buf.push("<span>...</span>");
-	}
-	else
-	{
-	// iterate opponentResults
-	;(function(){
-	  var $$obj = opponentResults;
-	  if ('number' == typeof $$obj.length) {
-	
-	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-	      var item = $$obj[$index];
-	
-	if ((item == '0'))
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(312), true, true)) + " class=\"icon-score column line-height\">");
-	}
-	else
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(313), true, true)) + " class=\"icon-score colum line-height\">");
-	}
-	    }
-	
-	  } else {
-	    var $$l = 0;
-	    for (var $index in $$obj) {
-	      $$l++;      var item = $$obj[$index];
-	
-	if ((item == '0'))
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(312), true, true)) + " class=\"icon-score column line-height\">");
-	}
-	else
-	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(313), true, true)) + " class=\"icon-score colum line-height\">");
-	}
-	    }
-	
-	  }
-	}).call(this);
-	
-	}
-	}
-	}
-	buf.push("</div>");}.call(this,"opponentResults" in locals_for_with?locals_for_with.opponentResults:typeof opponentResults!=="undefined"?opponentResults:undefined,"roundName" in locals_for_with?locals_for_with.roundName:typeof roundName!=="undefined"?roundName:undefined,"roundNumber" in locals_for_with?locals_for_with.roundNumber:typeof roundNumber!=="undefined"?roundNumber:undefined,"startRound" in locals_for_with?locals_for_with.startRound:typeof startRound!=="undefined"?startRound:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined,"userResults" in locals_for_with?locals_for_with.userResults:typeof userResults!=="undefined"?userResults:undefined));;return buf.join("");
-	}
-
-/***/ },
-/* 312 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/red_light.d47fe2.png";
-
-/***/ },
-/* 313 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/green_light.a93c35.png";
-
-/***/ },
-/* 314 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 315 */,
-/* 316 */
+/* 326 */,
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -23215,13 +23222,13 @@
 	    value: true
 	});
 	
-	var _profilePage = __webpack_require__(317);
+	var _profilePage = __webpack_require__(328);
 	
 	var template = _interopRequireDefault(_profilePage).default;
 	
-	__webpack_require__(318);
+	__webpack_require__(329);
 	
-	var _opponentModel = __webpack_require__(38);
+	var _opponentModel = __webpack_require__(45);
 	
 	var OpponentModel = _interopRequireDefault(_opponentModel).default;
 	
@@ -23329,13 +23336,13 @@
 	        common.appController.startGame(this.model.get('u_id'));
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 317 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23346,18 +23353,14 @@
 	}
 
 /***/ },
-/* 318 */
+/* 329 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */
+/* 330 */,
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -23366,11 +23369,11 @@
 	    value: true
 	});
 	
-	var _gameResultPage = __webpack_require__(325);
+	var _gameResultPage = __webpack_require__(332);
 	
 	var template = _interopRequireDefault(_gameResultPage).default;
 	
-	__webpack_require__(326);
+	__webpack_require__(333);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -23457,13 +23460,13 @@
 	        common.router.navigate('game/' + this.roomId, { trigger: true });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 325 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23474,14 +23477,14 @@
 	}
 
 /***/ },
-/* 326 */
+/* 333 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 327 */,
-/* 328 */
+/* 334 */,
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, _) {'use strict';
@@ -23490,29 +23493,29 @@
 	    value: true
 	});
 	
-	var _questionsPage = __webpack_require__(329);
+	var _questionsPage = __webpack_require__(336);
 	
 	var template = _interopRequireDefault(_questionsPage).default;
 	
-	__webpack_require__(330);
+	__webpack_require__(337);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _questionWidget = __webpack_require__(332);
+	var _questionWidget = __webpack_require__(339);
 	
 	var questionWidget = _interopRequireDefault(_questionWidget).default;
 	
-	var _questionCollection = __webpack_require__(337);
+	var _questionCollection = __webpack_require__(344);
 	
 	var QuestionCollection = _interopRequireDefault(_questionCollection).default;
 	
-	var _selectTopicModal = __webpack_require__(245);
+	var _selectTopicModal = __webpack_require__(262);
 	
 	var selectTopicModal = _interopRequireDefault(_selectTopicModal).default;
 	
-	var _tipsWidget = __webpack_require__(254);
+	var _tipsWidget = __webpack_require__(271);
 	
 	var tipsWidget = _interopRequireDefault(_tipsWidget).default;
 	
@@ -23539,7 +23542,7 @@
 	            this.questionsCollection = data.questions;
 	            this.roundId = data.roundId;
 	        }
-	        common.headerModel.set({ backPath: null });
+	        common.headerModel.set({ backPath: null, hideMode: true });
 	    },
 	    onRender: function onRender() {
 	        var _this = this;
@@ -23649,33 +23652,36 @@
 	        });
 	        this.currentQuestion++;
 	        this.showQuestion();
+	    },
+	    onDestroy: function onDestroy() {
+	        common.headerModel.set({ hideMode: false });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10), __webpack_require__(6)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 329 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"questions-start\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"><div data-js-start-answer class=\"topic-container\"><div class=\"topic-content\"><div class=\"btn col-xs-10 col-xs-offset-1\">Общие положения и основы безопасности</div></div></div></div><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"tips-header yellow-text\">Подсказки</h3></div><div data-js-tips-widget class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 tips-block\"></div><p class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 text-center\">Нажми на картинку <br> или вопрос для продолжения.</p></div><div data-js-question-container class=\"questions-answers\"></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"questions-start\"><div class=\"col-xs-12 p-l-0 p-r-0\"><div data-js-start-answer class=\"topic-container\"><div class=\"topic-content\"><div class=\"btn col-xs-10 col-xs-offset-1\">Общие положения и основы безопасности</div></div></div></div><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Подсказки</h3></div><div data-js-tips-widget class=\"btn col-xs-12 tips-block\"></div><p class=\"col-xs-12 text-center\">Нажми на картинку <br> или вопрос для продолжения.</p></div><div data-js-question-container class=\"questions-answers\"></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 330 */
+/* 337 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 331 */,
-/* 332 */
+/* 338 */,
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, $) {'use strict';
@@ -23684,11 +23690,11 @@
 	    value: true
 	});
 	
-	var _questionWidget = __webpack_require__(333);
+	var _questionWidget = __webpack_require__(340);
 	
 	var template = _interopRequireDefault(_questionWidget).default;
 	
-	__webpack_require__(334);
+	__webpack_require__(341);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -23697,12 +23703,13 @@
 	    className: 'question-widget',
 	
 	    ui: {
-	        timerFill: '[data-js-timer-fill]'
+	        timerFill: '[data-js-timer-fill]',
+	        questionDone: '[data-js-question-done]'
 	    },
 	
 	    events: {
 	        'click .btn': 'onClickItem',
-	        'click': 'onClickWidget'
+	        'click @ui.questionDone': 'onClickWidget'
 	    },
 	    bindings: {
 	        ':el': 'classes: {blockAnswer: isAnswerBlock}'
@@ -23730,22 +23737,18 @@
 	        var _this2 = this;
 	
 	        e.stopPropagation();
-	        if (!this.lock) {
-	            this.lock = true;
-	            this.answerId = $(e.currentTarget).data('id');
-	            $(e.currentTarget).addClass('active');
-	            clearTimeout(this.timer);
-	            this.showCorrectAnswer();
-	            this.timer = setTimeout(function () {
-	                _this2.trigger('select:answer', _this2.answerId);
-	            }, 2000);
-	        }
+	        this.ui.questionDone.removeClass('hide');
+	        this.answerId = $(e.currentTarget).data('id');
+	        $(e.currentTarget).addClass('active');
+	        clearTimeout(this.timer);
+	        this.showCorrectAnswer();
+	        this.timer = setTimeout(function () {
+	            _this2.trigger('select:answer', _this2.answerId);
+	        }, 2000);
 	    },
 	    onClickWidget: function onClickWidget() {
-	        if (this.lock) {
-	            clearTimeout(this.timer);
-	            this.trigger('select:answer', this.answerId);
-	        }
+	        clearTimeout(this.timer);
+	        this.trigger('select:answer', this.answerId);
 	    },
 	    onRender: function onRender() {
 	        this.timer = setTimeout(this.tick.bind(this), 2000);
@@ -23767,20 +23770,20 @@
 	        clearTimeout(this.timer);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(7)))
 
 /***/ },
-/* 333 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (answers, q_img, q_text, undefined) {
-	buf.push("<div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"><div class=\"question-container\">");
+	buf.push("<div class=\"container\"><div class=\"line\"><div class=\"col-xs-12 p-l-0 p-r-0\"><div class=\"question-container\">");
 	// iterate q_img
 	;(function(){
 	  var $$obj = q_img;
@@ -23803,7 +23806,7 @@
 	  }
 	}).call(this);
 	
-	buf.push("<p>" + (jade.escape((jade_interp = q_text) == null ? '' : jade_interp)) + "</p></div></div></div><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\">");
+	buf.push("<p>" + (jade.escape((jade_interp = q_text) == null ? '' : jade_interp)) + "</p></div></div></div><div class=\"line\"><div class=\"col-xs-12 p-l-0 p-r-0\">");
 	// iterate answers
 	;(function(){
 	  var $$obj = answers;
@@ -23844,25 +23847,25 @@
 	  }
 	}).call(this);
 	
-	buf.push("</div></div><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"><div class=\"timer\"><div data-js-timer-fill class=\"timer-fill\"><div class=\"timer-label\"></div></div>");
+	buf.push("</div></div><div class=\"line timer-line\"><div class=\"col-xs-12 p-l-0 p-r-0\"><div class=\"timer\"><div data-js-timer-fill class=\"timer-fill\"><div class=\"timer-label\"></div></div>");
 	for (var i=1; i<=40; i++) {
 	{
 	buf.push("<div" + (jade.attr("style", "left: " + (100/40*i) + "%", true, true)) + " class=\"separator\"></div>");
 	}
 	}
-	buf.push("</div></div></div></div>");}.call(this,"answers" in locals_for_with?locals_for_with.answers:typeof answers!=="undefined"?answers:undefined,"q_img" in locals_for_with?locals_for_with.q_img:typeof q_img!=="undefined"?q_img:undefined,"q_text" in locals_for_with?locals_for_with.q_text:typeof q_text!=="undefined"?q_text:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
+	buf.push("</div></div></div></div><div data-js-question-done class=\"question-done hide\"></div>");}.call(this,"answers" in locals_for_with?locals_for_with.answers:typeof answers!=="undefined"?answers:undefined,"q_img" in locals_for_with?locals_for_with.q_img:typeof q_img!=="undefined"?q_img:undefined,"q_text" in locals_for_with?locals_for_with.q_text:typeof q_text!=="undefined"?q_text:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 334 */
+/* 341 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 335 */,
-/* 336 */,
-/* 337 */
+/* 342 */,
+/* 343 */,
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _) {'use strict';
@@ -23871,7 +23874,7 @@
 	    value: true
 	});
 	
-	var _questionModel = __webpack_require__(338);
+	var _questionModel = __webpack_require__(345);
 	
 	var questionModel = _interopRequireDefault(_questionModel).default;
 	
@@ -23895,7 +23898,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)))
 
 /***/ },
-/* 338 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -23926,70 +23929,34 @@
 	        }
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 339 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, Marionette) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _blackListPage = __webpack_require__(340);
+	var _blackListPage = __webpack_require__(347);
 	
 	var template = _interopRequireDefault(_blackListPage).default;
 	
-	__webpack_require__(341);
+	__webpack_require__(348);
 	
-	var _answerModal = __webpack_require__(265);
+	var _userWidget = __webpack_require__(306);
 	
-	var answerModal = _interopRequireDefault(_answerModal).default;
-	
-	var _blackListItem = __webpack_require__(343);
-	
-	var BlackListTemplate = _interopRequireDefault(_blackListItem).default;
+	var userWidget = _interopRequireDefault(_userWidget).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var BlackListItemView = MarionetteEpoxy.View.extend({
-	    template: BlackListTemplate,
-	    className: 'black-list-item',
-	    tagName: 'li',
-	    ui: {
-	        removeButton: '[data-js-remove]'
-	    },
-	    events: {
-	        'click @ui.removeButton': 'onRemoveItem',
-	        'click': 'onClickItem'
-	    },
-	    initialize: function initialize() {
-	        // this.epoxify();
-	        common.headerModel.set({ backPath: 'settings' });
-	    },
-	    onClickItem: function onClickItem() {
-	        this.trigger('click:item', this.model);
-	    },
-	    onRemoveItem: function onRemoveItem() {
-	        var _this = this;
-	
-	        new answerModal({ message: 'Удалить из черного списка?' }).showModal().done(function () {
-	            common.blackListCollection.remove(_this.model);
-	        });
-	    }
-	});
-	
 	var BlackListCollectionView = Marionette.CollectionView.extend({
-	    className: '',
-	    childView: BlackListItemView,
-	    childEvents: {
-	        'click:item': 'onClickItem'
-	    },
-	    onClickGame: function onClickGame(view, user) {
-	        this.trigger('click:item', user);
-	    }
+	    className: 'list-container',
+	    tagName: 'ul',
+	    childView: userWidget
 	});
 	
 	exports.default = MarionetteEpoxy.LayoutView.extend({
@@ -24014,54 +23981,31 @@
 	        this.blackList.show(this.blackListCollectionPage);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10), __webpack_require__(4)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 340 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h1 class=\"yellow-text\">Черный список</h1></div><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><div class=\"row\"><ul data-js-black-list class=\"list-container\"></ul></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><h1 class=\"col-xs-12 text-header yellow-text\">Черный список</h1></div><div class=\"line\"><div data-js-black-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 341 */
+/* 348 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 342 */,
-/* 343 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(19);
-	
-	module.exports = function template(locals) {
-	var buf = [];
-	var jade_mixins = {};
-	var jade_interp;
-	;var locals_for_with = (locals || {});(function (u_login, u_name, u_surname) {
-	buf.push("<div class=\"col-xs-10 height-100\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p>");
-	if ((u_login))
-	{
-	buf.push("" + (jade.escape((jade_interp = u_login) == null ? '' : jade_interp)) + "");
-	}
-	else
-	{
-	buf.push("" + (jade.escape((jade_interp = u_name) == null ? '' : jade_interp)) + " " + (jade.escape((jade_interp = u_surname) == null ? '' : jade_interp)) + "");
-	}
-	buf.push("</p></div></div></div><div class=\"col-xs-2 height-100\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div data-js-remove class=\"remove-item\">X</div></div></div></div>");}.call(this,"u_login" in locals_for_with?locals_for_with.u_login:typeof u_login!=="undefined"?u_login:undefined,"u_name" in locals_for_with?locals_for_with.u_name:typeof u_name!=="undefined"?u_name:undefined,"u_surname" in locals_for_with?locals_for_with.u_surname:typeof u_surname!=="undefined"?u_surname:undefined));;return buf.join("");
-	}
-
-/***/ },
-/* 344 */
+/* 349 */,
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, $) {'use strict';
@@ -24070,17 +24014,17 @@
 	    value: true
 	});
 	
-	var _settingsPageAcc = __webpack_require__(345);
+	var _settingsPageAcc = __webpack_require__(351);
 	
 	var template = _interopRequireDefault(_settingsPageAcc).default;
 	
-	__webpack_require__(346);
+	__webpack_require__(352);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _enterPasswordModal = __webpack_require__(348);
+	var _enterPasswordModal = __webpack_require__(354);
 	
 	var enterPasswordModal = _interopRequireDefault(_enterPasswordModal).default;
 	
@@ -24195,31 +24139,31 @@
 	        return true;
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10), __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 345 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Отображаемое имя</span><input type=\"text\" data-js-user-name></label></div><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Email</span><input type=\"email\" data-js-email></label></div><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Новый пароль</span><input type=\"password\" data-js-password></label></div><div class=\"row\"><div data-js-submit class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 single\">Сохранить</div></div></form></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"line\"><label class=\"input col-xs-12\"><span>Отображаемое имя</span><input type=\"text\" data-js-user-name></label></div><div class=\"line\"><label class=\"input col-xs-12\"><span>Email</span><input type=\"email\" data-js-email></label></div><div class=\"line\"><label class=\"input col-xs-12\"><span>Новый пароль</span><input type=\"password\" data-js-password></label></div><div class=\"line\"><div data-js-submit class=\"btn col-xs-12 single\">Сохранить</div></div></form></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 346 */
+/* 352 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 347 */,
-/* 348 */
+/* 353 */,
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24232,11 +24176,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _enterPasswordModal = __webpack_require__(349);
+	var _enterPasswordModal = __webpack_require__(355);
 	
 	var template = _interopRequireDefault(_enterPasswordModal).default;
 	
-	__webpack_require__(350);
+	__webpack_require__(356);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24276,10 +24220,10 @@
 	});
 
 /***/ },
-/* 349 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24290,14 +24234,14 @@
 	}
 
 /***/ },
-/* 350 */
+/* 356 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 351 */,
-/* 352 */
+/* 357 */,
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24306,11 +24250,11 @@
 	    value: true
 	});
 	
-	var _statisticsPage = __webpack_require__(353);
+	var _statisticsPage = __webpack_require__(359);
 	
 	var template = _interopRequireDefault(_statisticsPage).default;
 	
-	__webpack_require__(354);
+	__webpack_require__(360);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24347,31 +24291,31 @@
 	        common.router.navigate('neighbors', { trigger: true });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 353 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><button data-js-statistics-profile class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Успеваемость</span></button></div><div class=\"row\"><button class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Награды</span></button></div><div class=\"row\"><button data-js-playerRankings class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Рейтинг игроков</span></button></div><div class=\"row\"><button data-js-neighbors class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Соседи по рейтингу</span></button></div><div class=\"row\"><button data-js-last20games class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>20 последних игр</span></button></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div data-js-statistics-profile class=\"btn col-xs-12\">Успеваемость<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div class=\"btn col-xs-12\">Награды<div class=\"btn-arrow\"></div></div></div><br><div class=\"line\"><div data-js-playerRankings class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-players-rating\"></div>Рейтинг игроков<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-neighbors class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-rating-neighborhood\"></div>Соседи по рейтингу<div class=\"btn-arrow\"></div></div></div><!--.line--><!--  .btn.col-xs-12(data-js-last20games)--><!--    | 20 последних игр--></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 354 */
+/* 360 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 355 */,
-/* 356 */
+/* 361 */,
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -24380,13 +24324,13 @@
 	    value: true
 	});
 	
-	var _playerRankingsPage = __webpack_require__(357);
+	var _playerRankingsPage = __webpack_require__(363);
 	
 	var template = _interopRequireDefault(_playerRankingsPage).default;
 	
-	__webpack_require__(358);
+	__webpack_require__(364);
 	
-	var _userWidget = __webpack_require__(289);
+	var _userWidget = __webpack_require__(306);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -24400,7 +24344,7 @@
 	
 	exports.default = MarionetteEpoxy.LayoutView.extend({
 	    template: template,
-	    className: 'new-game-page page',
+	    className: 'ranking-game-page page',
 	
 	    bindings: {},
 	    regions: {
@@ -24419,31 +24363,31 @@
 	        this.friendsContainer.show(this.friendCollection);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 357 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><h3 class=\"friends-header yellow-text\">Рейтинг игроков</h3></div></div><div class=\"row\"><div data-js-friend-list class=\"col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Рейтинг игроков</h3></div></div><div class=\"line\"><div data-js-friend-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 358 */
+/* 364 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 359 */,
-/* 360 */
+/* 365 */,
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24452,11 +24396,11 @@
 	    value: true
 	});
 	
-	var _authPage = __webpack_require__(361);
+	var _authPage = __webpack_require__(367);
 	
 	var template = _interopRequireDefault(_authPage).default;
 	
-	__webpack_require__(362);
+	__webpack_require__(368);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24568,33 +24512,33 @@
 	        });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 361 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><div data-js-guest class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Гость</div></div><div class=\"row\"><div class=\"btn-set col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 p-l-0 p-r-0\"><div data-js-vk class=\"btn col-xs-3 icon vk-icon\"></div><div class=\"btn col-xs-6\">Войти через</div><div data-js-fb class=\"btn col-xs-3 icon fb-icon\"></div></div></div><div class=\"row\"><div data-js-registration class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Создать аккаунт<div class=\"btn-arrow\"></div></div></div><div class=\"row\"><div data-js-signin class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Войти<div class=\"btn-arrow\"></div></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div data-js-guest class=\"btn col-xs-12\">Гость</div></div><div class=\"line\"><div class=\"btn-set col-xs-12 p-l-0 p-r-0\"><div data-js-vk class=\"btn col-xs-3 icon vk-icon\"></div><div class=\"btn col-xs-6\">Войти через</div><div data-js-fb class=\"btn col-xs-3 icon fb-icon\"></div></div></div><div class=\"line\"><div data-js-registration class=\"btn col-xs-12\">Создать аккаунт<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-signin class=\"btn col-xs-12\">Войти<div class=\"btn-arrow\"></div></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 362 */
+/* 368 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24603,11 +24547,11 @@
 	    value: true
 	});
 	
-	var _registrationPage = __webpack_require__(367);
+	var _registrationPage = __webpack_require__(373);
 	
 	var template = _interopRequireDefault(_registrationPage).default;
 	
-	__webpack_require__(368);
+	__webpack_require__(374);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24669,31 +24613,31 @@
 	        }
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 367 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Логин</span><input type=\"text\" data-js-login></label></div><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Email</span><input type=\"email\" data-js-email></label></div><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Пароль</span><input type=\"password\" data-js-password></label></div><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Повторите пароль</span><input type=\"password\" data-js-password-repeat></label></div><div class=\"row\"><div data-js-registration class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 single\">Регистрация</div></div></form></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"line\"><label class=\"input col-xs-12\"><span>Логин</span><input type=\"text\" data-js-login></label></div><div class=\"line\"><label class=\"input col-xs-12\"><span>Email</span><input type=\"email\" data-js-email></label></div><div class=\"line\"><label class=\"input col-xs-12\"><span>Пароль</span><input type=\"password\" data-js-password></label></div><div class=\"line\"><label class=\"input col-xs-12\"><span>Повторите пароль</span><input type=\"password\" data-js-password-repeat></label></div><div class=\"line\"><div data-js-registration class=\"btn col-xs-12 single\">Регистрация</div></div></form></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 368 */
+/* 374 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 369 */,
-/* 370 */
+/* 375 */,
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24702,13 +24646,13 @@
 	    value: true
 	});
 	
-	var _blockTopicsPage = __webpack_require__(371);
+	var _blockTopicsPage = __webpack_require__(377);
 	
 	var template = _interopRequireDefault(_blockTopicsPage).default;
 	
-	__webpack_require__(372);
+	__webpack_require__(378);
 	
-	var _blockTopicsItem = __webpack_require__(374);
+	var _blockTopicsItem = __webpack_require__(380);
 	
 	var blockTopicsTemplate = _interopRequireDefault(_blockTopicsItem).default;
 	
@@ -24771,13 +24715,13 @@
 	        this.blockTopicsList.show(this.blockTopicsCollectionView);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 371 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24788,17 +24732,17 @@
 	}
 
 /***/ },
-/* 372 */
+/* 378 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 373 */,
-/* 374 */
+/* 379 */,
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24809,7 +24753,7 @@
 	}
 
 /***/ },
-/* 375 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24818,11 +24762,11 @@
 	    value: true
 	});
 	
-	var _signinPage = __webpack_require__(376);
+	var _signinPage = __webpack_require__(382);
 	
 	var template = _interopRequireDefault(_signinPage).default;
 	
-	__webpack_require__(377);
+	__webpack_require__(383);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24874,31 +24818,31 @@
 	        });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 376 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Логин</span><input type=\"text\" data-js-login></label></div><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Пароль</span><input type=\"password\" data-js-password></label></div><div class=\"row\"><div data-js-signin class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 single\">Войти</div></div></form><div class=\"container\"><div class=\"row\"><div data-js-restore-password class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\">Востановление пароля<div class=\"btn-arrow\"></div></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"line\"><label class=\"input col-xs-12\"><span>Логин</span><input type=\"text\" data-js-login></label></div><div class=\"line\"><label class=\"input col-xs-12\"><span>Пароль</span><input type=\"password\" data-js-password></label></div><div class=\"line\"><div data-js-signin class=\"btn col-xs-12 single\">Войти</div></div></form><div class=\"container\"><div class=\"line\"><div data-js-restore-password class=\"btn col-xs-12\">Востановление пароля<div class=\"btn-arrow\"></div></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 377 */
+/* 383 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 378 */,
-/* 379 */
+/* 384 */,
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -24907,13 +24851,13 @@
 	    value: true
 	});
 	
-	var _neighborsPage = __webpack_require__(380);
+	var _neighborsPage = __webpack_require__(386);
 	
 	var template = _interopRequireDefault(_neighborsPage).default;
 	
-	__webpack_require__(381);
+	__webpack_require__(387);
 	
-	var _userWidget = __webpack_require__(289);
+	var _userWidget = __webpack_require__(306);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -24927,7 +24871,7 @@
 	
 	exports.default = MarionetteEpoxy.LayoutView.extend({
 	    template: template,
-	    className: 'new-game-page page',
+	    className: 'neighbors-game-page page',
 	
 	    bindings: {},
 	    regions: {
@@ -24946,13 +24890,13 @@
 	        this.friendsContainer.show(this.friendCollection);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 380 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24963,14 +24907,14 @@
 	}
 
 /***/ },
-/* 381 */
+/* 387 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 382 */,
-/* 383 */
+/* 388 */,
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24979,11 +24923,11 @@
 	  value: true
 	});
 	
-	var _restorePasswordPage = __webpack_require__(384);
+	var _restorePasswordPage = __webpack_require__(390);
 	
 	var template = _interopRequireDefault(_restorePasswordPage).default;
 	
-	__webpack_require__(385);
+	__webpack_require__(391);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -25041,31 +24985,31 @@
 	    }
 	  }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 384 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(19);
+	var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>Email</span><input type=\"email\" data-js-email></label></div><div class=\"row\"><div data-js-restore class=\"btn col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 single\">Востановить пароль</div></div></form></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><form autocomplete=\"off\" class=\"container\"><input type=\"submit\" class=\"hide\"><div class=\"line\"><label class=\"input col-xs-12\"><span>Email</span><input type=\"email\" data-js-email></label></div><div class=\"line\"><div data-js-restore class=\"btn col-xs-12 single\">Востановить пароль</div></div></form></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 385 */
+/* 391 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 386 */,
-/* 387 */
+/* 392 */,
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -25074,11 +25018,11 @@
 	    value: true
 	});
 	
-	var _profileDetailPage = __webpack_require__(388);
+	var _profileDetailPage = __webpack_require__(394);
 	
 	var template = _interopRequireDefault(_profileDetailPage).default;
 	
-	__webpack_require__(389);
+	__webpack_require__(395);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -25101,13 +25045,13 @@
 	        this.epoxify();
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 388 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(common) {var jade = __webpack_require__(19);
+	/* WEBPACK VAR INJECTION */(function(common) {var jade = __webpack_require__(20);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -25125,7 +25069,7 @@
 	
 	var procent = Math.round( 100/topics.total_answers  * topics.right_answers )
 	var authenticated = "width: " + procent + "%"
-	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span>" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id - 1].get("t_name")) ? "" : jade_interp)) + "</span><span>" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
+	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span class=\"left\">" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id - 1].get("t_name")) ? "" : jade_interp)) + "</span><span class=\"right\">" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
 	    }
 	
 	  } else {
@@ -25135,7 +25079,7 @@
 	
 	var procent = Math.round( 100/topics.total_answers  * topics.right_answers )
 	var authenticated = "width: " + procent + "%"
-	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span>" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id - 1].get("t_name")) ? "" : jade_interp)) + "</span><span>" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
+	buf.push("<div class=\"row profile-center topic\"><div class=\"col-xs-12 padding5\"><span class=\"left\">" + (jade.escape(null == (jade_interp = common.topicCollection.models[topics.topic_id - 1].get("t_name")) ? "" : jade_interp)) + "</span><span class=\"right\">" + (jade.escape(null == (jade_interp = procent + "%") ? "" : jade_interp)) + "</span></div><div class=\"col-xs-12 padding5\"><div class=\"progress-bar green stripes\"><span" + (jade.attr("style", authenticated, true, true)) + "></span></div></div></div>");
 	    }
 	
 	  }
@@ -25146,14 +25090,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ },
-/* 389 */
+/* 395 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 390 */,
-/* 391 */
+/* 396 */,
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, Backbone) {'use strict';
@@ -25202,7 +25146,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(5)))
 
 /***/ },
-/* 392 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, _, $, Backbone) {'use strict';
@@ -25287,4 +25231,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.6f0bbc97acc35e17c7b9.js.map
+//# sourceMappingURL=application.4062529e72fc40fca57b.js.map
