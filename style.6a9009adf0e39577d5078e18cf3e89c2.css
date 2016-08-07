@@ -1138,14 +1138,14 @@ h2 {
       background-image: url(images/players_rating.779d4a.png); }
     .btn .button-icon.icon-rating-neighborhood {
       background-image: url(images/raiting_neighborhood.622d36.png); }
-    .btn .button-icon.icon-settings {
-      background-image: url(images/settings.4285d0.png); }
-    .btn .button-icon.icon-settings {
-      background-image: url(images/settings.4285d0.png); }
-    .btn .button-icon.icon-settings {
-      background-image: url(images/settings.4285d0.png); }
-    .btn .button-icon.icon-settings {
-      background-image: url(images/settings.4285d0.png); }
+    .btn .button-icon.icon-more-info {
+      background-image: url(images/more_info_icon.df57ae.png); }
+    .btn .button-icon.icon-chat-icon {
+      background-image: url(images/chat_icon.dd3260.png); }
+    .btn .button-icon.icon-add-friend {
+      background-image: url(images/add_friend_icon.06155f.png); }
+    .btn .button-icon.icon-add-blacklist {
+      background-image: url(images/add_blacklist_player.b17776.png); }
     .btn .button-icon.icon-settings {
       background-image: url(images/settings.4285d0.png); }
     .btn .button-icon.icon-settings {
@@ -2208,43 +2208,72 @@ li.user-widget {
   padding: 15px;
   height: 350px; }
 /*  COLORS */
-.profile-page .profile-center {
-  text-align: center; }
+.profile-page .user-icon {
+  display: inline-block;
+  width: 55px;
+  height: 55px; }
 
-.profile-page .b {
-  font-weight: bold; }
+.profile-page .user-name {
+  font-size: 19px;
+  line-height: 28px;
+  margin-top: -6px; }
+
+.profile-page .user-info {
+  padding: 10px 20px 15px 20px; }
 
 .profile-page .icon {
+  margin: 2px auto 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid white;
   background-position: center;
   background-repeat: no-repeat;
-  height: 50px;
-  width: 50px;
-  margin: auto; }
-
-.profile-page .win-icon {
   background-size: 100% 100%; }
+  .profile-page .icon.all-games {
+    background-image: url(images/games_icon.de1ba3.png); }
+  .profile-page .icon.dones {
+    background-image: url(images/win_icon.a0cbeb.png);
+    border-color: #52be5d; }
+  .profile-page .icon.rate {
+    background-image: url(images/score_icon.b6fce7.png);
+    border-color: #eecf7e; }
+  .profile-page .icon.number-rate {
+    background-image: url(images/position_icon.ad086b.png);
+    border-color: #eecf7e; }
 
-.profile-page .all_game-icon {
-  background-size: 100% 100%; }
+.profile-page .icon-block {
+  float: left;
+  width: 50%;
+  height: 84px;
+  text-align: center; }
+  .profile-page .icon-block span {
+    font-size: 10px;
+    display: block; }
+  .profile-page .icon-block h2 {
+    font-size: 19px;
+    margin-top: 4px; }
 
-.profile-page .score-icon {
-  background-size: 100% 100%; }
-
-.profile-page .position-icon {
-  background-size: 100% 100%; }
-
-.profile-page .sub-text {
-  font-size: 10px;
-  color: #909090; }
-
-.profile-page .score-text {
-  font-size: 18px; }
-
-.profile-page .avatar-icon {
-  background-size: 100% 100%; }
-
-.profile-page .right-col {
-  padding-left: 0px; }
+@media (min-width: 700px) {
+  .profile-page .user-icon {
+    width: 70px;
+    height: 70px; }
+  .profile-page .user-name {
+    font-size: 25px; }
+  .profile-page .icon-block {
+    width: 25%;
+    height: 120px; }
+    .profile-page .icon-block span {
+      font-size: 13px;
+      margin-top: 5px; }
+    .profile-page .icon-block h2 {
+      font-size: 21px;
+      margin-top: 7px; }
+  .profile-page .user-info {
+    padding: 20px 10px 30px 10px; }
+  .profile-page .icon {
+    width: 60px;
+    height: 60px; } }
 /*  COLORS */
 .game-result-page .main-block {
   position: relative; }
@@ -2542,4 +2571,4 @@ li.user-widget {
 .profileDetail-page .shine span {
   position: relative; }
 
-/*# sourceMappingURL=style.f782f4e10679a3d084d0fbcbd1d03027.css.map*/
+/*# sourceMappingURL=style.6a9009adf0e39577d5078e18cf3e89c2.css.map*/
