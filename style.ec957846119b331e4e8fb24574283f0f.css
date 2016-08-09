@@ -1493,45 +1493,6 @@ label.input {
       width: 70px;
       height: 70px; } }
 
-.status-icon {
-  background-size: 100% 100%; }
-  .status-icon[data-user-icon-id="0"] {
-    background-image: url(images/smailey_0.462eac.png); }
-  .status-icon[data-user-icon-id="1"] {
-    background-image: url(images/smailey_1.affb87.png); }
-  .status-icon[data-user-icon-id="2"] {
-    background-image: url(images/smailey_2.feb792.png); }
-  .status-icon[data-user-icon-id="3"] {
-    background-image: url(images/smailey_3.9af0d7.png); }
-  .status-icon[data-user-icon-id="4"] {
-    background-image: url(images/smailey_4.f0e313.png); }
-  .status-icon[data-user-icon-id="5"] {
-    background-image: url(images/smailey_5.a5dd53.png); }
-  .status-icon[data-user-icon-id="6"] {
-    background-image: url(images/smailey_6.a07cf1.png); }
-  .status-icon[data-user-icon-id="7"] {
-    background-image: url(images/smailey_7.01e88e.png); }
-  .status-icon[data-user-icon-id="8"] {
-    background-image: url(images/smailey_8.2d504c.png); }
-  .status-icon[data-user-icon-id="9"] {
-    background-image: url(images/smailey_9.05ad9d.png); }
-  .status-icon[data-user-icon-id="10"] {
-    background-image: url(images/smailey_10.b16e48.png); }
-  .status-icon[data-user-icon-id="11"] {
-    background-image: url(images/smailey_11.97f597.png); }
-  .status-icon[data-user-icon-id="12"] {
-    background-image: url(images/smailey_12.6fd7df.png); }
-  .status-icon[data-user-icon-id="13"] {
-    background-image: url(images/smailey_13.709c35.png); }
-  .status-icon[data-user-icon-id="14"] {
-    background-image: url(images/smailey_14.fe738a.png); }
-  .status-icon[data-user-icon-id="15"] {
-    background-image: url(images/smailey_15.de9eeb.png); }
-  .status-icon[data-user-icon-id="16"] {
-    background-image: url(images/smailey_16.9d326f.png); }
-  .status-icon[data-user-icon-id="17"] {
-    background-image: url(images/smailey_17.a12df9.png); }
-
 .list-container {
   color: #fff;
   font-size: 15px; }
@@ -1756,8 +1717,16 @@ label.input {
 .select-topic-modal .btn {
   line-height: 16px;
   height: auto;
-  padding: 15px 30px;
-  margin-top: 5px; }
+  padding: 5px 51px 5px 30px;
+  margin-top: 5px;
+  text-align: left; }
+  .select-topic-modal .btn.blocked {
+    background-color: rgba(34, 56, 43, 0.8); }
+    .select-topic-modal .btn.blocked .btn-arrow {
+      display: none; }
+
+.select-topic-modal .table-middle-block {
+  min-height: 30px; }
 /*  COLORS */
 .index-page .user-info {
   margin-top: 15px;
@@ -2475,8 +2444,28 @@ li.user-widget {
   bottom: 0;
   position: absolute; }
 /*  COLORS */
-.blockTopics-page .blockTopics-item {
-  height: 50px; }
+.blockTopics-page .btn {
+  line-height: 16px;
+  height: auto;
+  padding: 5px 51px 5px 30px;
+  margin-top: 5px;
+  text-align: left; }
+  .blockTopics-page .btn .icon {
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-position: center;
+    background-size: 41px 41px;
+    background-image: url(images/unlock.0243b8.png); }
+  .blockTopics-page .btn.blocked {
+    background-color: rgba(46, 82, 70, 0.8); }
+    .blockTopics-page .btn.blocked .icon {
+      background-image: url(images/lock.105eb3.png); }
+
+.blockTopics-page .table-middle-block {
+  min-height: 30px; }
 /*  COLORS */
 .signin-page .table-middle-block {
   height: 50%;
@@ -2572,4 +2561,4 @@ li.user-widget {
 .profileDetail-page .shine span {
   position: relative; }
 
-/*# sourceMappingURL=style.ae7d245fd378515a0da8570aec184c7a.css.map*/
+/*# sourceMappingURL=style.ec957846119b331e4e8fb24574283f0f.css.map*/

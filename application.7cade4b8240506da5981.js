@@ -61,15 +61,15 @@
 	
 	__webpack_require__(49);
 	
-	var _AppController = __webpack_require__(247);
+	var _AppController = __webpack_require__(229);
 	
 	var AppController = _interopRequireDefault(_AppController).default;
 	
-	var _AppRouter = __webpack_require__(405);
+	var _AppRouter = __webpack_require__(389);
 	
 	var AppRouter = _interopRequireDefault(_AppRouter).default;
 	
-	__webpack_require__(406);
+	__webpack_require__(390);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -20049,6 +20049,10 @@
 	
 	var topicModel = _interopRequireDefault(_topicModel).default;
 	
+	var _infoModal = __webpack_require__(12);
+	
+	var infoModal = _interopRequireDefault(_infoModal).default;
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = Backbone.Collection.extend({
@@ -20060,7 +20064,7 @@
 	                value.id = value.topic_id;
 	                if (data.answer.user_topics && data.answer.user_topics[value.topic_id]) {
 	                    if (data.answer.user_topics[value.topic_id].uat_type == 'block') {
-	                        value.isBlock = 1;
+	                        value.isBlock = true;
 	                    }
 	                }
 	                return value;
@@ -20070,24 +20074,28 @@
 	        }
 	    },
 	    initialize: function initialize() {
-	        this.listenTo(this, 'change:is_block', this.onChangePenalty);
+	        this.listenTo(this, 'change:isBlock', this.onChangeBlock);
 	    },
-	    onChangePenalty: function onChangePenalty(model, id_topic) {
+	    update: function update() {
+	        var _this = this;
 	
-	        if (model.get("isBlock") == 0) {
-	            common.api.blockTopic(id_topic).done(function (data) {
-	                console.log(id_topic);
-	            }).fail(function (err) {
-	                console.log(err.text);
+	        common.api.getUserGames().done(function (data) {
+	            _this.parse(data);
+	        });
+	    },
+	    onChangeBlock: function onChangeBlock(model, isBlock) {
+	        var _this2 = this;
+	
+	        if (isBlock) {
+	            common.api.blockTopic(model.get('id')).fail(function (err) {
+	                new infoModal({ message: err.text }).showModal();
+	                _this2.update();
 	            });
-	            model.attributes.isBlock = 1;
 	        } else {
-	            common.api.unblockTopic(id_topic).done(function (data) {
-	                console.log(id_topic);
-	            }).fail(function (err) {
-	                console.log(err.text);
+	            common.api.unblockTopic(model.get('id')).fail(function (err) {
+	                new infoModal({ message: err.text }).showModal();
+	                _this2.update();
 	            });
-	            model.attributes.isBlock = 0;
 	        }
 	    }
 	});
@@ -20111,7 +20119,7 @@
 	        t_is_free: 1,
 	        t_android_product_id: null,
 	        t_ios_product_id: null,
-	        isBlock: 0
+	        isBlock: false
 	    }
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
@@ -21319,25 +21327,7 @@
 /* 226 */,
 /* 227 */,
 /* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, $) {'use strict';
@@ -21346,13 +21336,13 @@
 	    value: true
 	});
 	
-	var _AppLayout = __webpack_require__(248);
+	var _AppLayout = __webpack_require__(230);
 	
 	var AppLayout = _interopRequireDefault(_AppLayout).default;
 	
-	__webpack_require__(262);
+	__webpack_require__(244);
 	
-	var _selectTopicModal = __webpack_require__(266);
+	var _selectTopicModal = __webpack_require__(248);
 	
 	var selectTopicModal = _interopRequireDefault(_selectTopicModal).default;
 	
@@ -21360,95 +21350,95 @@
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _indexPage = __webpack_require__(271);
+	var _indexPage = __webpack_require__(253);
 	
 	var indexPage = _interopRequireDefault(_indexPage).default;
 	
-	var _gamesPage = __webpack_require__(280);
+	var _gamesPage = __webpack_require__(262);
 	
 	var gamesPage = _interopRequireDefault(_gamesPage).default;
 	
-	var _settingsPage = __webpack_require__(290);
+	var _settingsPage = __webpack_require__(272);
 	
 	var settingsPage = _interopRequireDefault(_settingsPage).default;
 	
-	var _changeAvatarPage = __webpack_require__(298);
+	var _changeAvatarPage = __webpack_require__(280);
 	
 	var changeAvatarPage = _interopRequireDefault(_changeAvatarPage).default;
 	
-	var _newGamePage = __webpack_require__(306);
+	var _newGamePage = __webpack_require__(288);
 	
 	var newGamePage = _interopRequireDefault(_newGamePage).default;
 	
-	var _searchUserPage = __webpack_require__(318);
+	var _searchUserPage = __webpack_require__(300);
 	
 	var searchUserPage = _interopRequireDefault(_searchUserPage).default;
 	
-	var _last20gamesPage = __webpack_require__(323);
+	var _last20gamesPage = __webpack_require__(305);
 	
 	var last20gamesPage = _interopRequireDefault(_last20gamesPage).default;
 	
-	var _gamePage = __webpack_require__(327);
+	var _gamePage = __webpack_require__(309);
 	
 	var gamePage = _interopRequireDefault(_gamePage).default;
 	
-	var _profilePage = __webpack_require__(331);
+	var _profilePage = __webpack_require__(313);
 	
 	var profilePage = _interopRequireDefault(_profilePage).default;
 	
-	var _gameResultPage = __webpack_require__(339);
+	var _gameResultPage = __webpack_require__(321);
 	
 	var gameResultPage = _interopRequireDefault(_gameResultPage).default;
 	
-	var _questionsPage = __webpack_require__(343);
+	var _questionsPage = __webpack_require__(325);
 	
 	var questionsPage = _interopRequireDefault(_questionsPage).default;
 	
-	var _blackListPage = __webpack_require__(354);
+	var _blackListPage = __webpack_require__(336);
 	
 	var blackListPage = _interopRequireDefault(_blackListPage).default;
 	
-	var _settingsPageAcc = __webpack_require__(358);
+	var _settingsPageAcc = __webpack_require__(340);
 	
 	var accountSettingPage = _interopRequireDefault(_settingsPageAcc).default;
 	
-	var _statisticsPage = __webpack_require__(366);
+	var _statisticsPage = __webpack_require__(348);
 	
 	var statisticsPage = _interopRequireDefault(_statisticsPage).default;
 	
-	var _playerRankingsPage = __webpack_require__(370);
+	var _playerRankingsPage = __webpack_require__(352);
 	
 	var playerRankingsPage = _interopRequireDefault(_playerRankingsPage).default;
 	
-	var _authPage = __webpack_require__(374);
+	var _authPage = __webpack_require__(356);
 	
 	var authPage = _interopRequireDefault(_authPage).default;
 	
-	var _registrationPage = __webpack_require__(380);
+	var _registrationPage = __webpack_require__(362);
 	
 	var registrationPage = _interopRequireDefault(_registrationPage).default;
 	
-	var _blockTopicsPage = __webpack_require__(384);
+	var _blockTopicsPage = __webpack_require__(366);
 	
 	var blockTopicsPage = _interopRequireDefault(_blockTopicsPage).default;
 	
-	var _signinPage = __webpack_require__(389);
+	var _signinPage = __webpack_require__(373);
 	
 	var signinPage = _interopRequireDefault(_signinPage).default;
 	
-	var _neighborsPage = __webpack_require__(393);
+	var _neighborsPage = __webpack_require__(377);
 	
 	var neighborsPage = _interopRequireDefault(_neighborsPage).default;
 	
-	var _restorePasswordPage = __webpack_require__(397);
+	var _restorePasswordPage = __webpack_require__(381);
 	
 	var restorePasswordPage = _interopRequireDefault(_restorePasswordPage).default;
 	
-	var _profileDetailPage = __webpack_require__(401);
+	var _profileDetailPage = __webpack_require__(385);
 	
 	var profileDetailPage = _interopRequireDefault(_profileDetailPage).default;
 	
-	var _questionCollection = __webpack_require__(352);
+	var _questionCollection = __webpack_require__(334);
 	
 	var questionCollection = _interopRequireDefault(_questionCollection).default;
 	
@@ -21623,7 +21613,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 248 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, $) {'use strict';
@@ -21632,11 +21622,11 @@
 	    value: true
 	});
 	
-	var _AppLayout = __webpack_require__(249);
+	var _AppLayout = __webpack_require__(231);
 	
 	var template = _interopRequireDefault(_AppLayout).default;
 	
-	var _headerWidget = __webpack_require__(250);
+	var _headerWidget = __webpack_require__(232);
 	
 	var headerWidget = _interopRequireDefault(_headerWidget).default;
 	
@@ -21712,7 +21702,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 249 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -21726,7 +21716,7 @@
 	}
 
 /***/ },
-/* 250 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Epoxy, common) {'use strict';
@@ -21735,11 +21725,11 @@
 	    value: true
 	});
 	
-	var _headerWidget = __webpack_require__(251);
+	var _headerWidget = __webpack_require__(233);
 	
 	var template = _interopRequireDefault(_headerWidget).default;
 	
-	__webpack_require__(252);
+	__webpack_require__(234);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21789,7 +21779,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(25), __webpack_require__(10)))
 
 /***/ },
-/* 251 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -21803,31 +21793,31 @@
 	}
 
 /***/ },
-/* 252 */
+/* 234 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Marionette, common) {'use strict';
@@ -21840,33 +21830,53 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _selectTopicModal = __webpack_require__(267);
+	var _selectTopicModal = __webpack_require__(249);
 	
 	var template = _interopRequireDefault(_selectTopicModal).default;
 	
-	__webpack_require__(268);
+	__webpack_require__(250);
 	
-	var _topicItem = __webpack_require__(270);
+	var _topicItem = __webpack_require__(252);
 	
 	var topicTemplate = _interopRequireDefault(_topicItem).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var TopicItemView = MarionetteEpoxy.View.extend({
-	    className: 'collection-item',
+	    className: 'line',
 	    template: topicTemplate,
 	    events: {
 	        'click .btn': 'onClickEl'
+	    },
+	    bindings: {
+	        ':el': 'classes: {hide: isBlock}'
+	    },
+	    initialize: function initialize() {
+	        this.epoxify();
 	    },
 	    onClickEl: function onClickEl() {
 	        this.trigger('select:item', this.model);
 	    }
 	});
+	var TopicBlockItemView = MarionetteEpoxy.View.extend({
+	    className: 'line',
+	    template: topicTemplate,
+	    bindings: {
+	        ':el': 'classes: {hide: not(isBlock)}',
+	        '[data-js-topic-item]': 'classes: {blocked: isBlock}'
+	    },
+	    events: {
+	        'click [data-js-topic-item]': 'onCLickItem'
+	    },
+	    initialize: function initialize() {
+	        this.epoxify();
+	    },
+	    onCLickItem: function onCLickItem() {
+	        this.trigger('select:item', this.model);
+	    }
+	});
 	
 	var TopicCollectionView = Marionette.CollectionView.extend({
-	    tagName: 'ul',
-	    className: 'collection',
-	    childView: TopicItemView,
 	    childEvents: {
 	        'select:item': 'onSelectTopic'
 	    },
@@ -21880,26 +21890,38 @@
 	    className: 'select-topic-modal full-modal',
 	
 	    regions: {
-	        topicContainer: '[data-js-topic-container]'
+	        topicContainer: '[data-js-topic-container]',
+	        topicBlockContainer: '[data-js-topic-blocked-container]'
 	    },
 	
 	    initialize: function initialize() {
 	        this.topicCollectionView = new TopicCollectionView({
+	            childView: TopicItemView,
 	            collection: common.topicCollection
 	        });
 	        this.listenTo(this.topicCollectionView, 'select:item', this.onSelectTopic);
+	        this.topicBlockCollectionView = new TopicCollectionView({
+	            childView: TopicBlockItemView,
+	            collection: common.topicCollection
+	        });
+	        this.listenTo(this.topicBlockCollectionView, 'select:item', this.onSelectBlockTopic);
 	    },
 	    onRender: function onRender() {
 	        this.topicContainer.show(this.topicCollectionView);
+	        this.topicBlockContainer.show(this.topicBlockCollectionView);
 	    },
 	    onSelectTopic: function onSelectTopic(topic) {
 	        this.ok(topic);
+	    },
+	    onSelectBlockTopic: function onSelectBlockTopic() {
+	        this.cancel();
+	        common.router.navigate('blockTopics');
 	    }
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(4), __webpack_require__(10)))
 
 /***/ },
-/* 267 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -21909,18 +21931,18 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Выберите тему</h3></div><div data-js-topic-container></div></div></div></div></div></div></div>");;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Выберите тему</h3></div><div data-js-topic-container></div><br><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Заблокированные темы</h3></div><div data-js-topic-blocked-container></div></div></div></div></div></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 268 */
+/* 250 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 269 */,
-/* 270 */
+/* 251 */,
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -21930,11 +21952,11 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (t_name) {
-	buf.push("<div class=\"line\"><div class=\"btn col-xs-12\">" + (jade.escape((jade_interp = t_name) == null ? '' : jade_interp)) + "<div class=\"btn-arrow\"></div></div></div>");}.call(this,"t_name" in locals_for_with?locals_for_with.t_name:typeof t_name!=="undefined"?t_name:undefined));;return buf.join("");
+	buf.push("<div data-js-topic-item class=\"btn col-xs-12\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><span>" + (jade.escape((jade_interp = t_name) == null ? '' : jade_interp)) + "</span></div></div><div class=\"btn-arrow\"></div></div>");}.call(this,"t_name" in locals_for_with?locals_for_with.t_name:typeof t_name!=="undefined"?t_name:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 271 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, Epoxy) {'use strict';
@@ -21943,13 +21965,13 @@
 	    value: true
 	});
 	
-	var _indexPage = __webpack_require__(272);
+	var _indexPage = __webpack_require__(254);
 	
 	var template = _interopRequireDefault(_indexPage).default;
 	
-	__webpack_require__(273);
+	__webpack_require__(255);
 	
-	var _tipsWidget = __webpack_require__(275);
+	var _tipsWidget = __webpack_require__(257);
 	
 	var tipsWidget = _interopRequireDefault(_tipsWidget).default;
 	
@@ -22011,7 +22033,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(25)))
 
 /***/ },
-/* 272 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22025,14 +22047,14 @@
 	}
 
 /***/ },
-/* 273 */
+/* 255 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 274 */,
-/* 275 */
+/* 256 */,
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy) {'use strict';
@@ -22041,11 +22063,11 @@
 	    value: true
 	});
 	
-	var _tipsWidget = __webpack_require__(276);
+	var _tipsWidget = __webpack_require__(258);
 	
 	var template = _interopRequireDefault(_tipsWidget).default;
 	
-	__webpack_require__(277);
+	__webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22060,7 +22082,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)))
 
 /***/ },
-/* 276 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22074,15 +22096,15 @@
 	}
 
 /***/ },
-/* 277 */
+/* 259 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 278 */,
-/* 279 */,
-/* 280 */
+/* 260 */,
+/* 261 */,
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Backbone, _, common) {'use strict';
@@ -22091,21 +22113,21 @@
 	    value: true
 	});
 	
-	var _gamesPage = __webpack_require__(281);
+	var _gamesPage = __webpack_require__(263);
 	
 	var template = _interopRequireDefault(_gamesPage).default;
 	
-	__webpack_require__(282);
+	__webpack_require__(264);
 	
-	var _userGameItem = __webpack_require__(284);
+	var _userGameItem = __webpack_require__(266);
 	
 	var userGameTemplate = _interopRequireDefault(_userGameItem).default;
 	
-	var _userGameCollection = __webpack_require__(285);
+	var _userGameCollection = __webpack_require__(267);
 	
 	var userGameCollection = _interopRequireDefault(_userGameCollection).default;
 	
-	var _answerModal = __webpack_require__(286);
+	var _answerModal = __webpack_require__(268);
 	
 	var answerModal = _interopRequireDefault(_answerModal).default;
 	
@@ -22263,7 +22285,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(5), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 281 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22277,14 +22299,14 @@
 	}
 
 /***/ },
-/* 282 */
+/* 264 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 283 */,
-/* 284 */
+/* 265 */,
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22298,7 +22320,7 @@
 	}
 
 /***/ },
-/* 285 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22317,7 +22339,7 @@
 	}
 
 /***/ },
-/* 286 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22330,11 +22352,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _answerModal = __webpack_require__(287);
+	var _answerModal = __webpack_require__(269);
 	
 	var template = _interopRequireDefault(_answerModal).default;
 	
-	__webpack_require__(288);
+	__webpack_require__(270);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22371,7 +22393,7 @@
 	});
 
 /***/ },
-/* 287 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22385,14 +22407,14 @@
 	}
 
 /***/ },
-/* 288 */
+/* 270 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 289 */,
-/* 290 */
+/* 271 */,
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -22401,15 +22423,15 @@
 	    value: true
 	});
 	
-	var _buyModal = __webpack_require__(291);
+	var _buyModal = __webpack_require__(273);
 	
 	var buyModal = _interopRequireDefault(_buyModal).default;
 	
-	var _settingsPage = __webpack_require__(295);
+	var _settingsPage = __webpack_require__(277);
 	
 	var template = _interopRequireDefault(_settingsPage).default;
 	
-	__webpack_require__(296);
+	__webpack_require__(278);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22459,7 +22481,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 291 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22472,11 +22494,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _buyModal = __webpack_require__(292);
+	var _buyModal = __webpack_require__(274);
 	
 	var template = _interopRequireDefault(_buyModal).default;
 	
-	__webpack_require__(293);
+	__webpack_require__(275);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22503,7 +22525,7 @@
 	});
 
 /***/ },
-/* 292 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22517,14 +22539,14 @@
 	}
 
 /***/ },
-/* 293 */
+/* 275 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 294 */,
-/* 295 */
+/* 276 */,
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22538,14 +22560,14 @@
 	}
 
 /***/ },
-/* 296 */
+/* 278 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 297 */,
-/* 298 */
+/* 279 */,
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, $) {'use strict';
@@ -22554,11 +22576,11 @@
 	    value: true
 	});
 	
-	var _changeAvatarPage = __webpack_require__(299);
+	var _changeAvatarPage = __webpack_require__(281);
 	
 	var template = _interopRequireDefault(_changeAvatarPage).default;
 	
-	__webpack_require__(300);
+	__webpack_require__(282);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22622,7 +22644,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 299 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22646,18 +22668,18 @@
 	}
 
 /***/ },
-/* 300 */
+/* 282 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -22666,13 +22688,13 @@
 	    value: true
 	});
 	
-	var _newGamePage = __webpack_require__(307);
+	var _newGamePage = __webpack_require__(289);
 	
 	var template = _interopRequireDefault(_newGamePage).default;
 	
-	__webpack_require__(308);
+	__webpack_require__(290);
 	
-	var _userWidget = __webpack_require__(310);
+	var _userWidget = __webpack_require__(292);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -22727,7 +22749,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 307 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22741,14 +22763,14 @@
 	}
 
 /***/ },
-/* 308 */
+/* 290 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 309 */,
-/* 310 */
+/* 291 */,
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -22757,11 +22779,11 @@
 	    value: true
 	});
 	
-	var _userWidget = __webpack_require__(311);
+	var _userWidget = __webpack_require__(293);
 	
 	var template = _interopRequireDefault(_userWidget).default;
 	
-	__webpack_require__(312);
+	__webpack_require__(294);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22816,7 +22838,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 311 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22830,18 +22852,18 @@
 	}
 
 /***/ },
-/* 312 */
+/* 294 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, _, common, $) {'use strict';
@@ -22850,17 +22872,17 @@
 	    value: true
 	});
 	
-	var _searchUserPage = __webpack_require__(319);
+	var _searchUserPage = __webpack_require__(301);
 	
 	var template = _interopRequireDefault(_searchUserPage).default;
 	
-	__webpack_require__(320);
+	__webpack_require__(302);
 	
-	var _userWidget = __webpack_require__(310);
+	var _userWidget = __webpack_require__(292);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
-	var _rivalCollection = __webpack_require__(322);
+	var _rivalCollection = __webpack_require__(304);
 	
 	var rivalCollection = _interopRequireDefault(_rivalCollection).default;
 	
@@ -22910,7 +22932,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(6), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 319 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -22924,14 +22946,14 @@
 	}
 
 /***/ },
-/* 320 */
+/* 302 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 321 */,
-/* 322 */
+/* 303 */,
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, common, _) {'use strict';
@@ -22996,7 +23018,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 323 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -23005,13 +23027,13 @@
 	    value: true
 	});
 	
-	var _last20GamesPage = __webpack_require__(324);
+	var _last20GamesPage = __webpack_require__(306);
 	
 	var template = _interopRequireDefault(_last20GamesPage).default;
 	
-	__webpack_require__(325);
+	__webpack_require__(307);
 	
-	var _userWidget = __webpack_require__(310);
+	var _userWidget = __webpack_require__(292);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -23047,7 +23069,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 324 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -23061,14 +23083,14 @@
 	}
 
 /***/ },
-/* 325 */
+/* 307 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 326 */,
-/* 327 */
+/* 308 */,
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -23077,11 +23099,11 @@
 	    value: true
 	});
 	
-	var _gamePage = __webpack_require__(328);
+	var _gamePage = __webpack_require__(310);
 	
 	var template = _interopRequireDefault(_gamePage).default;
 	
-	__webpack_require__(329);
+	__webpack_require__(311);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -23228,7 +23250,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 328 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -23242,14 +23264,14 @@
 	}
 
 /***/ },
-/* 329 */
+/* 311 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 330 */,
-/* 331 */
+/* 312 */,
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -23258,11 +23280,11 @@
 	    value: true
 	});
 	
-	var _profilePage = __webpack_require__(332);
+	var _profilePage = __webpack_require__(314);
 	
 	var template = _interopRequireDefault(_profilePage).default;
 	
-	__webpack_require__(333);
+	__webpack_require__(315);
 	
 	var _personModel = __webpack_require__(43);
 	
@@ -23352,7 +23374,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 332 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -23366,18 +23388,18 @@
 	}
 
 /***/ },
-/* 333 */
+/* 315 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -23386,11 +23408,11 @@
 	    value: true
 	});
 	
-	var _gameResultPage = __webpack_require__(340);
+	var _gameResultPage = __webpack_require__(322);
 	
 	var template = _interopRequireDefault(_gameResultPage).default;
 	
-	__webpack_require__(341);
+	__webpack_require__(323);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -23480,7 +23502,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 340 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -23494,14 +23516,14 @@
 	}
 
 /***/ },
-/* 341 */
+/* 323 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 342 */,
-/* 343 */
+/* 324 */,
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, _) {'use strict';
@@ -23510,29 +23532,29 @@
 	    value: true
 	});
 	
-	var _questionsPage = __webpack_require__(344);
+	var _questionsPage = __webpack_require__(326);
 	
 	var template = _interopRequireDefault(_questionsPage).default;
 	
-	__webpack_require__(345);
+	__webpack_require__(327);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _questionWidget = __webpack_require__(347);
+	var _questionWidget = __webpack_require__(329);
 	
 	var questionWidget = _interopRequireDefault(_questionWidget).default;
 	
-	var _questionCollection = __webpack_require__(352);
+	var _questionCollection = __webpack_require__(334);
 	
 	var QuestionCollection = _interopRequireDefault(_questionCollection).default;
 	
-	var _selectTopicModal = __webpack_require__(266);
+	var _selectTopicModal = __webpack_require__(248);
 	
 	var selectTopicModal = _interopRequireDefault(_selectTopicModal).default;
 	
-	var _tipsWidget = __webpack_require__(275);
+	var _tipsWidget = __webpack_require__(257);
 	
 	var tipsWidget = _interopRequireDefault(_tipsWidget).default;
 	
@@ -23677,7 +23699,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 344 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -23691,14 +23713,14 @@
 	}
 
 /***/ },
-/* 345 */
+/* 327 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 346 */,
-/* 347 */
+/* 328 */,
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, $) {'use strict';
@@ -23707,11 +23729,11 @@
 	    value: true
 	});
 	
-	var _questionWidget = __webpack_require__(348);
+	var _questionWidget = __webpack_require__(330);
 	
 	var template = _interopRequireDefault(_questionWidget).default;
 	
-	__webpack_require__(349);
+	__webpack_require__(331);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -23790,7 +23812,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(7)))
 
 /***/ },
-/* 348 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -23874,15 +23896,15 @@
 	}
 
 /***/ },
-/* 349 */
+/* 331 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 350 */,
-/* 351 */,
-/* 352 */
+/* 332 */,
+/* 333 */,
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _) {'use strict';
@@ -23891,7 +23913,7 @@
 	    value: true
 	});
 	
-	var _questionModel = __webpack_require__(353);
+	var _questionModel = __webpack_require__(335);
 	
 	var questionModel = _interopRequireDefault(_questionModel).default;
 	
@@ -23915,7 +23937,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)))
 
 /***/ },
-/* 353 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -23949,7 +23971,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 354 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -23958,13 +23980,13 @@
 	    value: true
 	});
 	
-	var _blackListPage = __webpack_require__(355);
+	var _blackListPage = __webpack_require__(337);
 	
 	var template = _interopRequireDefault(_blackListPage).default;
 	
-	__webpack_require__(356);
+	__webpack_require__(338);
 	
-	var _userWidget = __webpack_require__(310);
+	var _userWidget = __webpack_require__(292);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -24001,7 +24023,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 355 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24015,14 +24037,14 @@
 	}
 
 /***/ },
-/* 356 */
+/* 338 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 357 */,
-/* 358 */
+/* 339 */,
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, $) {'use strict';
@@ -24031,17 +24053,17 @@
 	    value: true
 	});
 	
-	var _settingsPageAcc = __webpack_require__(359);
+	var _settingsPageAcc = __webpack_require__(341);
 	
 	var template = _interopRequireDefault(_settingsPageAcc).default;
 	
-	__webpack_require__(360);
+	__webpack_require__(342);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _enterPasswordModal = __webpack_require__(362);
+	var _enterPasswordModal = __webpack_require__(344);
 	
 	var enterPasswordModal = _interopRequireDefault(_enterPasswordModal).default;
 	
@@ -24159,7 +24181,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 359 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24173,14 +24195,14 @@
 	}
 
 /***/ },
-/* 360 */
+/* 342 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 361 */,
-/* 362 */
+/* 343 */,
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24193,11 +24215,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _enterPasswordModal = __webpack_require__(363);
+	var _enterPasswordModal = __webpack_require__(345);
 	
 	var template = _interopRequireDefault(_enterPasswordModal).default;
 	
-	__webpack_require__(364);
+	__webpack_require__(346);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24237,7 +24259,7 @@
 	});
 
 /***/ },
-/* 363 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24251,14 +24273,14 @@
 	}
 
 /***/ },
-/* 364 */
+/* 346 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 365 */,
-/* 366 */
+/* 347 */,
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24267,11 +24289,11 @@
 	    value: true
 	});
 	
-	var _statisticsPage = __webpack_require__(367);
+	var _statisticsPage = __webpack_require__(349);
 	
 	var template = _interopRequireDefault(_statisticsPage).default;
 	
-	__webpack_require__(368);
+	__webpack_require__(350);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24311,7 +24333,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 367 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24325,14 +24347,14 @@
 	}
 
 /***/ },
-/* 368 */
+/* 350 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 369 */,
-/* 370 */
+/* 351 */,
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -24341,13 +24363,13 @@
 	    value: true
 	});
 	
-	var _playerRankingsPage = __webpack_require__(371);
+	var _playerRankingsPage = __webpack_require__(353);
 	
 	var template = _interopRequireDefault(_playerRankingsPage).default;
 	
-	__webpack_require__(372);
+	__webpack_require__(354);
 	
-	var _userWidget = __webpack_require__(310);
+	var _userWidget = __webpack_require__(292);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -24383,7 +24405,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 371 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24397,14 +24419,14 @@
 	}
 
 /***/ },
-/* 372 */
+/* 354 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 373 */,
-/* 374 */
+/* 355 */,
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24413,11 +24435,11 @@
 	    value: true
 	});
 	
-	var _authPage = __webpack_require__(375);
+	var _authPage = __webpack_require__(357);
 	
 	var template = _interopRequireDefault(_authPage).default;
 	
-	__webpack_require__(376);
+	__webpack_require__(358);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24532,7 +24554,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 375 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24546,16 +24568,16 @@
 	}
 
 /***/ },
-/* 376 */
+/* 358 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24564,11 +24586,11 @@
 	    value: true
 	});
 	
-	var _registrationPage = __webpack_require__(381);
+	var _registrationPage = __webpack_require__(363);
 	
 	var template = _interopRequireDefault(_registrationPage).default;
 	
-	__webpack_require__(382);
+	__webpack_require__(364);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24633,7 +24655,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 381 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24647,14 +24669,14 @@
 	}
 
 /***/ },
-/* 382 */
+/* 364 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 383 */,
-/* 384 */
+/* 365 */,
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24663,13 +24685,13 @@
 	    value: true
 	});
 	
-	var _blockTopicsPage = __webpack_require__(385);
+	var _blockTopicsPage = __webpack_require__(367);
 	
 	var template = _interopRequireDefault(_blockTopicsPage).default;
 	
-	__webpack_require__(386);
+	__webpack_require__(368);
 	
-	var _blockTopicsItem = __webpack_require__(388);
+	var _blockTopicsItem = __webpack_require__(372);
 	
 	var blockTopicsTemplate = _interopRequireDefault(_blockTopicsItem).default;
 	
@@ -24678,44 +24700,32 @@
 	var BlockTopicsItemView = MarionetteEpoxy.View.extend({
 	
 	    template: blockTopicsTemplate,
-	    tagName: 'li',
-	    className: 'blockTopics-item',
+	    className: 'line',
 	    ui: {
-	        removeButton: '[data-js-remove]'
-	    },
-	    bindings: {
-	        '[data-js-block-topics-name]': 'text: t_name'
+	        buttonTopic: '[data-js-topick-item]'
 	    },
 	    events: {
-	        'click [data-js-block-topics-button]': 'onClickBlockTopic'
+	        'click @ui.buttonTopic': 'onClickItem'
+	    },
+	    bindings: {
+	        '@ui.buttonTopic': 'classes: {blocked: isBlock}',
+	        '[data-js-topic-name]': 'text: t_name'
 	    },
 	    initialize: function initialize() {
 	        this.epoxify();
-	        common.headerModel.set({ backPath: 'settings' });
 	    },
-	    onClickBlockTopic: function onClickBlockTopic() {
-	        this.model.set('is_block', this.model.get("id"));
+	    onClickItem: function onClickItem() {
+	        this.model.set({ isBlock: !this.model.get('isBlock') });
 	    }
 	});
 	
 	var BlockTopicsCollectionView = MarionetteEpoxy.CompositeView.extend({
-	    className: '',
-	    childView: BlockTopicsItemView,
-	    childEvents: {
-	        'click:topic': 'onClickTopic'
-	    },
-	    onClickTopic: function onClickTopic(view, topic) {
-	        this.trigger('click:topic', topic);
-	    }
+	    childView: BlockTopicsItemView
 	});
 	
 	exports.default = MarionetteEpoxy.LayoutView.extend({
 	    template: template,
 	    className: 'blockTopics-page page',
-	
-	    ui: {},
-	    events: {},
-	    bindings: {},
 	
 	    regions: {
 	        blockTopicsList: '[data-js-block-topics-list]'
@@ -24723,10 +24733,9 @@
 	
 	    initialize: function initialize() {
 	        this.blockTopicsCollectionView = new BlockTopicsCollectionView({
-	            collection: common.topicCollection,
-	            name: 'Наш ход123'
+	            collection: common.topicCollection
 	        });
-	        this.epoxify();
+	        common.headerModel.set({ backPath: 'settings' });
 	    },
 	    onRender: function onRender() {
 	        this.blockTopicsList.show(this.blockTopicsCollectionView);
@@ -24735,7 +24744,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 385 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24745,18 +24754,20 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"row\"><button class=\"btn col-xs-10 col-xs-offset-1\"><span>Заблокировать тему</span></button></div><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 yellow-text\"><span>Заблокированные темы</span></div></div><div class=\"row\"><ul data-js-block-topics-list class=\"list-container\"></ul></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Блокировка категорий</h3></div><div data-js-block-topics-list></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 386 */
+/* 368 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 387 */,
-/* 388 */
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24766,11 +24777,11 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div data-js-block-topics-button class=\"text-container\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p data-js-block-topics-name>Название категории</p></div></div></div>");;return buf.join("");
+	buf.push("<div data-js-topick-item class=\"btn col-xs-12\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><span data-js-topic-name></span></div></div><div class=\"icon\"></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 389 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24779,11 +24790,11 @@
 	    value: true
 	});
 	
-	var _signinPage = __webpack_require__(390);
+	var _signinPage = __webpack_require__(374);
 	
 	var template = _interopRequireDefault(_signinPage).default;
 	
-	__webpack_require__(391);
+	__webpack_require__(375);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24838,7 +24849,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 390 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24852,14 +24863,14 @@
 	}
 
 /***/ },
-/* 391 */
+/* 375 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 392 */,
-/* 393 */
+/* 376 */,
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -24868,13 +24879,13 @@
 	    value: true
 	});
 	
-	var _neighborsPage = __webpack_require__(394);
+	var _neighborsPage = __webpack_require__(378);
 	
 	var template = _interopRequireDefault(_neighborsPage).default;
 	
-	__webpack_require__(395);
+	__webpack_require__(379);
 	
-	var _userWidget = __webpack_require__(310);
+	var _userWidget = __webpack_require__(292);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -24910,7 +24921,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 394 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -24924,14 +24935,14 @@
 	}
 
 /***/ },
-/* 395 */
+/* 379 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 396 */,
-/* 397 */
+/* 380 */,
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24940,11 +24951,11 @@
 	  value: true
 	});
 	
-	var _restorePasswordPage = __webpack_require__(398);
+	var _restorePasswordPage = __webpack_require__(382);
 	
 	var template = _interopRequireDefault(_restorePasswordPage).default;
 	
-	__webpack_require__(399);
+	__webpack_require__(383);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -25005,7 +25016,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 398 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(20);
@@ -25019,14 +25030,14 @@
 	}
 
 /***/ },
-/* 399 */
+/* 383 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 400 */,
-/* 401 */
+/* 384 */,
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -25035,11 +25046,11 @@
 	    value: true
 	});
 	
-	var _profileDetailPage = __webpack_require__(402);
+	var _profileDetailPage = __webpack_require__(386);
 	
 	var template = _interopRequireDefault(_profileDetailPage).default;
 	
-	__webpack_require__(403);
+	__webpack_require__(387);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -25065,7 +25076,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(10)))
 
 /***/ },
-/* 402 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(common) {var jade = __webpack_require__(20);
@@ -25107,14 +25118,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ },
-/* 403 */
+/* 387 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 404 */,
-/* 405 */
+/* 388 */,
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, Backbone) {'use strict';
@@ -25163,7 +25174,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(5)))
 
 /***/ },
-/* 406 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, _, $, Backbone) {'use strict';
@@ -25248,4 +25259,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.eb89c15897394d95d970.js.map
+//# sourceMappingURL=application.7cade4b8240506da5981.js.map
