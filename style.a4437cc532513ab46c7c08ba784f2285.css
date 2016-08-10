@@ -50,6 +50,9 @@
   width: 100%;
   padding: 20px 0; }
 /*  COLORS */
+.info-modal p {
+  line-height: 21px;
+  padding-bottom: 10px; }
 /*  COLORS */
 .round-widget {
   height: 52px; }
@@ -2591,4 +2594,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.043d6ee1c311b755f72ee529563e88a6.css.map*/
+/*# sourceMappingURL=style.a4437cc532513ab46c7c08ba784f2285.css.map*/

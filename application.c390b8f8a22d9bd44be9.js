@@ -19594,7 +19594,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (message) {
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"line\"><p class=\"col-xs-12\">" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</p></div><div class=\"line\"><div data-js-ok class=\"btn col-xs-4 col-xs-offset-8\">ok</div></div></div></div></div></div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"row\"><p class=\"col-xs-12\">" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</p></div><div class=\"row\"><div data-js-ok class=\"btn col-xs-4 col-xs-offset-8\">ok</div></div></div></div></div></div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -20837,7 +20837,7 @@
 	        u_number_rate: 0,
 	        u_tname: '',
 	        u_surname: '',
-	        topics_answers: {}
+	        topics_answers: ''
 	    },
 	    computeds: {
 	        avatar: {
@@ -23434,6 +23434,7 @@
 	
 	    bindings: {
 	        '[data-js-user-avatar]': 'setAttr: avatar',
+	        '[data-js-profile-detail]': 'classes: {disabled: not(topics_answers)}',
 	        '[data-js-profile-rate]': 'text: u_rate',
 	        '[data-js-profile-win]': 'text: u_win',
 	        '[data-js-profile-ratePos]': 'text: u_number_rate',
@@ -23587,7 +23588,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (parseInt, topics_answers, undefined) {
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"line text-center\"><div data-js-user-avatar data-user-icon-status=\"1\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div></div><div class=\"line\"><p data-js-profile-login class=\"text-center yellow-text user-name\">Логин</p></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Награды</h3></div></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Категория(% правильных ответов)</h3></div></div>");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"line text-center\"><div data-js-user-avatar data-user-icon-status=\"1\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div></div><div class=\"line\"><p data-js-profile-login class=\"text-center yellow-text user-name\">Логин</p></div><!--.line--><!--  .col-xs-12--><!--    h3.text-header.yellow-text Награды--><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Категория(% правильных ответов)</h3></div></div>");
 	// iterate topics_answers
 	;(function(){
 	  var $$obj = topics_answers;
@@ -28095,4 +28096,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.7c0036ad96e4fc79a19a.js.map
+//# sourceMappingURL=application.c390b8f8a22d9bd44be9.js.map
