@@ -2245,6 +2245,39 @@ li.user-widget {
     width: 60px;
     height: 60px; } }
 /*  COLORS */
+.person-info-modal .user-icon {
+  display: inline-block;
+  width: 55px;
+  height: 55px; }
+
+.person-info-modal .user-name {
+  font-size: 19px;
+  line-height: 28px;
+  margin-top: -6px; }
+
+.person-info-modal p {
+  color: white;
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 2px; }
+  .person-info-modal p span {
+    position: absolute;
+    right: 0; }
+
+.person-info-modal .progress-bar {
+  position: relative;
+  height: 12px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5); }
+
+.person-info-modal .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 5px;
+  background: rgba(36, 171, 125, 0.9); }
+/*  COLORS */
 .game-result-page .main-block {
   position: relative; }
 
@@ -2481,84 +2514,81 @@ li.user-widget {
   bottom: 0;
   position: absolute; }
 /*  COLORS */
-.profileDetail-page .profileDetail-center {
-  text-align: center; }
+.chatWidget {
+  width: 100%;
+  height: 100%;
+  display: table; }
+  .chatWidget .messages {
+    display: table-row;
+    height: 100%;
+    padding-top: 39px; }
+    .chatWidget .messages .message-collection {
+      height: 100%;
+      overflow: auto;
+      padding-right: 20px;
+      padding-left: 20px; }
+      .chatWidget .messages .message-collection li {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: end;
+            align-items: flex-end;
+        margin-bottom: 4px; }
+        .chatWidget .messages .message-collection li.left {
+          -ms-flex-direction: row;
+              flex-direction: row; }
+        .chatWidget .messages .message-collection li.right {
+          -ms-flex-direction: row-reverse;
+              flex-direction: row-reverse; }
+        .chatWidget .messages .message-collection li:first-child {
+          margin-top: 39px; }
+        .chatWidget .messages .message-collection li .avatar img {
+          max-width: 26px; }
+        .chatWidget .messages .message-collection li .msg {
+          max-width: 66%;
+          border-style: solid;
+          margin: -1px 17.5px -6.5px; }
+          .chatWidget .messages .message-collection li .msg .name {
+            margin: -5px -4px 0;
+            font-size: 6.66px; }
+            .chatWidget .messages .message-collection li .msg .name.self {
+              color: #bbbb83; }
+          .chatWidget .messages .message-collection li .msg .text {
+            margin: 3px 5px -8px;
+            font-size: 8px;
+            line-height: 1.17;
+            color: #373737;
+            white-space: pre; }
+        .chatWidget .messages .message-collection li.left .msg {
+          border-width: 8px 12px 19px 18px;
+          border-image: url(images/msg-bg-grey.8cc3d1.png) 16 24 38 36 fill stretch; }
+        .chatWidget .messages .message-collection li.right .msg {
+          border-width: 8px 18px 19px 12px;
+          border-image: url(images/msg-bg-green.5221e3.png) 16 36 38 24 fill stretch;
+          text-align: right; }
+  .chatWidget .editor {
+    display: table-row;
+    height: 0;
+    border: 1px solid #909191;
+    background-color: #e8e8e8; }
+    .chatWidget .editor .input-group {
+      display: -ms-flexbox;
+      display: flex;
+      padding: 11px 20px 7px; }
+      .chatWidget .editor .input-group .form-control {
+        height: 25px;
+        border: 1px solid #c3c3c3;
+        border-radius: 4px;
+        -ms-flex: 1;
+            flex: 1; }
+      .chatWidget .editor .input-group .send {
+        height: 25px;
+        width: 25px;
+        border: none;
+        padding: 0;
+        background: url(images/btn-send.cb7740.png) no-repeat center;
+        background-size: 23px 23px;
+        margin-left: 16px; }
+        .chatWidget .editor .input-group .send.touchHover {
+          background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-.profileDetail-page .b {
-  font-weight: bold; }
-
-.profileDetail-page .icon {
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 50px;
-  width: 50px;
-  margin: auto; }
-
-.profileDetail-page .win-icon {
-  background-size: 100% 100%; }
-
-.profileDetail-page .all_game-icon {
-  background-size: 100% 100%; }
-
-.profileDetail-page .score-icon {
-  background-size: 100% 100%; }
-
-.profileDetail-page .position-icon {
-  background-size: 100% 100%; }
-
-.profileDetail-page .sub-text {
-  font-size: 10px;
-  color: #909090; }
-
-.profileDetail-page .score-text {
-  font-size: 18px; }
-
-.profileDetail-page .avatar-icon {
-  background-size: 100% 100%; }
-
-.profileDetail-page .padding0 {
-  padding-left: 0px;
-  padding-right: 0px; }
-
-.profileDetail-page .padding5 {
-  padding-left: 7px;
-  padding-right: 7px; }
-
-.profileDetail-page .topic {
-  border-top: 1px solid black; }
-
-.profileDetail-page span {
-  font-size: 100%; }
-
-.profileDetail-page .right {
-  float: right;
-  white-space: nowrap; }
-
-.profileDetail-page .left {
-  float: left;
-  white-space: nowrap; }
-
-.profileDetail-page .progress-bar {
-  background-color: #1a1a1a;
-  height: 15px;
-  border-radius: 15px;
-  box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444; }
-
-.profileDetail-page .progress-bar span {
-  display: inline-block;
-  height: 15px;
-  border-radius: 15px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-  transition: width .4s ease-in-out; }
-
-.profileDetail-page .blue span {
-  background-color: #34c2e3; }
-
-.profileDetail-page .green span {
-  background-color: #359035;
-  background-image: linear-gradient(top, #a5df41, #4ca916); }
-
-.profileDetail-page .shine span {
-  position: relative; }
-
-/*# sourceMappingURL=style.ec957846119b331e4e8fb24574283f0f.css.map*/
+/*# sourceMappingURL=style.043d6ee1c311b755f72ee529563e88a6.css.map*/

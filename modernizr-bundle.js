@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.3.1
- * Build http://modernizr.com/download?-csstransforms-touchevents-setclasses-dontmin
+ * Build http://modernizr.com/download?-borderimage-csstransforms-touchevents-setclasses-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -915,6 +915,19 @@ This test will also return `true` for Firefox 4 Multitouch support.
     return navigator.userAgent.indexOf('Android 2.') === -1 &&
            testAllProps('transform', 'scale(1)', true);
   });
+
+/*!
+{
+  "name": "Border Image",
+  "property": "borderimage",
+  "caniuse": "border-image",
+  "polyfills": ["css3pie"],
+   "knownBugs": ["Android < 2.0 is true, but has a broken implementation"],
+  "tags": ["css"]
+}
+!*/
+
+  Modernizr.addTest('borderimage', testAllProps('borderImage', 'url() 1', true));
 
 
   // Run each test
