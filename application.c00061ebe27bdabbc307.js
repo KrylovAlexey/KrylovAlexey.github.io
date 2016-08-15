@@ -91,12 +91,14 @@
 	// for development
 	window.common = common;
 	
-	app.addInitializer(function (options) {
-	    document.addEventListener("deviceready", onDeviceReady, false);
-	    function onDeviceReady() {
+	app.on("start", function () {
+	    common.user.init();
+	    Backbone.history.start({ pushState: false });
+	});
 	
-	        //  Надо вставить эту строчку, когда приходит пуш нотификация о новой игре
-	        // common.userGameCollection.updateGames();
+	if (window.cordova) {
+	    var onDeviceReady = function onDeviceReady() {
+	        console.log('deviceready', window.cordova);
 	
 	        if (window.cordova.platformId == "browser") {
 	            facebookConnectPlugin.browserInit("1761962527353026");
@@ -114,16 +116,20 @@
 	            });
 	
 	            push.on('registration', function (data) {
-	                console.log(data);
+	                console.log('PushNotification on registration', data);
+	                common.storageModel.set(String(window.cordova.platformId) + 'PushId', data.registrationId);
 	            });
 	
 	            push.on('notification', function (data) {
-	                console.log(data);
+	                console.log('PushNotification on notification', data);
 	                new infoModal({ message: "Push notification: " + _JSON$stringify(data) }).showModal();
+	
+	                //  Надо вставить эту строчку, когда приходит пуш нотификация о новой игре
+	                // common.userGameCollection.updateGames();
 	            });
 	
 	            push.on('error', function (error) {
-	                console.log(error);
+	                console.log('PushNotification on error', data);
 	                new infoModal({ message: "Push notifications error: " + _JSON$stringify(error) }).showModal();
 	            });
 	
@@ -134,16 +140,15 @@
 	                console.log(error);
 	                new infoModal({ message: "SocialVk init error: " + _JSON$stringify(error) }).showModal();
 	            });
+	
+	            app.start();
 	        }
-	    }
-	});
+	    };
 	
-	app.on("start", function () {
-	    common.user.init();
-	    Backbone.history.start({ pushState: false });
-	});
-	
-	app.start();
+	    document.addEventListener("deviceready", onDeviceReady, false);
+	} else {
+	    app.start();
+	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10), __webpack_require__(5)))
 
 /***/ },
@@ -17742,6 +17747,13 @@
 	    if (common.storageModel.get('authDeviceId')) {
 	        data.auth_device_id = common.storageModel.get('authDeviceId');
 	    }
+	    if (common.storageModel.get('androidDeviceId')) {
+	        data.android_device_id = common.storageModel.get('androidDeviceId');
+	    }
+	    if (common.storageModel.get('iosDeviceId')) {
+	        data.ios_device_id = common.storageModel.get('iosDeviceId');
+	    }
+	
 	    if (common.user.get('socialAuth')) {
 	        if (common.user.get('socialAuth') === 'vk') {
 	            data['vk_user_id'] = common.user.get('vkId');
@@ -23993,7 +24005,7 @@
 	            }, 2000);
 	            return;
 	        }
-	        this.timer = setTimeout(this.tick.bind(this), 1000);
+	        // this.timer = setTimeout(this.tick.bind(this), 1000);
 	    },
 	    onClickItem: function onClickItem(e) {
 	        var _this2 = this;
@@ -24045,7 +24057,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (answers, q_img, q_text, undefined) {
-	buf.push("<div class=\"container\"><div class=\"line\"><div class=\"col-xs-12 p-l-0 p-r-0\"><div class=\"question-container\">");
+	buf.push("<div class=\"line\"><div class=\"col-xs-12 p-l-0 p-r-0\"><div class=\"question-container\">");
 	// iterate q_img
 	;(function(){
 	  var $$obj = q_img;
@@ -24068,7 +24080,7 @@
 	  }
 	}).call(this);
 	
-	buf.push("<p>" + (jade.escape((jade_interp = q_text) == null ? '' : jade_interp)) + "</p></div></div></div><div class=\"line\"><div class=\"col-xs-12 p-l-0 p-r-0\">");
+	buf.push("<p>" + (jade.escape((jade_interp = q_text) == null ? '' : jade_interp)) + "</p></div></div></div><div class=\"line p-l-0 p-r-0\"><div class=\"col-xs-12 p-l-0 p-r-0\">");
 	// iterate answers
 	;(function(){
 	  var $$obj = answers;
@@ -24115,7 +24127,7 @@
 	buf.push("<div" + (jade.attr("style", "left: " + (100/40*i) + "%", true, true)) + " class=\"separator\"></div>");
 	}
 	}
-	buf.push("</div></div></div></div><div data-js-question-done class=\"question-done hide\"></div>");}.call(this,"answers" in locals_for_with?locals_for_with.answers:typeof answers!=="undefined"?answers:undefined,"q_img" in locals_for_with?locals_for_with.q_img:typeof q_img!=="undefined"?q_img:undefined,"q_text" in locals_for_with?locals_for_with.q_text:typeof q_text!=="undefined"?q_text:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
+	buf.push("</div></div></div><div data-js-question-done class=\"question-done hide\"></div>");}.call(this,"answers" in locals_for_with?locals_for_with.answers:typeof answers!=="undefined"?answers:undefined,"q_img" in locals_for_with?locals_for_with.q_img:typeof q_img!=="undefined"?q_img:undefined,"q_text" in locals_for_with?locals_for_with.q_text:typeof q_text!=="undefined"?q_text:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -28096,4 +28108,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.c390b8f8a22d9bd44be9.js.map
+//# sourceMappingURL=application.c00061ebe27bdabbc307.js.map
