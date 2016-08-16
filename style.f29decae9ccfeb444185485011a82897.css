@@ -33,10 +33,25 @@
   .modal-overflow.show .modal-backdrop {
     opacity: 0.5;
     transition: opacity 0.5s ease; }
-  .modal-overflow.show .modal-body {
+  .modal-overflow.show .modal-body, .modal-overflow.show .modal-close {
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.43s ease, transform 0.4s ease; }
+  .modal-overflow .modal-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 30px;
+    opacity: 0;
+    transform: scale(1);
+    display: none; }
+
+.full-modal.bg-blur .modal-overflow .modal-backdrop {
+  background: url(images/bg-blur.368130.jpg) center;
+  background-size: cover; }
+
+.full-modal .modal-close {
+  display: block; }
 
 .full-modal .modal-overflow .modal-backdrop {
   background: url(images/bg.e15efc.jpg) center;
@@ -1969,6 +1984,10 @@ label.input {
   .csstransforms .change-avatar-page .avatars[data-state="2"] {
     transform: translate(-50%, 0); }
 /*  COLORS */
+.new-game-page .container {
+  padding-bottom: 15px;
+  padding-top: 15px; }
+
 .new-game-page .user-widget .user-label .user-name {
   left: 60px; }
   @media (min-width: 700px) {
@@ -2496,7 +2515,8 @@ li.user-widget {
     background-size: 41px 41px;
     background-image: url(images/unlock.0243b8.png); }
   .blockTopics-page .btn.blocked {
-    background-color: rgba(46, 82, 70, 0.8); }
+    background-color: rgba(35, 62, 53, 0.8);
+    border-color: #2b2b2b; }
     .blockTopics-page .btn.blocked .icon {
       background-image: url(images/lock.105eb3.png); }
 
@@ -2594,4 +2614,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.a4437cc532513ab46c7c08ba784f2285.css.map*/
+/*# sourceMappingURL=style.f29decae9ccfeb444185485011a82897.css.map*/

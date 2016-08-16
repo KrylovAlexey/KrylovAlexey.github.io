@@ -55,13 +55,13 @@
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, Backbone) {'use strict';
 	
-	var _stringify = __webpack_require__(28);
+	var _stringify = __webpack_require__(29);
 	
 	var _JSON$stringify = _interopRequireDefault(_stringify).default;
 	
-	__webpack_require__(49);
+	__webpack_require__(50);
 	
-	var _AppController = __webpack_require__(229);
+	var _AppController = __webpack_require__(230);
 	
 	var AppController = _interopRequireDefault(_AppController).default;
 	
@@ -17622,47 +17622,47 @@
 	
 	var serverApi = _interopRequireDefault(_serverAPI).default;
 	
-	var _validateModel = __webpack_require__(26);
+	var _validateModel = __webpack_require__(27);
 	
 	var validateModel = _interopRequireDefault(_validateModel).default;
 	
-	var _userModel = __webpack_require__(27);
+	var _userModel = __webpack_require__(28);
 	
 	var UserModel = _interopRequireDefault(_userModel).default;
 	
-	var _topicCollection = __webpack_require__(31);
+	var _topicCollection = __webpack_require__(32);
 	
 	var TopicCollection = _interopRequireDefault(_topicCollection).default;
 	
-	var _userGameCollection = __webpack_require__(33);
+	var _userGameCollection = __webpack_require__(34);
 	
 	var UserGameCollection = _interopRequireDefault(_userGameCollection).default;
 	
-	var _storageModel = __webpack_require__(41);
+	var _storageModel = __webpack_require__(42);
 	
 	var StorageModel = _interopRequireDefault(_storageModel).default;
 	
-	var _friendCollection = __webpack_require__(42);
+	var _friendCollection = __webpack_require__(43);
 	
 	var FriendCollection = _interopRequireDefault(_friendCollection).default;
 	
-	var _blackListCollection = __webpack_require__(44);
+	var _blackListCollection = __webpack_require__(45);
 	
 	var BlackListCollection = _interopRequireDefault(_blackListCollection).default;
 	
-	var _opponentModel = __webpack_require__(45);
+	var _opponentModel = __webpack_require__(46);
 	
 	var OpponentModel = _interopRequireDefault(_opponentModel).default;
 	
-	var _last20GamesCollection = __webpack_require__(46);
+	var _last20GamesCollection = __webpack_require__(47);
 	
 	var Last20GamesCollection = _interopRequireDefault(_last20GamesCollection).default;
 	
-	var _playerRatingCollection = __webpack_require__(47);
+	var _playerRatingCollection = __webpack_require__(48);
 	
 	var PlayerRatingCollection = _interopRequireDefault(_playerRatingCollection).default;
 	
-	var _neighborsCollection = __webpack_require__(48);
+	var _neighborsCollection = __webpack_require__(49);
 	
 	var NeighborsCollection = _interopRequireDefault(_neighborsCollection).default;
 	
@@ -18039,11 +18039,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _infoModal = __webpack_require__(21);
+	var _infoModal = __webpack_require__(22);
 	
 	var template = _interopRequireDefault(_infoModal).default;
 	
-	__webpack_require__(24);
+	__webpack_require__(25);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -18095,7 +18095,7 @@
 	        $(':focus').blur();
 	        if (!modal) {
 	            this.$el.click(function (e) {
-	                if ($(e.target).hasClass('table-middle-cell')) {
+	                if ($(e.target).hasClass('table-middle-cell') || $(e.target).is('[data-js-close]')) {
 	                    _this.cancel();
 	                }
 	            });
@@ -19596,21 +19596,22 @@
 /* 18 */,
 /* 19 */,
 /* 20 */,
-/* 21 */
+/* 21 */,
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (message) {
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"row\"><p class=\"col-xs-12\">" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</p></div><div class=\"row\"><div data-js-ok class=\"btn col-xs-4 col-xs-offset-8\">ok</div></div></div></div></div></div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"row\"><p class=\"col-xs-12\">" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</p></div><div class=\"row\"><div data-js-ok class=\"btn col-xs-4 col-xs-offset-8\">ok</div></div></div></div></div></div><div data-js-close class=\"modal-close\">&times;</div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19830,7 +19831,7 @@
 	    throw err;
 	  }
 	  try {
-	    str = str || __webpack_require__(23).readFileSync(filename, 'utf8')
+	    str = str || __webpack_require__(24).readFileSync(filename, 'utf8')
 	  } catch (ex) {
 	    rethrow(err, null, lineno)
 	  }
@@ -19862,20 +19863,20 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 25 */,
-/* 26 */
+/* 26 */,
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy, common, _) {'use strict';
@@ -19957,7 +19958,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy, common) {'use strict';
@@ -19966,7 +19967,7 @@
 	    value: true
 	});
 	
-	var _stringify = __webpack_require__(28);
+	var _stringify = __webpack_require__(29);
 	
 	var _JSON$stringify = _interopRequireDefault(_stringify).default;
 	
@@ -20092,30 +20093,30 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), __webpack_require__(10)))
 
 /***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(29), __esModule: true };
-
-/***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(30)
+	module.exports = { "default": __webpack_require__(30), __esModule: true };
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(31)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, common) {'use strict';
@@ -20124,7 +20125,7 @@
 	    value: true
 	});
 	
-	var _topicModel = __webpack_require__(32);
+	var _topicModel = __webpack_require__(33);
 	
 	var topicModel = _interopRequireDefault(_topicModel).default;
 	
@@ -20181,7 +20182,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -20204,7 +20205,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, common, _) {'use strict';
@@ -20213,7 +20214,7 @@
 	    value: true
 	});
 	
-	var _userGameModel = __webpack_require__(34);
+	var _userGameModel = __webpack_require__(35);
 	
 	var userGameModel = _interopRequireDefault(_userGameModel).default;
 	
@@ -20328,7 +20329,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy, common, _) {'use strict';
@@ -20337,7 +20338,7 @@
 	    value: true
 	});
 	
-	var _roundWidget = __webpack_require__(35);
+	var _roundWidget = __webpack_require__(36);
 	
 	var roundWidget = _interopRequireDefault(_roundWidget).default;
 	
@@ -20515,7 +20516,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy, MarionetteEpoxy, _, common) {'use strict';
@@ -20524,11 +20525,11 @@
 	    value: true
 	});
 	
-	var _roundWidget = __webpack_require__(36);
+	var _roundWidget = __webpack_require__(37);
 	
 	var template = _interopRequireDefault(_roundWidget).default;
 	
-	__webpack_require__(39);
+	__webpack_require__(40);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20582,10 +20583,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), __webpack_require__(14), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -20605,11 +20606,11 @@
 	
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
 	}
 	    }
 	
@@ -20620,11 +20621,11 @@
 	
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
 	}
 	    }
 	
@@ -20661,11 +20662,11 @@
 	
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
 	}
 	    }
 	
@@ -20676,11 +20677,11 @@
 	
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(37), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
 	}
 	    }
 	
@@ -20694,26 +20695,26 @@
 	}
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "images/red_light.d47fe2.png";
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "images/green_light.a93c35.png";
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 40 */,
-/* 41 */
+/* 41 */,
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -20722,7 +20723,7 @@
 	    value: true
 	});
 	
-	var _stringify = __webpack_require__(28);
+	var _stringify = __webpack_require__(29);
 	
 	var _JSON$stringify = _interopRequireDefault(_stringify).default;
 	
@@ -20747,7 +20748,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, common, _) {'use strict';
@@ -20756,7 +20757,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(43);
+	var _personModel = __webpack_require__(44);
 	
 	var personModel = _interopRequireDefault(_personModel).default;
 	
@@ -20826,7 +20827,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy, common) {'use strict';
@@ -20908,7 +20909,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), __webpack_require__(10)))
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, common, _) {'use strict';
@@ -20917,7 +20918,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(43);
+	var _personModel = __webpack_require__(44);
 	
 	var personModel = _interopRequireDefault(_personModel).default;
 	
@@ -20971,7 +20972,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -21013,7 +21014,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
@@ -21022,7 +21023,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(43);
+	var _personModel = __webpack_require__(44);
 	
 	var last20GamesModel = _interopRequireDefault(_personModel).default;
 	
@@ -21070,7 +21071,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
@@ -21079,7 +21080,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(43);
+	var _personModel = __webpack_require__(44);
 	
 	var playerModel = _interopRequireDefault(_personModel).default;
 	
@@ -21124,7 +21125,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, $, _, common) {'use strict';
@@ -21133,7 +21134,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(43);
+	var _personModel = __webpack_require__(44);
 	
 	var playerModel = _interopRequireDefault(_personModel).default;
 	
@@ -21179,13 +21180,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(7), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 50 */,
 /* 51 */,
 /* 52 */,
 /* 53 */,
@@ -21364,7 +21364,8 @@
 /* 226 */,
 /* 227 */,
 /* 228 */,
-/* 229 */
+/* 229 */,
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, $) {'use strict';
@@ -21373,11 +21374,11 @@
 	    value: true
 	});
 	
-	var _AppLayout = __webpack_require__(230);
+	var _AppLayout = __webpack_require__(231);
 	
 	var AppLayout = _interopRequireDefault(_AppLayout).default;
 	
-	__webpack_require__(244);
+	__webpack_require__(245);
 	
 	var _selectTopicModal = __webpack_require__(248);
 	
@@ -21716,7 +21717,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, common, $) {'use strict';
@@ -21725,11 +21726,11 @@
 	    value: true
 	});
 	
-	var _AppLayout = __webpack_require__(231);
+	var _AppLayout = __webpack_require__(232);
 	
 	var template = _interopRequireDefault(_AppLayout).default;
 	
-	var _headerWidget = __webpack_require__(232);
+	var _headerWidget = __webpack_require__(233);
 	
 	var headerWidget = _interopRequireDefault(_headerWidget).default;
 	
@@ -21808,10 +21809,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -21822,7 +21823,7 @@
 	}
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Epoxy, common) {'use strict';
@@ -21831,11 +21832,11 @@
 	    value: true
 	});
 	
-	var _headerWidget = __webpack_require__(233);
+	var _headerWidget = __webpack_require__(234);
 	
 	var template = _interopRequireDefault(_headerWidget).default;
 	
-	__webpack_require__(234);
+	__webpack_require__(235);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21885,10 +21886,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(15), __webpack_require__(10)))
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -21899,13 +21900,12 @@
 	}
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 235 */,
 /* 236 */,
 /* 237 */,
 /* 238 */,
@@ -21914,13 +21914,13 @@
 /* 241 */,
 /* 242 */,
 /* 243 */,
-/* 244 */
+/* 244 */,
+/* 245 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 245 */,
 /* 246 */,
 /* 247 */,
 /* 248 */
@@ -22030,14 +22030,14 @@
 /* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Выберите тему</h3></div><div data-js-topic-container></div><br><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Заблокированные темы</h3></div><div data-js-topic-blocked-container></div></div></div></div></div></div></div>");;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Выберите тему</h3></div><div data-js-topic-container></div><br><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Заблокированные темы</h3></div><div data-js-topic-blocked-container></div></div></div></div></div><div data-js-close class=\"modal-close\">&times;</div></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -22051,7 +22051,7 @@
 /* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22142,7 +22142,7 @@
 /* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22191,7 +22191,7 @@
 /* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22394,7 +22394,7 @@
 /* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22415,7 +22415,7 @@
 /* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22429,7 +22429,7 @@
 /* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22502,14 +22502,14 @@
 /* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (message) {
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"row\"><p class=\"col-xs-12\">" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</p></div><div class=\"row\"><button data-js-cancel class=\"btn col-xs-4 col-xs-offset-4\">Отмена</button><button data-js-ok class=\"btn col-xs-4\">Оk</button></div></div></div></div></div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"><div class=\"row\"><p class=\"col-xs-12\">" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</p></div><div class=\"row\"><button data-js-cancel class=\"btn col-xs-4 col-xs-offset-4\">Отмена</button><button data-js-ok class=\"btn col-xs-4\">Оk</button></div></div></div></div></div><div data-js-close class=\"modal-close\">&times;</div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -22653,14 +22653,14 @@
 /* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><p>Хочешь, чтобы совсем не было рекламы? Приобретай премиум версию игры, в которой ее нет. Также в премиум версии без ограничений ты можешь вызывать соперников на поединок, блокировать до 5 тем, играть с соседями по рейтингу, смотреть свой рейтинг, менять аватар и фон.</p><div class=\"form-container\"><div data-js-cancel class=\"form-button\">Назад</div><div data-js-ok class=\"form-button\">Купить</div></div></div></div></div></div></div>");;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><p>Хочешь, чтобы совсем не было рекламы? Приобретай премиум версию игры, в которой ее нет. Также в премиум версии без ограничений ты можешь вызывать соперников на поединок, блокировать до 5 тем, играть с соседями по рейтингу, смотреть свой рейтинг, менять аватар и фон.</p><div class=\"form-container\"><div data-js-cancel class=\"form-button\">Назад</div><div data-js-ok class=\"form-button\">Купить</div></div></div></div></div><div data-js-close class=\"modal-close\">&times;</div></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -22674,7 +22674,7 @@
 /* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22772,7 +22772,7 @@
 /* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -22807,7 +22807,7 @@
 /* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Marionette, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22825,9 +22825,18 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var EmptyView = MarionetteEpoxy.View.extend({
+	    className: 'col-xs-12 text-header',
+	    tagName: 'p',
+	    render: function render() {
+	        this.$el.html('Список пуст');
+	    }
+	});
+	
 	var FriendCollectionView = Marionette.CollectionView.extend({
 	    className: 'list-container',
 	    tagName: 'ul',
+	    emptyView: EmptyView,
 	    childView: userWidget
 	});
 	
@@ -22871,20 +22880,20 @@
 	        common.appController.startGame();
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(14), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(4), __webpack_require__(10)))
 
 /***/ },
 /* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><div data-js-search-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-search\"></div>Найти соперника<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-fb class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-facebook\"></div>Новая игра FB<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-vk class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-vk-icon\"></div>Новая игра VK<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-random-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-random\"></div>Случайный соперник<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-last20-games class=\"btn col-xs-12\">20 последних игр<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Список друзей</h3></div></div><div class=\"line\"><div data-js-friend-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"line\"><div data-js-search-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-search\"></div>Найти соперника<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-fb class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-facebook\"></div>Новая игра FB<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-vk class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-vk-icon\"></div>Новая игра VK<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-random-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-random\"></div>Случайный соперник<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-last20-games class=\"btn col-xs-12\">20 последних игр<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Список друзей</h3></div></div><div class=\"line\"><div data-js-friend-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -22933,7 +22942,7 @@
 	        '[data-js-score]': 'text: u_rate',
 	        '[data-js-number]': 'text: u_number_rate',
 	        '[data-js-detail]': 'classes: {hide: is_me}',
-	        '[data-js-start-game]': 'classes: {hide: is_me}'
+	        '[data-js-start-game]': 'classes: {hide: any(is_me, is_blacklist)}'
 	    },
 	    bindingHandlers: {
 	        setAvatarAttr: {
@@ -22968,7 +22977,7 @@
 /* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23062,7 +23071,7 @@
 /* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23089,7 +23098,7 @@
 	    value: true
 	});
 	
-	var _personModel = __webpack_require__(43);
+	var _personModel = __webpack_require__(44);
 	
 	var personModel = _interopRequireDefault(_personModel).default;
 	
@@ -23199,7 +23208,7 @@
 /* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23236,7 +23245,7 @@
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _roundWidget = __webpack_require__(35);
+	var _roundWidget = __webpack_require__(36);
 	
 	var roundWidget = _interopRequireDefault(_roundWidget).default;
 	
@@ -23380,7 +23389,7 @@
 /* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23413,7 +23422,7 @@
 	
 	__webpack_require__(315);
 	
-	var _personModel = __webpack_require__(43);
+	var _personModel = __webpack_require__(44);
 	
 	var PersonModel = _interopRequireDefault(_personModel).default;
 	
@@ -23516,7 +23525,7 @@
 /* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23561,7 +23570,7 @@
 	
 	exports.default = Modal.extend({
 	    template: template,
-	    className: 'person-info-modal full-modal',
+	    className: 'person-info-modal full-modal bg-blur',
 	    bindings: {
 	        '[data-js-user-avatar]': 'setAttr: avatar',
 	        '[data-js-profile-login]': 'text: u_login_comp'
@@ -23593,7 +23602,7 @@
 /* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23623,7 +23632,7 @@
 	  }
 	}).call(this);
 	
-	buf.push("</div></div></div></div></div></div>");}.call(this,"parseInt" in locals_for_with?locals_for_with.parseInt:typeof parseInt!=="undefined"?parseInt:undefined,"topics_answers" in locals_for_with?locals_for_with.topics_answers:typeof topics_answers!=="undefined"?topics_answers:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
+	buf.push("</div></div></div></div><div data-js-close class=\"modal-close\">&times;</div></div></div>");}.call(this,"parseInt" in locals_for_with?locals_for_with.parseInt:typeof parseInt!=="undefined"?parseInt:undefined,"topics_answers" in locals_for_with?locals_for_with.topics_answers:typeof topics_answers!=="undefined"?topics_answers:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -23740,7 +23749,7 @@
 /* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -23937,7 +23946,7 @@
 /* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24005,7 +24014,7 @@
 	            }, 2000);
 	            return;
 	        }
-	        // this.timer = setTimeout(this.tick.bind(this), 1000);
+	        this.timer = setTimeout(this.tick.bind(this), 1000);
 	    },
 	    onClickItem: function onClickItem(e) {
 	        var _this2 = this;
@@ -24050,7 +24059,7 @@
 /* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24209,7 +24218,7 @@
 /* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Marionette, common) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -24227,9 +24236,18 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var EmptyView = MarionetteEpoxy.View.extend({
+	    className: 'col-xs-12 text-header',
+	    tagName: 'p',
+	    render: function render() {
+	        this.$el.html('Список пуст');
+	    }
+	});
+	
 	var BlackListCollectionView = Marionette.CollectionView.extend({
 	    className: 'list-container',
 	    tagName: 'ul',
+	    emptyView: EmptyView,
 	    childView: userWidget
 	});
 	
@@ -24255,20 +24273,20 @@
 	        this.blackList.show(this.blackListCollectionPage);
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(14), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(4), __webpack_require__(10)))
 
 /***/ },
 /* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"container\"><div class=\"line\"><h1 class=\"col-xs-12 text-header yellow-text\">Черный список</h1></div><div class=\"line\"><div data-js-black-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"line\"><h1 class=\"col-xs-12 text-header yellow-text\">Черный список</h1></div><div class=\"line\"><div data-js-black-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -24419,7 +24437,7 @@
 /* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24497,14 +24515,14 @@
 /* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (message) {
-	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><form class=\"container\"><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</span><input type=\"password\" data-js-password></label></div><div class=\"row\"><button data-js-ok type=\"submit\" class=\"btn col-xs-4 col-xs-offset-8\">ok</button></div></form></div></div></div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><form class=\"container\"><div class=\"row\"><label class=\"input col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3\"><span>" + (jade.escape((jade_interp = message) == null ? '' : jade_interp)) + "</span><input type=\"password\" data-js-password></label></div><div class=\"row\"><button data-js-ok type=\"submit\" class=\"btn col-xs-4 col-xs-offset-8\">ok</button></div></form></div></div></div><div data-js-close class=\"modal-close\">&times;</div></div></div>");}.call(this,"message" in locals_for_with?locals_for_with.message:typeof message!=="undefined"?message:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -24571,7 +24589,7 @@
 /* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24643,7 +24661,7 @@
 /* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24792,7 +24810,7 @@
 /* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24893,7 +24911,7 @@
 /* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -24960,7 +24978,7 @@
 	
 	exports.default = MarionetteEpoxy.LayoutView.extend({
 	    template: template,
-	    className: 'blockTopics-page page',
+	    className: 'blockTopics-page page bg-blur',
 	
 	    regions: {
 	        blockTopicsList: '[data-js-block-topics-list]'
@@ -24982,7 +25000,7 @@
 /* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -25005,7 +25023,7 @@
 /* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -25087,7 +25105,7 @@
 /* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -25159,7 +25177,7 @@
 /* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -25254,7 +25272,7 @@
 /* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -27862,7 +27880,7 @@
 /* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -27937,7 +27955,7 @@
 /* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -27963,7 +27981,7 @@
 /* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(22);
+	var jade = __webpack_require__(23);
 	
 	module.exports = function template(locals) {
 	var buf = [];
@@ -28108,4 +28126,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.c00061ebe27bdabbc307.js.map
+//# sourceMappingURL=application.120896667ae8764a12a0.js.map
