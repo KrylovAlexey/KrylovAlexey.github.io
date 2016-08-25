@@ -65,11 +65,11 @@
 	
 	var AppController = _interopRequireDefault(_AppController).default;
 	
-	var _AppRouter = __webpack_require__(412);
+	var _AppRouter = __webpack_require__(422);
 	
 	var AppRouter = _interopRequireDefault(_AppRouter).default;
 	
-	__webpack_require__(413);
+	__webpack_require__(423);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -17873,6 +17873,14 @@
 	                action: 'get_room_results',
 	                rooms: rooms
 	            });
+	        },
+	        question_history: function question_history(room_id, round_id, question_id) {
+	            return ajaxController({
+	                action: 'get_question_history',
+	                room_id: room_id,
+	                round_id: round_id,
+	                question_id: question_id
+	            });
 	        }
 	    },
 	
@@ -17891,6 +17899,15 @@
 	            return ajaxController({
 	                action: 'change_ava',
 	                ava_file: avatarId
+	            });
+	        }
+	    },
+	    game: {
+	        answerFight: function answerFight(roomId, answer) {
+	            return ajaxController({
+	                action: 'call_to_fight',
+	                room_id: roomId,
+	                fight: answer
 	            });
 	        }
 	    },
@@ -20366,12 +20383,23 @@
 	        rr_leader_start_round: null,
 	        rr_slave_end_round: null,
 	        rr_slave_start_round: null,
+	        r_call_to_fight: null,
+	        r_user_id_opponent: 0,
 	
 	        currentTime: 0,
 	        rounds: []
 	    },
 	
 	    computeds: {
+	        isMyRequest: {
+	            deps: ['r_call_to_fight', 'r_user_id_opponent'],
+	            get: function get(r_call_to_fight, r_user_id_opponent) {
+	                if (r_call_to_fight == '1' && r_user_id_opponent == common.user.get('id')) {
+	                    return true;
+	                }
+	                return false;
+	            }
+	        },
 	        isISlave: {
 	            deps: ['rr_slave_user_id'],
 	            get: function get(rr_slave_user_id) {
@@ -20577,7 +20605,9 @@
 	            roundName: roundName
 	
 	        });
+	        console.log(this.model);
 	        this.counts = { userAnswerSuccess: userAnswerSuccess, opponentAnswerSuccess: opponentAnswerSuccess };
+	        this.listenTo(this.userGameCollectionView, 'click:game', this.onClickGame);
 	    },
 	    getCounts: function getCounts() {
 	        return this.counts;
@@ -20599,6 +20629,7 @@
 	buf.push("<div class=\"game-round-name-container\"><span>" + (jade.escape((jade_interp = roundName) == null ? '' : jade_interp)) + "</span></div><div class=\"icon-container\">");
 	if ((startRound))
 	{
+	var num = 0;
 	// iterate userResults
 	;(function(){
 	  var $$obj = userResults;
@@ -20607,13 +20638,14 @@
 	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
 	      var item = $$obj[$index];
 	
+	num = num + 1.
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score column line-height semaphore\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score colum line-height semaphore\">");
 	}
 	    }
 	
@@ -20622,13 +20654,14 @@
 	    for (var $index in $$obj) {
 	      $$l++;      var item = $$obj[$index];
 	
+	num = num + 1.
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score column line-height semaphore\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score colum line-height semaphore\">");
 	}
 	    }
 	
@@ -20655,6 +20688,7 @@
 	}
 	else
 	{
+	var num = 0;
 	// iterate opponentResults
 	;(function(){
 	  var $$obj = opponentResults;
@@ -20663,13 +20697,14 @@
 	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
 	      var item = $$obj[$index];
 	
+	num = num + 1.
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score column line-height semaphore\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score colum line-height semaphore\">");
 	}
 	    }
 	
@@ -20678,13 +20713,14 @@
 	    for (var $index in $$obj) {
 	      $$l++;      var item = $$obj[$index];
 	
+	num = num + 1.
 	if ((item == '0'))
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + " class=\"icon-score column line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(38), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score column line-height semaphore\">");
 	}
 	else
 	{
-	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + " class=\"icon-score colum line-height\">");
+	buf.push("<img" + (jade.attr("src", __webpack_require__(39), true, true)) + (jade.attr("data-sem-id", "" + (num) + "", true, true)) + (jade.attr("data-round-id", "" + (roundNumber + 1) + "", true, true)) + " class=\"icon-score colum line-height semaphore\">");
 	}
 	    }
 	
@@ -20853,7 +20889,9 @@
 	        u_number_rate: 0,
 	        u_tname: '',
 	        u_surname: '',
-	        topics_answers: ''
+	        topics_answers: '',
+	        request: false,
+	        request_room_id: ''
 	    },
 	    computeds: {
 	        avatar: {
@@ -21395,91 +21433,95 @@
 	
 	var indexPage = _interopRequireDefault(_indexPage).default;
 	
-	var _gamesPage = __webpack_require__(262);
+	var _gamesPage = __webpack_require__(264);
 	
 	var gamesPage = _interopRequireDefault(_gamesPage).default;
 	
-	var _settingsPage = __webpack_require__(272);
+	var _settingsPage = __webpack_require__(274);
 	
 	var settingsPage = _interopRequireDefault(_settingsPage).default;
 	
-	var _changeAvatarPage = __webpack_require__(280);
+	var _changeAvatarPage = __webpack_require__(282);
 	
 	var changeAvatarPage = _interopRequireDefault(_changeAvatarPage).default;
 	
-	var _newGamePage = __webpack_require__(288);
+	var _newGamePage = __webpack_require__(290);
 	
 	var newGamePage = _interopRequireDefault(_newGamePage).default;
 	
-	var _searchUserPage = __webpack_require__(300);
+	var _searchUserPage = __webpack_require__(302);
 	
 	var searchUserPage = _interopRequireDefault(_searchUserPage).default;
 	
-	var _last20gamesPage = __webpack_require__(305);
+	var _last20gamesPage = __webpack_require__(307);
 	
 	var last20gamesPage = _interopRequireDefault(_last20gamesPage).default;
 	
-	var _gamePage = __webpack_require__(309);
+	var _gamePage = __webpack_require__(311);
 	
 	var gamePage = _interopRequireDefault(_gamePage).default;
 	
-	var _profilePage = __webpack_require__(313);
+	var _profilePage = __webpack_require__(319);
 	
 	var profilePage = _interopRequireDefault(_profilePage).default;
 	
-	var _gameResultPage = __webpack_require__(325);
+	var _gameResultPage = __webpack_require__(331);
 	
 	var gameResultPage = _interopRequireDefault(_gameResultPage).default;
 	
-	var _questionsPage = __webpack_require__(329);
+	var _questionsPage = __webpack_require__(335);
 	
 	var questionsPage = _interopRequireDefault(_questionsPage).default;
 	
-	var _blackListPage = __webpack_require__(340);
+	var _blackListPage = __webpack_require__(346);
 	
 	var blackListPage = _interopRequireDefault(_blackListPage).default;
 	
-	var _settingsPageAcc = __webpack_require__(344);
+	var _settingsPageAcc = __webpack_require__(350);
 	
 	var accountSettingPage = _interopRequireDefault(_settingsPageAcc).default;
 	
-	var _statisticsPage = __webpack_require__(352);
+	var _statisticsPage = __webpack_require__(358);
 	
 	var statisticsPage = _interopRequireDefault(_statisticsPage).default;
 	
-	var _playerRankingsPage = __webpack_require__(356);
+	var _playerRankingsPage = __webpack_require__(362);
 	
 	var playerRankingsPage = _interopRequireDefault(_playerRankingsPage).default;
 	
-	var _authPage = __webpack_require__(360);
+	var _authPage = __webpack_require__(366);
 	
 	var authPage = _interopRequireDefault(_authPage).default;
 	
-	var _registrationPage = __webpack_require__(366);
+	var _registrationPage = __webpack_require__(372);
 	
 	var registrationPage = _interopRequireDefault(_registrationPage).default;
 	
-	var _blockTopicsPage = __webpack_require__(370);
+	var _blockTopicsPage = __webpack_require__(376);
 	
 	var blockTopicsPage = _interopRequireDefault(_blockTopicsPage).default;
 	
-	var _signinPage = __webpack_require__(377);
+	var _signinPage = __webpack_require__(383);
 	
 	var signinPage = _interopRequireDefault(_signinPage).default;
 	
-	var _neighborsPage = __webpack_require__(381);
+	var _neighborsPage = __webpack_require__(387);
 	
 	var neighborsPage = _interopRequireDefault(_neighborsPage).default;
 	
-	var _restorePasswordPage = __webpack_require__(385);
+	var _restorePasswordPage = __webpack_require__(391);
 	
 	var restorePasswordPage = _interopRequireDefault(_restorePasswordPage).default;
 	
-	var _questionCollection = __webpack_require__(338);
+	var _questionCollection = __webpack_require__(344);
 	
 	var questionCollection = _interopRequireDefault(_questionCollection).default;
 	
-	var _chat = __webpack_require__(389);
+	var _requestPage = __webpack_require__(395);
+	
+	var requestPage = _interopRequireDefault(_requestPage).default;
+	
+	var _chat = __webpack_require__(399);
 	
 	var Chat = _interopRequireWildcard(_chat);
 	
@@ -21521,7 +21563,7 @@
 	        });
 	    },
 	    goToQuestions: function goToQuestions(data) {
-	        common.router.navigate('questions/' + data.answer.room_id, { replace: true });
+	        common.router.navigate('questions/' + data.answer.room_id);
 	        var questions = new questionCollection();
 	        questions.parse(data);
 	        this.showInsidePage(questionsPage, {
@@ -21607,6 +21649,9 @@
 	    },
 	    onShowLast20games: function onShowLast20games() {
 	        this.showInsidePage(last20gamesPage);
+	    },
+	    onShowRequestPage: function onShowRequestPage() {
+	        this.showInsidePage(requestPage);
 	    },
 	    onShowGamePage: function onShowGamePage(roomId) {
 	        var _this2 = this;
@@ -22075,7 +22120,7 @@
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, Epoxy) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Backbone, _, common, Epoxy) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22087,11 +22132,115 @@
 	
 	__webpack_require__(255);
 	
-	var _tipsWidget = __webpack_require__(257);
+	var _userGameItem = __webpack_require__(257);
+	
+	var userGameTemplate = _interopRequireDefault(_userGameItem).default;
+	
+	var _userGameCollection = __webpack_require__(258);
+	
+	var userGameCollection = _interopRequireDefault(_userGameCollection).default;
+	
+	var _tipsWidget = __webpack_require__(259);
 	
 	var tipsWidget = _interopRequireDefault(_tipsWidget).default;
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UserGameItemView = MarionetteEpoxy.View.extend({
+	    template: userGameTemplate,
+	    tagName: 'li',
+	    className: 'game-item',
+	    ui: {},
+	    events: {
+	        'click': 'onClickItem'
+	    },
+	    bindings: {
+	        '[data-js-status]': 'text: rr_status',
+	        '[data-js-user-icon]': 'setAvatarAttr: opponentAvatar, setAvatarStateAttr: avatarOpponentState',
+	        '[data-js-user-answer]': 'text: userAnswerSuccess',
+	        '[data-js-opponent-answer]': 'text: opponentAnswerSuccess',
+	        '[data-js-opponent-name]': 'text: opponentName',
+	        '[data-js-my-turn]': 'classes: {hide: not(myTurn)}',
+	        '[data-js-game-finish]': 'classes: {hide: not(isGameClose)}',
+	        '[data-js-time-passed]': 'text: lastTime, classes: {hide: isGameClose}'
+	    },
+	    bindingHandlers: {
+	        setAvatarAttr: {
+	            set: function set($element, value) {
+	                $element.attr({ 'data-user-icon-id': value });
+	            }
+	        },
+	        setAvatarStateAttr: {
+	            set: function set($element, value) {
+	                $element.attr({ 'data-user-icon-status': value });
+	            }
+	        }
+	    },
+	    initialize: function initialize() {
+	        this.epoxify();
+	    },
+	    onClickItem: function onClickItem() {
+	        this.trigger('click:game', this.model);
+	    }
+	});
+	var UserGameCollectionView = MarionetteEpoxy.CompositeView.extend({
+	    className: '',
+	    template: userGameCollection,
+	    childView: UserGameItemView,
+	    childViewContainer: '[data-js-user-game-list]',
+	
+	    templateHelpers: function templateHelpers() {
+	        return {
+	            name: this.name,
+	            type: this.type
+	        };
+	    },
+	    events: {
+	        'click [data-js-close-games]': 'onClickCloseGames'
+	    },
+	
+	    childEvents: {
+	        'click:game': 'onClickGame'
+	    },
+	    initialize: function initialize(options) {
+	        this.collection = new Backbone.Collection();
+	        this.name = options.name;
+	        this.type = options.type;
+	        this.mainCollection = options.mainCollection;
+	        this.filterCollection = options.filterCollection;
+	        this.listenTo(this.mainCollection, 'all', this.onChangeCollection);
+	        this.onChangeCollection();
+	    },
+	    onChangeCollection: function onChangeCollection() {
+	        var models = [];
+	        _.each(this.mainCollection.models, function (model) {
+	            if (this.filterCollection(model)) {
+	                models.push(model);
+	            }
+	        }, this);
+	        this.collection.reset(models);
+	        if (!models.length) {
+	            this.$el.addClass('hide');
+	        } else {
+	            this.$el.removeClass('hide');
+	        }
+	    },
+	    onClickGame: function onClickGame(view, game) {
+	        this.trigger('click:game', game);
+	    },
+	    onClickCloseGames: function onClickCloseGames() {
+	        var _this = this;
+	
+	        new answerModal({ message: 'Скрыть все завершенные игры?' }).showModal().done(function () {
+	            var currentRoomsId = _.map(_this.collection.models, function (model) {
+	                return model.get('room_id');
+	            });
+	            common.api.hideRooms(currentRoomsId).always(function () {
+	                common.userGameCollection.remove(currentRoomsId);
+	            });
+	        });
+	    }
+	});
 	
 	exports.default = MarionetteEpoxy.LayoutView.extend({
 	    template: template,
@@ -22099,17 +22248,21 @@
 	
 	    ui: {
 	        'buttonNewGame': '[data-js-new-game]',
-	        'buttonGames': '[data-js-games]'
+	        'buttonGames': '[data-js-games]',
+	        'gameContainer': '[data-js-game-container]'
 	    },
 	    events: {
 	        'click @ui.buttonNewGame': 'onClickNewGame',
-	        'click @ui.buttonGames': 'onClickGames'
+	        'click @ui.buttonGames': 'onClickGames',
+	        'click [data-js-request-game]': 'onClickRequests'
 	    },
 	    bindings: {
 	        '[data-js-user-avatar]': 'setAttr: avatar',
 	        '[data-js-user-name]': 'text: userName',
 	        '[data-js-gemes-count]': 'text: userGamesCount, classes: {hide: not(userGamesCount)}',
-	        '@ui.buttonGames': 'classes: {hide: not(userGamesCount)}'
+	        '@ui.buttonGames': 'classes: {hide: not(userGamesCount)}',
+	        '[data-js-request-counter]': 'text: requestCount',
+	        '[data-js-request-game]': 'classes: {hide: not(requestCount)}'
 	    },
 	    bindingHandlers: {
 	        setAttr: {
@@ -22125,28 +22278,57 @@
 	    initialize: function initialize() {
 	        this.model = common.user;
 	        this.viewModel = new Epoxy.Model({
-	            userGamesCount: 0
+	            userGamesCount: 0,
+	            requestCount: 0
 	        });
+	        this.userGameCollectionView = new UserGameCollectionView({
+	            filterCollection: function filterCollection(child, index, collection) {
+	                return child.get('myTurn') && !child.get('isGameClose');
+	            },
+	            mainCollection: common.userGameCollection,
+	            name: 'Наш ход'
+	        });
+	
 	        this.listenTo(common.userGameCollection, 'all', this.onChangeUserGames);
+	        this.listenTo(this.userGameCollectionView, 'click:game', this.onClickGame);
 	        this.onChangeUserGames();
 	        this.epoxify();
 	        common.headerModel.set({ backPath: null });
 	    },
 	    onRender: function onRender() {
 	        this.tipsWidget.show(new tipsWidget());
+	        this.ui.gameContainer.append(this.userGameCollectionView.$el);
+	        this.userGameCollectionView.render();
 	    },
 	
 	    onChangeUserGames: function onChangeUserGames() {
 	        this.viewModel.set({ userGamesCount: common.userGameCollection.models.length });
+	        var requests = [];
+	        _.each(common.userGameCollection.models, function (model) {
+	            if (model.get('isMyRequest')) {
+	                requests.push(model);
+	            }
+	        });
+	        this.viewModel.set({ requestCount: requests.length });
 	    },
 	    onClickNewGame: function onClickNewGame() {
 	        common.router.navigate('newgame', { trigger: true });
 	    },
 	    onClickGames: function onClickGames() {
 	        common.router.navigate('userGames', { trigger: true });
+	    },
+	    onClickRequests: function onClickRequests() {
+	        common.router.navigate('requests', { trigger: true });
+	    },
+	    onClickGame: function onClickGame(game) {
+	        if (game.get('isGameClose')) {
+	            common.router.navigate('gameResult/' + game.get('room_id'), { trigger: true });
+	        } else {
+	            common.router.navigate('game/' + game.get('room_id'), { trigger: true });
+	        }
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10), __webpack_require__(15)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(5), __webpack_require__(6), __webpack_require__(10), __webpack_require__(15)))
 
 /***/ },
 /* 254 */
@@ -22159,7 +22341,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 user-info\"><div data-js-user-avatar data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><div class=\"block-name\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p class=\"yellow-text\">В сети как</p><h2 data-js-user-name class=\"yellow-text\"></h2></div></div></div></div></div><div class=\"line\"><div data-js-new-game class=\"btn col-xs-12\">Новая игра</div></div><div class=\"line\"><div data-js-request-game class=\"btn col-xs-12\">Заявки на битву<div data-js-request-counter class=\"counter\">55</div></div></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Все подсказки</h3></div></div><div class=\"line\"><div data-js-tips-widget class=\"btn col-xs-12 tips-block\"></div></div><div class=\"line m-t-20\"><div data-js-games class=\"btn col-xs-12\">Все игры<div data-js-gemes-count class=\"counter\">55</div></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-10 col-xs-offset-1 user-info\"><div data-js-user-avatar data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><div class=\"block-name\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p class=\"yellow-text\">В сети как</p><h2 data-js-user-name class=\"yellow-text\"></h2></div></div></div></div></div><div class=\"line\"><div data-js-new-game class=\"btn col-xs-12\">Новая игра</div></div><div class=\"line\"><div data-js-request-game class=\"btn col-xs-12\">Заявки на битву<div data-js-request-counter class=\"counter\"></div></div></div><div class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Все подсказки</h3></div></div><div class=\"line\"><div data-js-tips-widget class=\"btn col-xs-12 tips-block\"></div></div><div class=\"line m-t-20\"><div data-js-games class=\"btn col-xs-12\">Все игры<div data-js-gemes-count class=\"counter\">55</div></div></div><div data-js-game-container></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -22173,17 +22355,50 @@
 /* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var jade = __webpack_require__(23);
+	
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (opponent_u_login) {
+	buf.push("<div class=\"icon-container\"><div data-js-user-icon class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div></div><div class=\"text-container\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p data-js-my-turn>Ваш ход против:</p><p data-js-game-finish>Ваша игра против:</p><h2>" + (jade.escape((jade_interp = opponent_u_login) == null ? '' : jade_interp)) + "</h2><p>Вы &nbsp;<span data-js-user-answer class=\"text-bold\"></span>&nbsp; - &nbsp;<span data-js-opponent-answer class=\"text-bold\"></span>&nbsp;&nbsp;<span data-js-opponent-name></span></p></div></div></div><div class=\"time-container\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p data-js-time-passed></p></div></div></div>");}.call(this,"opponent_u_login" in locals_for_with?locals_for_with.opponent_u_login:typeof opponent_u_login!=="undefined"?opponent_u_login:undefined));;return buf.join("");
+	}
+
+/***/ },
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(23);
+	
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (name, type) {
+	buf.push("<div class=\"line game-container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">" + (jade.escape((jade_interp = name) == null ? '' : jade_interp)) + "");
+	if ((type == 'game-closed'))
+	{
+	buf.push("<span data-js-close-games class=\"right-text\">&times;</span>");
+	}
+	buf.push("</h3><div class=\"row\"><ul data-js-user-game-list class=\"list-container\"></ul></div></div></div>");}.call(this,"name" in locals_for_with?locals_for_with.name:typeof name!=="undefined"?name:undefined,"type" in locals_for_with?locals_for_with.type:typeof type!=="undefined"?type:undefined));;return buf.join("");
+	}
+
+/***/ },
+/* 259 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _tipsWidget = __webpack_require__(258);
+	var _tipsWidget = __webpack_require__(260);
 	
 	var template = _interopRequireDefault(_tipsWidget).default;
 	
-	__webpack_require__(259);
+	__webpack_require__(261);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22198,7 +22413,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ },
-/* 258 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22212,15 +22427,15 @@
 	}
 
 /***/ },
-/* 259 */
+/* 261 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 260 */,
-/* 261 */,
-/* 262 */
+/* 262 */,
+/* 263 */,
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Backbone, _, common) {'use strict';
@@ -22229,21 +22444,21 @@
 	    value: true
 	});
 	
-	var _gamesPage = __webpack_require__(263);
+	var _gamesPage = __webpack_require__(265);
 	
 	var template = _interopRequireDefault(_gamesPage).default;
 	
-	__webpack_require__(264);
+	__webpack_require__(266);
 	
-	var _userGameItem = __webpack_require__(266);
+	var _userGameItem = __webpack_require__(268);
 	
 	var userGameTemplate = _interopRequireDefault(_userGameItem).default;
 	
-	var _userGameCollection = __webpack_require__(267);
+	var _userGameCollection = __webpack_require__(269);
 	
 	var userGameCollection = _interopRequireDefault(_userGameCollection).default;
 	
-	var _answerModal = __webpack_require__(268);
+	var _answerModal = __webpack_require__(270);
 	
 	var answerModal = _interopRequireDefault(_answerModal).default;
 	
@@ -22401,7 +22616,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(5), __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22415,14 +22630,14 @@
 	}
 
 /***/ },
-/* 264 */
+/* 266 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 265 */,
-/* 266 */
+/* 267 */,
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22436,7 +22651,7 @@
 	}
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22455,7 +22670,7 @@
 	}
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22468,11 +22683,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _answerModal = __webpack_require__(269);
+	var _answerModal = __webpack_require__(271);
 	
 	var template = _interopRequireDefault(_answerModal).default;
 	
-	__webpack_require__(270);
+	__webpack_require__(272);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22509,7 +22724,7 @@
 	});
 
 /***/ },
-/* 269 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22523,14 +22738,14 @@
 	}
 
 /***/ },
-/* 270 */
+/* 272 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 271 */,
-/* 272 */
+/* 273 */,
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -22539,7 +22754,7 @@
 	    value: true
 	});
 	
-	var _buyModal = __webpack_require__(273);
+	var _buyModal = __webpack_require__(275);
 	
 	var buyModal = _interopRequireDefault(_buyModal).default;
 	
@@ -22547,11 +22762,11 @@
 	
 	var infoModel = _interopRequireDefault(_infoModal).default;
 	
-	var _settingsPage = __webpack_require__(277);
+	var _settingsPage = __webpack_require__(279);
 	
 	var template = _interopRequireDefault(_settingsPage).default;
 	
-	__webpack_require__(278);
+	__webpack_require__(280);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22616,7 +22831,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 273 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22629,11 +22844,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _buyModal = __webpack_require__(274);
+	var _buyModal = __webpack_require__(276);
 	
 	var template = _interopRequireDefault(_buyModal).default;
 	
-	__webpack_require__(275);
+	__webpack_require__(277);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22660,7 +22875,7 @@
 	});
 
 /***/ },
-/* 274 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22674,14 +22889,14 @@
 	}
 
 /***/ },
-/* 275 */
+/* 277 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 276 */,
-/* 277 */
+/* 278 */,
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22695,14 +22910,14 @@
 	}
 
 /***/ },
-/* 278 */
+/* 280 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 279 */,
-/* 280 */
+/* 281 */,
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, $) {'use strict';
@@ -22711,11 +22926,11 @@
 	    value: true
 	});
 	
-	var _changeAvatarPage = __webpack_require__(281);
+	var _changeAvatarPage = __webpack_require__(283);
 	
 	var template = _interopRequireDefault(_changeAvatarPage).default;
 	
-	__webpack_require__(282);
+	__webpack_require__(284);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22779,7 +22994,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 281 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22803,18 +23018,18 @@
 	}
 
 /***/ },
-/* 282 */
+/* 284 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 283 */,
-/* 284 */,
 /* 285 */,
 /* 286 */,
 /* 287 */,
-/* 288 */
+/* 288 */,
+/* 289 */,
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Marionette, common) {'use strict';
@@ -22823,13 +23038,13 @@
 	    value: true
 	});
 	
-	var _newGamePage = __webpack_require__(289);
+	var _newGamePage = __webpack_require__(291);
 	
 	var template = _interopRequireDefault(_newGamePage).default;
 	
-	__webpack_require__(290);
+	__webpack_require__(292);
 	
-	var _userWidget = __webpack_require__(292);
+	var _userWidget = __webpack_require__(294);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -22893,7 +23108,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(4), __webpack_require__(10)))
 
 /***/ },
-/* 289 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22907,14 +23122,14 @@
 	}
 
 /***/ },
-/* 290 */
+/* 292 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 291 */,
-/* 292 */
+/* 293 */,
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -22923,11 +23138,11 @@
 	    value: true
 	});
 	
-	var _userWidget = __webpack_require__(293);
+	var _userWidget = __webpack_require__(295);
 	
 	var template = _interopRequireDefault(_userWidget).default;
 	
-	__webpack_require__(294);
+	__webpack_require__(296);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22938,7 +23153,9 @@
 	    events: {
 	        'click [data-js-label]': 'onClickLabel',
 	        'click [data-js-start-game]': 'onClickStartGame',
-	        'click [data-js-detail]': 'onClickDetail'
+	        'click [data-js-detail]': 'onClickDetail',
+	        'click [data-js-fail-game]': 'onClickFailGame',
+	        'click [data-js-done-game]': 'onClickDoneGame'
 	    },
 	
 	    bindings: {
@@ -22952,7 +23169,9 @@
 	        '[data-js-score]': 'text: u_rate',
 	        '[data-js-number]': 'text: u_number_rate',
 	        '[data-js-detail]': 'classes: {hide: is_me}',
-	        '[data-js-start-game]': 'classes: {hide: any(is_me, is_blacklist)}'
+	        '[data-js-start-game]': 'classes: {hide: any(is_me, is_blacklist, request)}',
+	        '[data-js-fail-game]': 'classes: {hide: not(request)}',
+	        '[data-js-done-game]': 'classes: {hide: not(request)}'
 	    },
 	    bindingHandlers: {
 	        setAvatarAttr: {
@@ -22971,6 +23190,12 @@
 	        this.render();
 	        this.epoxify();
 	    },
+	    onClickFailGame: function onClickFailGame() {
+	        common.api.game.answerFight(this.model.get('request_room_id'), 3);
+	    },
+	    onClickDoneGame: function onClickDoneGame() {
+	        common.api.game.answerFight(this.model.get('request_room_id'), 2);
+	    },
 	    onClickLabel: function onClickLabel() {
 	        this.model.set({ open: !this.model.get('open') });
 	    },
@@ -22984,7 +23209,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 293 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -22994,22 +23219,22 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div data-js-label class=\"user-label\"><p data-js-number class=\"number\">&nbsp</p><div data-js-user-icon data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><p data-js-login class=\"user-name text-ellipsis\"></p><p data-js-score class=\"score text-ellipsis\">&nbsp</p><div class=\"arrow\"></div></div><div class=\"inside-block\"><div class=\"icon-block\"><div class=\"icon games\"></div><span>Игр</span><h2 data-js-all-games>0</h2></div><div class=\"icon-block\"><div class=\"icon dones\"></div><span>Побед</span><h2 data-js-win>0</h2></div><div class=\"icon-block\"><div class=\"icon draws\"></div><span>Ничьих</span><h2 data-js-draw>0</h2></div><div class=\"icon-block\"><div class=\"icon fails\"></div><span>Поражений</span><h2 data-js-lose>0</h2></div><div class=\"buttons-block\"><div data-js-detail class=\"btn size-small color-yellow\">Подробнее</div><div data-js-start-game class=\"btn size-small color-light\">Сразиться</div></div></div>");;return buf.join("");
+	buf.push("<div data-js-label class=\"user-label\"><p data-js-number class=\"number\">&nbsp</p><div data-js-user-icon data-user-icon-status=\"0\" class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div><p data-js-login class=\"user-name text-ellipsis\"></p><p data-js-score class=\"score text-ellipsis\">&nbsp</p><div class=\"arrow\"></div></div><div class=\"inside-block\"><div class=\"icon-block\"><div class=\"icon games\"></div><span>Игр</span><h2 data-js-all-games>0</h2></div><div class=\"icon-block\"><div class=\"icon dones\"></div><span>Побед</span><h2 data-js-win>0</h2></div><div class=\"icon-block\"><div class=\"icon draws\"></div><span>Ничьих</span><h2 data-js-draw>0</h2></div><div class=\"icon-block\"><div class=\"icon fails\"></div><span>Поражений</span><h2 data-js-lose>0</h2></div><div class=\"buttons-block\"><div data-js-detail class=\"btn size-small color-yellow\">Подробнее</div><div data-js-start-game class=\"btn size-small color-light\">Сразиться</div><div data-js-fail-game class=\"btn size-small color-red\">Отказаться</div><div data-js-done-game class=\"btn size-big color-light\">Сразиться</div></div></div>");;return buf.join("");
 	}
 
 /***/ },
-/* 294 */
+/* 296 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 295 */,
-/* 296 */,
 /* 297 */,
 /* 298 */,
 /* 299 */,
-/* 300 */
+/* 300 */,
+/* 301 */,
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, _, common, $) {'use strict';
@@ -23018,17 +23243,17 @@
 	    value: true
 	});
 	
-	var _searchUserPage = __webpack_require__(301);
+	var _searchUserPage = __webpack_require__(303);
 	
 	var template = _interopRequireDefault(_searchUserPage).default;
 	
-	__webpack_require__(302);
+	__webpack_require__(304);
 	
-	var _userWidget = __webpack_require__(292);
+	var _userWidget = __webpack_require__(294);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
-	var _rivalCollection = __webpack_require__(304);
+	var _rivalCollection = __webpack_require__(306);
 	
 	var rivalCollection = _interopRequireDefault(_rivalCollection).default;
 	
@@ -23078,7 +23303,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(14), __webpack_require__(6), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 301 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -23092,14 +23317,14 @@
 	}
 
 /***/ },
-/* 302 */
+/* 304 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 303 */,
-/* 304 */
+/* 305 */,
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, common, _) {'use strict';
@@ -23164,7 +23389,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -23173,13 +23398,13 @@
 	    value: true
 	});
 	
-	var _last20GamesPage = __webpack_require__(306);
+	var _last20GamesPage = __webpack_require__(308);
 	
 	var template = _interopRequireDefault(_last20GamesPage).default;
 	
-	__webpack_require__(307);
+	__webpack_require__(309);
 	
-	var _userWidget = __webpack_require__(292);
+	var _userWidget = __webpack_require__(294);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -23215,7 +23440,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 306 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -23229,31 +23454,35 @@
 	}
 
 /***/ },
-/* 307 */
+/* 309 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 308 */,
-/* 309 */
+/* 310 */,
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, $) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _gamePage = __webpack_require__(310);
+	var _gamePage = __webpack_require__(312);
 	
 	var template = _interopRequireDefault(_gamePage).default;
 	
-	__webpack_require__(311);
+	__webpack_require__(313);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
+	
+	var _questionHistoryModal = __webpack_require__(315);
+	
+	var questionModal = _interopRequireDefault(_questionHistoryModal).default;
 	
 	var _roundWidget = __webpack_require__(36);
 	
@@ -23282,7 +23511,9 @@
 	        'click @ui.buttonResults': 'onClickButtonResults',
 	        'click @ui.buttonAddFriend': 'onClickAddFriend',
 	        'click @ui.buttonOpponentIcon': 'onClickOpponentIcon',
-	        'click @ui.buttonUserIcon': 'onClickUserIcon'
+	        'click @ui.buttonUserIcon': 'onClickUserIcon',
+	        'click .semaphore': 'onClickSemaphore'
+	
 	    },
 	
 	    computeds: {
@@ -23391,12 +23622,23 @@
 	    },
 	    onClickUserIcon: function onClickUserIcon() {
 	        common.router.navigate('profile/' + common.user.get('id'), { trigger: true });
+	    },
+	    onClickSemaphore: function onClickSemaphore(e) {
+	        var semid = $(e.currentTarget).data('sem-id');
+	        var roundid = $(e.currentTarget).data('round-id');
+	        common.api.room.question_history(73, 144, 31).done(function (data) {
+	            console.log(data);
+	            new questionModal().showModal();
+	        }).fail(function (data) {
+	            console.log(data);
+	            new infoModal({ message: data.text }).showModal();
+	        });
 	    }
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 310 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -23410,14 +23652,77 @@
 	}
 
 /***/ },
-/* 311 */
+/* 313 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 312 */,
-/* 313 */
+/* 314 */,
+/* 315 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _modal = __webpack_require__(13);
+	
+	var Modal = _interopRequireDefault(_modal).default;
+	
+	var _questionHistoryModal = __webpack_require__(316);
+	
+	var template = _interopRequireDefault(_questionHistoryModal).default;
+	
+	__webpack_require__(317);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = Modal.extend({
+	    template: template,
+	    className: 'person-info-modal full-modal bg-blur',
+	    bindings: {},
+	
+	    initialize: function initialize() {
+	        var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	        /*_.each(this.model.get('topics_answers'), function(answer) {
+	            var topicItem = common.topicCollection.where({id: answer.topic_id})[0];
+	            if(topicItem) {
+	                answer.topic_name = topicItem.get('t_name');
+	            }
+	            console.dir(answer);
+	        });*/
+	
+	        this.epoxify();
+	    }
+	});
+
+/***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(23);
+	
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	
+	buf.push("<div class=\"modal-overflow\"><div class=\"modal-backdrop\"></div><div class=\"modal-scroll\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><div class=\"modal-body\"><div class=\"container\"></div></div></div></div><div data-js-close class=\"modal-close\">&times;</div></div></div>");;return buf.join("");
+	}
+
+/***/ },
+/* 317 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 318 */,
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -23426,17 +23731,17 @@
 	    value: true
 	});
 	
-	var _profilePage = __webpack_require__(314);
+	var _profilePage = __webpack_require__(320);
 	
 	var template = _interopRequireDefault(_profilePage).default;
 	
-	__webpack_require__(315);
+	__webpack_require__(321);
 	
 	var _personModel = __webpack_require__(44);
 	
 	var PersonModel = _interopRequireDefault(_personModel).default;
 	
-	var _personInfoModal = __webpack_require__(321);
+	var _personInfoModal = __webpack_require__(327);
 	
 	var PersonInfoModal = _interopRequireDefault(_personInfoModal).default;
 	
@@ -23502,7 +23807,6 @@
 	        }).done(function (data) {
 	            var modelData = data.answer;
 	            modelData.u_number_rate = data.answer.u_rate_pos;
-	            console.dir(modelData);
 	            _this.model.set(modelData);
 	        }).fail(function (err) {
 	            console.log(err.text);
@@ -23532,7 +23836,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 314 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -23546,18 +23850,18 @@
 	}
 
 /***/ },
-/* 315 */
+/* 321 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_, common) {'use strict';
@@ -23570,11 +23874,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _personInfoModal = __webpack_require__(322);
+	var _personInfoModal = __webpack_require__(328);
 	
 	var template = _interopRequireDefault(_personInfoModal).default;
 	
-	__webpack_require__(323);
+	__webpack_require__(329);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -23609,7 +23913,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(10)))
 
 /***/ },
-/* 322 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -23646,14 +23950,14 @@
 	}
 
 /***/ },
-/* 323 */
+/* 329 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 324 */,
-/* 325 */
+/* 330 */,
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -23662,11 +23966,11 @@
 	    value: true
 	});
 	
-	var _gameResultPage = __webpack_require__(326);
+	var _gameResultPage = __webpack_require__(332);
 	
 	var template = _interopRequireDefault(_gameResultPage).default;
 	
-	__webpack_require__(327);
+	__webpack_require__(333);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -23756,7 +24060,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 326 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -23770,14 +24074,14 @@
 	}
 
 /***/ },
-/* 327 */
+/* 333 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 328 */,
-/* 329 */
+/* 334 */,
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, _) {'use strict';
@@ -23786,21 +24090,21 @@
 	    value: true
 	});
 	
-	var _questionsPage = __webpack_require__(330);
+	var _questionsPage = __webpack_require__(336);
 	
 	var template = _interopRequireDefault(_questionsPage).default;
 	
-	__webpack_require__(331);
+	__webpack_require__(337);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _questionWidget = __webpack_require__(333);
+	var _questionWidget = __webpack_require__(339);
 	
 	var questionWidget = _interopRequireDefault(_questionWidget).default;
 	
-	var _questionCollection = __webpack_require__(338);
+	var _questionCollection = __webpack_require__(344);
 	
 	var QuestionCollection = _interopRequireDefault(_questionCollection).default;
 	
@@ -23808,7 +24112,7 @@
 	
 	var selectTopicModal = _interopRequireDefault(_selectTopicModal).default;
 	
-	var _tipsWidget = __webpack_require__(257);
+	var _tipsWidget = __webpack_require__(259);
 	
 	var tipsWidget = _interopRequireDefault(_tipsWidget).default;
 	
@@ -23846,7 +24150,7 @@
 	            return;
 	        }
 	        if (!this.roomId) {
-	            common.router.navigate('index', { trigger: true });
+	            common.router.navigate('index', { trigger: true, replace: true });
 	            return;
 	        }
 	        common.api.getQuestionsByRoom(this.roomId).done(function (data) {
@@ -23865,14 +24169,14 @@
 	                        _this.showQuestion();
 	                    }).fail(function (data) {
 	                        new infoModal({ message: data.text }).showModal().always(function () {
-	                            common.router.navigate('game/' + _this.roomId, { trigger: true });
+	                            common.router.navigate('game/' + _this.roomId, { trigger: true, replace: true });
 	                        });
 	                    });
 	                }).fail(function () {
-	                    common.router.navigate('game/' + _this.roomId, { trigger: true });
+	                    common.router.navigate('game/' + _this.roomId, { trigger: true, replace: true });
 	                });
 	            } else {
-	                common.router.navigate('game/' + _this.roomId, { trigger: true });
+	                common.router.navigate('game/' + _this.roomId, { trigger: true, replace: true });
 	            }
 	        });
 	    },
@@ -23902,7 +24206,7 @@
 	        } else {
 	            common.api.sendAnswers(this.roomId, this.roundId, this.answers).done(function () {
 	                common.userGameCollection.forceUpdate();
-	                common.router.navigate('game/' + _this2.roomId, { trigger: true });
+	                common.router.navigate('game/' + _this2.roomId, { trigger: true, replace: true });
 	            }).fail(function (data) {
 	                new infoModal({ message: data.text }).showModal();
 	            });
@@ -23953,7 +24257,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10), __webpack_require__(6)))
 
 /***/ },
-/* 330 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -23967,14 +24271,14 @@
 	}
 
 /***/ },
-/* 331 */
+/* 337 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 332 */,
-/* 333 */
+/* 338 */,
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, $) {'use strict';
@@ -23983,11 +24287,11 @@
 	    value: true
 	});
 	
-	var _questionWidget = __webpack_require__(334);
+	var _questionWidget = __webpack_require__(340);
 	
 	var template = _interopRequireDefault(_questionWidget).default;
 	
-	__webpack_require__(335);
+	__webpack_require__(341);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24066,7 +24370,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(7)))
 
 /***/ },
-/* 334 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24150,15 +24454,15 @@
 	}
 
 /***/ },
-/* 335 */
+/* 341 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 336 */,
-/* 337 */,
-/* 338 */
+/* 342 */,
+/* 343 */,
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _) {'use strict';
@@ -24167,7 +24471,7 @@
 	    value: true
 	});
 	
-	var _questionModel = __webpack_require__(339);
+	var _questionModel = __webpack_require__(345);
 	
 	var questionModel = _interopRequireDefault(_questionModel).default;
 	
@@ -24191,7 +24495,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)))
 
 /***/ },
-/* 339 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Epoxy) {'use strict';
@@ -24225,7 +24529,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ },
-/* 340 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, Marionette, common) {'use strict';
@@ -24234,13 +24538,13 @@
 	    value: true
 	});
 	
-	var _blackListPage = __webpack_require__(341);
+	var _blackListPage = __webpack_require__(347);
 	
 	var template = _interopRequireDefault(_blackListPage).default;
 	
-	__webpack_require__(342);
+	__webpack_require__(348);
 	
-	var _userWidget = __webpack_require__(292);
+	var _userWidget = __webpack_require__(294);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -24286,7 +24590,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(4), __webpack_require__(10)))
 
 /***/ },
-/* 341 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24300,14 +24604,14 @@
 	}
 
 /***/ },
-/* 342 */
+/* 348 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 343 */,
-/* 344 */
+/* 349 */,
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common, $) {'use strict';
@@ -24316,17 +24620,17 @@
 	    value: true
 	});
 	
-	var _settingsPageAcc = __webpack_require__(345);
+	var _settingsPageAcc = __webpack_require__(351);
 	
 	var template = _interopRequireDefault(_settingsPageAcc).default;
 	
-	__webpack_require__(346);
+	__webpack_require__(352);
 	
 	var _infoModal = __webpack_require__(12);
 	
 	var infoModal = _interopRequireDefault(_infoModal).default;
 	
-	var _enterPasswordModal = __webpack_require__(348);
+	var _enterPasswordModal = __webpack_require__(354);
 	
 	var enterPasswordModal = _interopRequireDefault(_enterPasswordModal).default;
 	
@@ -24444,7 +24748,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10), __webpack_require__(7)))
 
 /***/ },
-/* 345 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24458,14 +24762,14 @@
 	}
 
 /***/ },
-/* 346 */
+/* 352 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 347 */,
-/* 348 */
+/* 353 */,
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24478,11 +24782,11 @@
 	
 	var Modal = _interopRequireDefault(_modal).default;
 	
-	var _enterPasswordModal = __webpack_require__(349);
+	var _enterPasswordModal = __webpack_require__(355);
 	
 	var template = _interopRequireDefault(_enterPasswordModal).default;
 	
-	__webpack_require__(350);
+	__webpack_require__(356);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24522,7 +24826,7 @@
 	});
 
 /***/ },
-/* 349 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24536,14 +24840,14 @@
 	}
 
 /***/ },
-/* 350 */
+/* 356 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 351 */,
-/* 352 */
+/* 357 */,
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24552,11 +24856,11 @@
 	    value: true
 	});
 	
-	var _statisticsPage = __webpack_require__(353);
+	var _statisticsPage = __webpack_require__(359);
 	
 	var template = _interopRequireDefault(_statisticsPage).default;
 	
-	__webpack_require__(354);
+	__webpack_require__(360);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24596,7 +24900,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 353 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24610,14 +24914,14 @@
 	}
 
 /***/ },
-/* 354 */
+/* 360 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 355 */,
-/* 356 */
+/* 361 */,
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -24626,13 +24930,13 @@
 	    value: true
 	});
 	
-	var _playerRankingsPage = __webpack_require__(357);
+	var _playerRankingsPage = __webpack_require__(363);
 	
 	var template = _interopRequireDefault(_playerRankingsPage).default;
 	
-	__webpack_require__(358);
+	__webpack_require__(364);
 	
-	var _userWidget = __webpack_require__(292);
+	var _userWidget = __webpack_require__(294);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -24668,7 +24972,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 357 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24682,14 +24986,14 @@
 	}
 
 /***/ },
-/* 358 */
+/* 364 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 359 */,
-/* 360 */
+/* 365 */,
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24698,11 +25002,11 @@
 	    value: true
 	});
 	
-	var _authPage = __webpack_require__(361);
+	var _authPage = __webpack_require__(367);
 	
 	var template = _interopRequireDefault(_authPage).default;
 	
-	__webpack_require__(362);
+	__webpack_require__(368);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24817,7 +25121,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 361 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24831,16 +25135,16 @@
 	}
 
 /***/ },
-/* 362 */
+/* 368 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24849,11 +25153,11 @@
 	    value: true
 	});
 	
-	var _registrationPage = __webpack_require__(367);
+	var _registrationPage = __webpack_require__(373);
 	
 	var template = _interopRequireDefault(_registrationPage).default;
 	
-	__webpack_require__(368);
+	__webpack_require__(374);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -24918,7 +25222,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 367 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -24932,14 +25236,14 @@
 	}
 
 /***/ },
-/* 368 */
+/* 374 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 369 */,
-/* 370 */
+/* 375 */,
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -24948,13 +25252,13 @@
 	    value: true
 	});
 	
-	var _blockTopicsPage = __webpack_require__(371);
+	var _blockTopicsPage = __webpack_require__(377);
 	
 	var template = _interopRequireDefault(_blockTopicsPage).default;
 	
-	__webpack_require__(372);
+	__webpack_require__(378);
 	
-	var _blockTopicsItem = __webpack_require__(376);
+	var _blockTopicsItem = __webpack_require__(382);
 	
 	var blockTopicsTemplate = _interopRequireDefault(_blockTopicsItem).default;
 	
@@ -25007,7 +25311,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 371 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -25021,16 +25325,16 @@
 	}
 
 /***/ },
-/* 372 */
+/* 378 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -25044,7 +25348,7 @@
 	}
 
 /***/ },
-/* 377 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -25053,11 +25357,11 @@
 	    value: true
 	});
 	
-	var _signinPage = __webpack_require__(378);
+	var _signinPage = __webpack_require__(384);
 	
 	var template = _interopRequireDefault(_signinPage).default;
 	
-	__webpack_require__(379);
+	__webpack_require__(385);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -25112,7 +25416,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 378 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -25126,14 +25430,14 @@
 	}
 
 /***/ },
-/* 379 */
+/* 385 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 380 */,
-/* 381 */
+/* 386 */,
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, MarionetteEpoxy, common) {'use strict';
@@ -25142,13 +25446,13 @@
 	    value: true
 	});
 	
-	var _neighborsPage = __webpack_require__(382);
+	var _neighborsPage = __webpack_require__(388);
 	
 	var template = _interopRequireDefault(_neighborsPage).default;
 	
-	__webpack_require__(383);
+	__webpack_require__(389);
 	
-	var _userWidget = __webpack_require__(292);
+	var _userWidget = __webpack_require__(294);
 	
 	var userWidget = _interopRequireDefault(_userWidget).default;
 	
@@ -25184,7 +25488,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 382 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -25198,14 +25502,14 @@
 	}
 
 /***/ },
-/* 383 */
+/* 389 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 384 */,
-/* 385 */
+/* 390 */,
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(MarionetteEpoxy, common) {'use strict';
@@ -25214,11 +25518,11 @@
 	  value: true
 	});
 	
-	var _restorePasswordPage = __webpack_require__(386);
+	var _restorePasswordPage = __webpack_require__(392);
 	
 	var template = _interopRequireDefault(_restorePasswordPage).default;
 	
-	__webpack_require__(387);
+	__webpack_require__(393);
 	
 	var _infoModal = __webpack_require__(12);
 	
@@ -25279,7 +25583,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(10)))
 
 /***/ },
-/* 386 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -25293,14 +25597,113 @@
 	}
 
 /***/ },
-/* 387 */
+/* 393 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 388 */,
-/* 389 */
+/* 394 */,
+/* 395 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(Backbone, Marionette, MarionetteEpoxy, common, _) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _requestPage = __webpack_require__(396);
+	
+	var template = _interopRequireDefault(_requestPage).default;
+	
+	__webpack_require__(397);
+	
+	var _userWidget = __webpack_require__(294);
+	
+	var userWidget = _interopRequireDefault(_userWidget).default;
+	
+	var _personModel = __webpack_require__(44);
+	
+	var PersonModel = _interopRequireDefault(_personModel).default;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var RequestCollection = Backbone.Collection.extend({
+	    model: PersonModel
+	});
+	var RequestCollectionView = Marionette.CollectionView.extend({
+	    className: 'list-container',
+	    tagName: 'ul',
+	    childView: userWidget
+	});
+	
+	exports.default = MarionetteEpoxy.LayoutView.extend({
+	    template: template,
+	    className: 'request-page page',
+	
+	    ui: {},
+	
+	    bindings: {},
+	
+	    events: {},
+	    regions: {
+	        'resultContainer': '[data-js-request-list]'
+	    },
+	
+	    initialize: function initialize() {
+	        var _this = this;
+	
+	        this.collection = new RequestCollection();
+	        common.userGameCollection.ready.done(function () {
+	            _.each(common.userGameCollection.models, function (model) {
+	                if (model.get('isMyRequest')) {
+	                    (function () {
+	                        var roomId = model.get('room_id');
+	                        common.api.user.getDataById(model.get('id')).done(function (data) {
+	                            var modelData = data.answer;
+	                            modelData.u_number_rate = data.answer.u_rate_pos;
+	                            modelData.request = true;
+	                            modelData.request_room_id = roomId;
+	                            _this.collection.add(modelData);
+	                        });
+	                    })();
+	                }
+	            });
+	        });
+	        this.requestCollectionView = new RequestCollectionView({
+	            collection: this.collection
+	        });
+	    },
+	    onRender: function onRender() {
+	        this.resultContainer.show(this.requestCollectionView);
+	    }
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(4), __webpack_require__(14), __webpack_require__(10), __webpack_require__(6)))
+
+/***/ },
+/* 396 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(23);
+	
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	
+	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Заявки</h3></div><div data-js-request-list></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	}
+
+/***/ },
+/* 397 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 398 */,
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
@@ -25310,17 +25713,17 @@
 	});
 	exports.RoomWidget = exports.Api = undefined;
 	
-	__webpack_require__(390);
+	__webpack_require__(400);
 	
-	var _UserModel = __webpack_require__(391);
+	var _UserModel = __webpack_require__(401);
 	
 	var UserModel = _interopRequireDefault(_UserModel).default;
 	
-	var _RoomModel = __webpack_require__(392);
+	var _RoomModel = __webpack_require__(402);
 	
 	var RoomModel = _interopRequireDefault(_RoomModel).default;
 	
-	var _RoomWidget = __webpack_require__(398);
+	var _RoomWidget = __webpack_require__(408);
 	
 	var RoomWidget = _interopRequireDefault(_RoomWidget).default;
 	
@@ -25423,7 +25826,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ },
-/* 390 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* vim: set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab: */
@@ -27505,7 +27908,7 @@
 
 
 /***/ },
-/* 391 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _) {'use strict';
@@ -27514,13 +27917,13 @@
 	    value: true
 	});
 	
-	__webpack_require__(390);
+	__webpack_require__(400);
 	
-	var _RoomModel = __webpack_require__(392);
+	var _RoomModel = __webpack_require__(402);
 	
 	var RoomModel = _interopRequireDefault(_RoomModel).default;
 	
-	var _RoomCollection = __webpack_require__(397);
+	var _RoomCollection = __webpack_require__(407);
 	
 	var RoomCollection = _interopRequireDefault(_RoomCollection).default;
 	
@@ -27562,7 +27965,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)))
 
 /***/ },
-/* 392 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone) {'use strict';
@@ -27571,21 +27974,21 @@
 	    value: true
 	});
 	
-	__webpack_require__(390);
+	__webpack_require__(400);
 	
-	var _MessageModel = __webpack_require__(393);
+	var _MessageModel = __webpack_require__(403);
 	
 	var MessageModel = _interopRequireDefault(_MessageModel).default;
 	
-	var _MessageCollection = __webpack_require__(395);
+	var _MessageCollection = __webpack_require__(405);
 	
 	var MessageCollection = _interopRequireDefault(_MessageCollection).default;
 	
-	var _UserInfoModel = __webpack_require__(394);
+	var _UserInfoModel = __webpack_require__(404);
 	
 	var UserInfoModel = _interopRequireDefault(_UserInfoModel).default;
 	
-	var _UserInfoCollection = __webpack_require__(396);
+	var _UserInfoCollection = __webpack_require__(406);
 	
 	var UserInfoCollection = _interopRequireDefault(_UserInfoCollection).default;
 	
@@ -27615,7 +28018,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 393 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone) {'use strict';
@@ -27624,9 +28027,9 @@
 	    value: true
 	});
 	
-	__webpack_require__(390);
+	__webpack_require__(400);
 	
-	var _UserInfoModel = __webpack_require__(394);
+	var _UserInfoModel = __webpack_require__(404);
 	
 	var UserInfoModel = _interopRequireDefault(_UserInfoModel).default;
 	
@@ -27650,7 +28053,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 394 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone) {'use strict';
@@ -27659,7 +28062,7 @@
 	    value: true
 	});
 	
-	__webpack_require__(390);
+	__webpack_require__(400);
 	
 	exports.default = Backbone.RelationalModel.extend({
 	    idAttribute: '_id',
@@ -27671,7 +28074,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 395 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone) {'use strict';
@@ -27680,7 +28083,7 @@
 	    value: true
 	});
 	
-	var _MessageModel = __webpack_require__(393);
+	var _MessageModel = __webpack_require__(403);
 	
 	var MessageModel = _interopRequireDefault(_MessageModel).default;
 	
@@ -27692,7 +28095,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 396 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone) {'use strict';
@@ -27701,9 +28104,9 @@
 	    value: true
 	});
 	
-	__webpack_require__(390);
+	__webpack_require__(400);
 	
-	var _UserInfoModel = __webpack_require__(394);
+	var _UserInfoModel = __webpack_require__(404);
 	
 	var UserInfoModel = _interopRequireDefault(_UserInfoModel).default;
 	
@@ -27715,7 +28118,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 397 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone) {'use strict';
@@ -27724,7 +28127,7 @@
 	    value: true
 	});
 	
-	var _RoomModel = __webpack_require__(392);
+	var _RoomModel = __webpack_require__(402);
 	
 	var RoomModel = _interopRequireDefault(_RoomModel).default;
 	
@@ -27737,7 +28140,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 398 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette) {'use strict';
@@ -27746,21 +28149,21 @@
 	    value: true
 	});
 	
-	var _MessageModel = __webpack_require__(393);
+	var _MessageModel = __webpack_require__(403);
 	
 	var MessageModel = _interopRequireDefault(_MessageModel).default;
 	
-	var _MessageCollectionView = __webpack_require__(399);
+	var _MessageCollectionView = __webpack_require__(409);
 	
 	var MessageCollectionView = _interopRequireDefault(_MessageCollectionView).default;
 	
-	var _MessageEditorView = __webpack_require__(403);
+	var _MessageEditorView = __webpack_require__(413);
 	
 	var MessageEditorView = _interopRequireDefault(_MessageEditorView).default;
 	
-	__webpack_require__(405);
+	__webpack_require__(415);
 	
-	var _layout = __webpack_require__(411);
+	var _layout = __webpack_require__(421);
 	
 	var layout = _interopRequireDefault(_layout).default;
 	
@@ -27810,7 +28213,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 399 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette) {'use strict';
@@ -27819,7 +28222,7 @@
 	    value: true
 	});
 	
-	var _MessageItemView = __webpack_require__(400);
+	var _MessageItemView = __webpack_require__(410);
 	
 	var MessageItemView = _interopRequireDefault(_MessageItemView).default;
 	
@@ -27841,7 +28244,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 400 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette) {'use strict';
@@ -27850,11 +28253,11 @@
 	    value: true
 	});
 	
-	var _item = __webpack_require__(401);
+	var _item = __webpack_require__(411);
 	
 	var template = _interopRequireDefault(_item).default;
 	
-	var _avatarDefault = __webpack_require__(402);
+	var _avatarDefault = __webpack_require__(412);
 	
 	var defaultAvatar = _interopRequireDefault(_avatarDefault).default;
 	
@@ -27887,7 +28290,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 401 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -27908,13 +28311,13 @@
 	}
 
 /***/ },
-/* 402 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "images/avatar-default.c1c6ff.png";
 
 /***/ },
-/* 403 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette) {'use strict';
@@ -27923,7 +28326,7 @@
 	    value: true
 	});
 	
-	var _editor = __webpack_require__(404);
+	var _editor = __webpack_require__(414);
 	
 	var template = _interopRequireDefault(_editor).default;
 	
@@ -27962,7 +28365,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 404 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -27977,18 +28380,18 @@
 	}
 
 /***/ },
-/* 405 */
+/* 415 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jade = __webpack_require__(23);
@@ -28002,7 +28405,7 @@
 	}
 
 /***/ },
-/* 412 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, Backbone) {'use strict';
@@ -28025,6 +28428,7 @@
 	        'blockTopics': 'onShowBlockTopics',
 	        //	'last20games': 'onShowLast20Games',
 	        'game/:roomId': 'onShowGamePage',
+	        'requests': 'onShowRequestPage',
 	        'profile/:userId': 'onShowProfilePage',
 	        'gameResult/:roomId': 'onShowGameResultPage',
 	        'questions/:roomId': 'onShowQuestionsPage',
@@ -28051,7 +28455,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(5)))
 
 /***/ },
-/* 413 */
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Marionette, _, $, Backbone) {'use strict';
@@ -28136,4 +28540,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.54dfdcac1df60e50b567.js.map
+//# sourceMappingURL=application.1afcf063314520923293.js.map

@@ -1119,6 +1119,11 @@ h2 {
     border-color: #fff17d; }
     .btn.color-yellow.touchHover {
       background-color: #fff17d; }
+  .btn.color-red {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: #cd5f57; }
+    .btn.color-red.touchHover {
+      background-color: #cd5f57; }
   .btn.single {
     margin-top: 15px;
     margin-bottom: 10px; }
@@ -1773,15 +1778,70 @@ label.input {
   height: 102px;
   padding: 0 5px; }
 
+.index-page .game-container {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.index-page .game-item {
+  color: #fff; }
+  .index-page .game-item .user-icon {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 10px 0; }
+  .index-page .game-item .text-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 55px;
+    right: 60px; }
+    .index-page .game-item .text-container h2 {
+      margin-top: 2px;
+      margin-bottom: 6px;
+      font-size: 15px; }
+    .index-page .game-item .text-container p {
+      font-size: 12px; }
+  .index-page .game-item .time-container {
+    float: right;
+    width: 40px;
+    height: 40px;
+    margin: 10px 0;
+    font-size: 10px; }
+
+.index-page .right-text {
+  position: absolute;
+  display: block;
+  top: -6px;
+  right: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px; }
+
+.index-page .icon {
+  display: block;
+  width: 40px;
+  height: 40px; }
+
 @media (min-width: 700px) {
-  .index-page .tips-block {
-    height: 130px; }
-  .index-page .block-name {
-    left: 110px; }
-    .index-page .block-name p {
-      font-size: 18px; }
-    .index-page .block-name h2 {
-      font-size: 24px; } }
+  .index-page .right-text {
+    font-size: 30px; }
+  .index-page .game-item .user-icon {
+    width: 55px;
+    height: 55px; }
+  .index-page .game-item .text-container {
+    left: 85px;
+    right: 80px; }
+    .index-page .game-item .text-container p {
+      font-size: 15px; }
+    .index-page .game-item .text-container h2 {
+      font-size: 21px; }
+  .index-page .game-item .time-container {
+    width: 45px;
+    height: 55px;
+    font-size: 13px; } }
 /*  COLORS */
 .tips-widget .tips-overflow {
   width: 100%;
@@ -2059,7 +2119,8 @@ li.user-widget {
     display: none;
     position: relative;
     width: 100%;
-    height: 135px;
+    height: auto;
+    overflow: hidden;
     background-color: rgba(36, 57, 49, 0.9); }
     li.user-widget .inside-block .icon {
       margin: 11px auto 0 auto;
@@ -2097,11 +2158,15 @@ li.user-widget {
     li.user-widget .inside-block .buttons-block {
       float: left;
       width: 100%;
-      text-align: center; }
+      text-align: center;
+      padding-bottom: 10px; }
       li.user-widget .inside-block .buttons-block .btn {
         display: inline-block;
         width: 115px;
         margin: 0 7px; }
+        li.user-widget .inside-block .buttons-block .btn.size-big {
+          margin-top: 10px;
+          width: 245px; }
   li.user-widget.no-number .user-label .user-name {
     left: 60px; }
   li.user-widget.no-number .user-label p.number {
@@ -2138,26 +2203,24 @@ li.user-widget {
         li.user-widget .user-label p.number {
           width: 35px;
           padding-right: 5px; }
-    li.user-widget .inside-block {
-      height: 190px; }
-      li.user-widget .inside-block .icon-block {
-        height: 135px; }
-        li.user-widget .inside-block .icon-block span {
-          font-size: 13px; }
-        li.user-widget .inside-block .icon-block h2 {
-          font-size: 22px;
-          margin-top: 12px; }
-      li.user-widget .inside-block .icon {
-        width: 50px;
-        height: 50px; }
-        li.user-widget .inside-block .icon.games {
-          background-size: 22px 23px; }
-        li.user-widget .inside-block .icon.dones {
-          background-size: 25px 25px; }
-        li.user-widget .inside-block .icon.draws {
-          background-size: 27px 26px; }
-        li.user-widget .inside-block .icon.fails {
-          background-size: 25px 25px; } }
+    li.user-widget .inside-block .icon-block {
+      height: 135px; }
+      li.user-widget .inside-block .icon-block span {
+        font-size: 13px; }
+      li.user-widget .inside-block .icon-block h2 {
+        font-size: 22px;
+        margin-top: 12px; }
+    li.user-widget .inside-block .icon {
+      width: 50px;
+      height: 50px; }
+      li.user-widget .inside-block .icon.games {
+        background-size: 22px 23px; }
+      li.user-widget .inside-block .icon.dones {
+        background-size: 25px 25px; }
+      li.user-widget .inside-block .icon.draws {
+        background-size: 27px 26px; }
+      li.user-widget .inside-block .icon.fails {
+        background-size: 25px 25px; } }
 /*  COLORS */
 .search-user-page .result-container {
   padding: 10px 0; }
@@ -2199,6 +2262,39 @@ li.user-widget {
 .game-page .list-container {
   padding: 15px;
   height: 350px; }
+/*  COLORS */
+.person-info-modal .user-icon {
+  display: inline-block;
+  width: 55px;
+  height: 55px; }
+
+.person-info-modal .user-name {
+  font-size: 19px;
+  line-height: 28px;
+  margin-top: -6px; }
+
+.person-info-modal p {
+  color: white;
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 2px; }
+  .person-info-modal p span {
+    position: absolute;
+    right: 0; }
+
+.person-info-modal .progress-bar {
+  position: relative;
+  height: 12px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5); }
+
+.person-info-modal .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 5px;
+  background: rgba(36, 171, 125, 0.9); }
 /*  COLORS */
 .profile-page .user-icon {
   display: inline-block;
@@ -2537,6 +2633,16 @@ li.user-widget {
   bottom: 0;
   position: absolute; }
 /*  COLORS */
+.request-page .user-widget .user-label .user-name {
+  left: 60px; }
+  @media (min-width: 700px) {
+    .request-page .user-widget .user-label .user-name {
+      left: 80px; } }
+
+.request-page .user-widget .user-label p.number {
+  width: 11px;
+  visibility: hidden; }
+/*  COLORS */
 .chatWidget {
   width: 100%;
   height: 100%;
@@ -2614,4 +2720,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.f29decae9ccfeb444185485011a82897.css.map*/
+/*# sourceMappingURL=style.8f2b4e12568ff9571c3fb73f15a8cfe3.css.map*/
