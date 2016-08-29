@@ -20305,10 +20305,16 @@
 	        });
 	    },
 	    getOpponentId: function getOpponentId(data) {
-	        if (common.user.get('id') != data.rr_leader_user_id) {
-	            return data.rr_leader_user_id;
+	        if (data.rr_leader_user_id) {
+	            if (common.user.get('id') != data.rr_leader_user_id) {
+	                return data.rr_leader_user_id;
+	            }
+	            return data.rr_slave_user_id;
 	        }
-	        return data.rr_slave_user_id;
+	        if (common.user.get('id') != data.r_user_id_opponent) {
+	            return data.r_user_id_opponent;
+	        }
+	        return data.r_user_id_open;
 	    },
 	    smartParse: function smartParse(data) {
 	        var _this4 = this;
@@ -28872,4 +28878,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.56e3a90cd3ae8f478158.js.map
+//# sourceMappingURL=application.948332017e228fb3797f.js.map

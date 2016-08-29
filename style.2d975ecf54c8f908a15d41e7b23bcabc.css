@@ -2242,7 +2242,8 @@ li.user-widget {
   .game-page .half-block h2 {
     text-align: center;
     font-size: 16px;
-    padding: 5px 10px 0 10px; }
+    padding: 5px 10px 0 10px;
+    line-height: 20px; }
 
 .game-page .user-icon {
   display: block;
@@ -2720,4 +2721,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.8f2b4e12568ff9571c3fb73f15a8cfe3.css.map*/
+/*# sourceMappingURL=style.2d975ecf54c8f908a15d41e7b23bcabc.css.map*/
