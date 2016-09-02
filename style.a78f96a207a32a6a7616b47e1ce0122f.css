@@ -2423,6 +2423,60 @@ li.user-widget {
   width: 80px;
   text-align: center;
   font-size: 21px; }
+
+.game-result-page .score-header {
+  margin-top: 40px; }
+  .game-result-page .score-header .text-min {
+    font-size: 12px;
+    margin-bottom: 5px; }
+
+.game-result-page .slider {
+  position: relative;
+  width: 90%;
+  height: 28px;
+  border: 1px solid white;
+  margin: 18px auto 0 auto;
+  border-radius: 20px; }
+  .game-result-page .slider .separator {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 26px;
+    background: white; }
+  .game-result-page .slider .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 1px solid white;
+    width: 28px;
+    height: 26px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center; }
+    .game-result-page .slider .icon:first-child {
+      right: auto;
+      left: 0;
+      border-right: 1px solid white;
+      border-left: none; }
+    .game-result-page .slider .icon.score-fail {
+      background-image: url(images/score-fail.509b0d.png); }
+    .game-result-page .slider .icon.score-done {
+      background-image: url(images/score-done.55b048.png); }
+
+.game-result-page .my-slider-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  right: 50%;
+  left: 28px; }
+
+.game-result-page .opponent-slider-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 50%;
+  right: 28px; }
 /*  COLORS */
 .questions-page .questions-start p {
   margin-top: 90px;
@@ -2495,9 +2549,11 @@ li.user-widget {
   margin-top: 10px;
   border-radius: 5px;
   height: auto;
-  padding: 12px 0;
+  padding: 5px;
   line-height: 15px;
   font-size: 15px; }
+  .question-widget .btn .table-middle-block {
+    min-height: 75px; }
   .question-widget .btn.green-state-animate {
     transition: background-color 1s ease; }
   .question-widget .btn.green-state, .question-widget .btn.green-state-animate {
@@ -2540,7 +2596,8 @@ li.user-widget {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: #6cbb2d; }
+    background-color: #6cbb2d;
+    border-radius: 2px; }
   .question-widget .timer .timer-label {
     width: 20px;
     height: 17px;
@@ -2625,9 +2682,12 @@ li.user-widget {
   bottom: 0;
   position: absolute; }
 /*  COLORS */
-.new-game-page .friends-header {
+.neighbors-game .text-header {
   margin-top: 10px;
   margin-bottom: 4px; }
+
+.neighbors-game .number {
+  visibility: hidden; }
 /*  COLORS */
 .restore-password-page .table-middle-block {
   height: 50%;
@@ -2721,4 +2781,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.2d975ecf54c8f908a15d41e7b23bcabc.css.map*/
+/*# sourceMappingURL=style.a78f96a207a32a6a7616b47e1ce0122f.css.map*/
