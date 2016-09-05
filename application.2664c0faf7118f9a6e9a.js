@@ -22494,7 +22494,7 @@
 	        });
 	        this.userGameCollectionView = new UserGameCollectionView({
 	            filterCollection: function filterCollection(child, index, collection) {
-	                return child.get('myTurn') && !child.get('isGameClose') && child.get('r_call_to_fight') == "2";
+	                return child.get('myTurn') && !child.get('isGameClose') && (child.get('r_call_to_fight') == "2" || child.get('r_call_to_fight') == null);
 	            },
 	            mainCollection: common.userGameCollection,
 	            name: 'Наш ход'
@@ -31109,4 +31109,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.2217f3a2625c45d9a662.js.map
+//# sourceMappingURL=application.2664c0faf7118f9a6e9a.js.map
