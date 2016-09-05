@@ -1124,6 +1124,11 @@ h2 {
     border-color: #cd5f57; }
     .btn.color-red.touchHover {
       background-color: #cd5f57; }
+  .btn.color-blue {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: #64a5a9; }
+    .btn.color-blue.touchHover {
+      background-color: #64a5a9; }
   .btn.single {
     margin-top: 15px;
     margin-bottom: 10px; }
@@ -1311,6 +1316,8 @@ label.input {
     background-color: #ea5f56; }
   .user-icon[data-user-icon-status="3"] .avatar_bg {
     background-color: #eecf7e; }
+  .user-icon[data-user-icon-id="0"] .avatar {
+    background-image: url(images/0.701a3d.png); }
   .user-icon[data-user-icon-id="1"] .avatar {
     background-image: url(images/1.0b2830.png); }
   .user-icon[data-user-icon-id="2"] .avatar {
@@ -2417,12 +2424,15 @@ li.user-widget {
 
 .game-result-page .score-block {
   position: absolute;
-  top: 27px;
+  top: 67px;
   left: 50%;
   margin-left: -40px;
   width: 80px;
-  text-align: center;
-  font-size: 21px; }
+  text-align: center; }
+  .game-result-page .score-block span {
+    font-size: 41px;
+    font-weight: bold;
+    line-height: 20px; }
 
 .game-result-page .score-header {
   margin-top: 40px; }
@@ -2436,7 +2446,8 @@ li.user-widget {
   height: 28px;
   border: 1px solid white;
   margin: 18px auto 0 auto;
-  border-radius: 20px; }
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.2); }
   .game-result-page .slider .separator {
     position: absolute;
     left: 50%;
@@ -2477,6 +2488,53 @@ li.user-widget {
   height: 100%;
   left: 50%;
   right: 28px; }
+
+.game-result-page .text-block {
+  position: relative;
+  width: 90%;
+  margin: 3px auto;
+  font-size: 11px; }
+  .game-result-page .text-block span {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    width: 100%;
+    padding: 0 23px;
+    text-align: center; }
+    .game-result-page .text-block span:first-child {
+      text-align: left; }
+    .game-result-page .text-block span:last-child {
+      text-align: right; }
+
+.game-result-page .my-slider, .game-result-page .opponent-slider {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  right: 0;
+  transition: width 2s ease; }
+  .game-result-page .my-slider.color-red, .game-result-page .opponent-slider.color-red {
+    background: #ea5f56; }
+  .game-result-page .my-slider.color-green, .game-result-page .opponent-slider.color-green {
+    background: #52be5d; }
+
+.game-result-page .opponent-slider {
+  right: auto;
+  left: 0; }
+
+.game-result-page .user-status {
+  text-align: center;
+  padding-bottom: 20px;
+  font-weight: bold; }
+
+.game-result-page .buttons-block {
+  width: 90%;
+  margin: 60px auto 0 auto;
+  text-align: center; }
+  .game-result-page .buttons-block .btn {
+    width: 45%;
+    display: inline-block; }
+    .game-result-page .buttons-block .btn:first-child {
+      margin-right: 25px; }
 /*  COLORS */
 .questions-page .questions-start p {
   margin-top: 90px;
@@ -2747,7 +2805,8 @@ li.user-widget {
             font-size: 8px;
             line-height: 1.17;
             color: #373737;
-            white-space: pre; }
+            white-space: normal;
+            text-align: left; }
         .chatWidget .messages .message-collection li.left .msg {
           border-width: 8px 12px 19px 18px;
           border-image: url(images/msg-bg-grey.8cc3d1.png) 16 24 38 36 fill stretch; }
@@ -2781,4 +2840,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.a78f96a207a32a6a7616b47e1ce0122f.css.map*/
+/*# sourceMappingURL=style.34be3911c03613fea16be2c692db34fe.css.map*/
