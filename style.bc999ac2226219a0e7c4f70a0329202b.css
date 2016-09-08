@@ -2611,7 +2611,7 @@ li.user-widget {
   line-height: 15px;
   font-size: 15px; }
   .question-widget .btn .table-middle-block {
-    min-height: 75px; }
+    min-height: 55px; }
   .question-widget .btn.green-state-animate {
     transition: background-color 1s ease; }
   .question-widget .btn.green-state, .question-widget .btn.green-state-animate {
@@ -2840,4 +2840,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.34be3911c03613fea16be2c692db34fe.css.map*/
+/*# sourceMappingURL=style.bc999ac2226219a0e7c4f70a0329202b.css.map*/

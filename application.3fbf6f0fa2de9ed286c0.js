@@ -20480,7 +20480,7 @@
 	            deps: ['opponent_u_name', 'opponent_u_surname', 'opponent_u_login'],
 	            get: function get(opponent_u_name, opponent_u_surname, opponent_u_login) {
 	                if (opponent_u_name && opponent_u_surname) {
-	                    return '#{opponent_u_name} #{opponent_u_surname}';
+	                    return opponent_u_name + ' ' + opponent_u_surname;
 	                }
 	                return opponent_u_login || 'Случайный игрок';
 	            }
@@ -20913,7 +20913,7 @@
 	            roundName: common.topicCollection.get(topicId).get('t_name')
 	
 	        });
-	        console.log(this.model);
+	        //console.log(this.model);
 	        this.counts = { userAnswerSuccess: userAnswerSuccess, opponentAnswerSuccess: opponentAnswerSuccess };
 	        this.listenTo(this.userGameCollectionView, 'click:game', this.onClickGame);
 	    },
@@ -21426,7 +21426,7 @@
 	        common.api.getLast20Games().done(function (data) {
 	            _this2.parse(data);
 	        }).fail(function (err) {
-	            console.log(err.text);
+	            // console.log(err.text)
 	        });
 	    }
 	});
@@ -24152,7 +24152,7 @@
 	            if (topicItem) {
 	                answer.topic_name = topicItem.get('t_name');
 	            }
-	            console.dir(answer);
+	            //console.dir(answer);
 	        });
 	        this.epoxify();
 	    }
@@ -24478,7 +24478,7 @@
 	        });
 	    },
 	    showQuestion: function showQuestion() {
-	        console.dir(this.questionsCollection);
+	        //console.dir(this.questionsCollection);
 	        if (this.currentQuestion == 0) {
 	            this.showStartBlock();
 	        } else {
@@ -31109,4 +31109,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.2664c0faf7118f9a6e9a.js.map
+//# sourceMappingURL=application.3fbf6f0fa2de9ed286c0.js.map
