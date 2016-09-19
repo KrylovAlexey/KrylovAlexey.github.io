@@ -21841,6 +21841,9 @@
 	            this.appLayout.showPage(pageConstructor, data);
 	        }
 	    },
+	    showPreviewPage: function showPreviewPage(pageConstructor, data) {
+	        this.appLayout.showPage(pageConstructor, data);
+	    },
 	    isAuthWhichAction: function isAuthWhichAction() {
 	        if (!common.user.get('auth')) {
 	            common.router.navigate('auth', { trigger: true });
@@ -21870,7 +21873,7 @@
 	        });
 	        common.friendCollection.update();
 	        common.blackListCollection.update();
-	        common.last20GamesCollection.update();
+	        // common.last20GamesCollection.update();
 	
 	        Chat.login(common.user.get('id'), common.user.get('sessionKey'), common.user.get('sessionValue'), common.storageModel.get('authDeviceId'));
 	    },
@@ -21923,7 +21926,7 @@
 	        this.showInsidePage(questionsPage, { roomId: roomId });
 	    },
 	    onShowQuestionPreviewPage: function onShowQuestionPreviewPage(params) {
-	        this.showInsidePage(questionPreviewPage, { params: params });
+	        this.showPreviewPage(questionPreviewPage, { params: params });
 	    },
 	    onShowBlackList: function onShowBlackList() {
 	        this.showInsidePage(blackListPage);
@@ -22707,8 +22710,10 @@
 	        '[data-js-opponent-name]': 'text: opponentName',
 	        '[data-js-my-turn]': 'classes: {hide: not(myTurn)}',
 	        '[data-js-game-finish]': 'classes: {hide: not(isGameClose)}',
-	        '[data-js-time-passed]': 'text: lastTime, classes: {hide: isGameClose}'
+	        '[data-js-time-passed]': 'text: lastTime, classes: {hide: isGameClose}',
+	        '[data-js-game-icon]': 'setGameAttr: opponentAvatar, setGameStateAttr: avatarOpponentState, classes: {hide: not(isGameClose)}'
 	    },
+	
 	    bindingHandlers: {
 	        setAvatarAttr: {
 	            set: function set($element, value) {
@@ -22718,6 +22723,16 @@
 	        setAvatarStateAttr: {
 	            set: function set($element, value) {
 	                $element.attr({ 'data-user-icon-status': value });
+	            }
+	        },
+	        setGameAttr: {
+	            set: function set($element, value) {
+	                $element.attr({ 'data-game-icon-id': value });
+	            }
+	        },
+	        setGameStateAttr: {
+	            set: function set($element, value) {
+	                $element.attr({ 'data-game-icon-status': value });
 	            }
 	        }
 	    },
@@ -22874,7 +22889,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (opponent_u_login) {
-	buf.push("<div class=\"icon-container\"><div data-js-user-icon class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div></div><div class=\"text-container\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p data-js-my-turn>Ваш ход против:</p><p data-js-game-finish>Ваша игра против:</p><h2>" + (jade.escape((jade_interp = opponent_u_login) == null ? '' : jade_interp)) + "</h2><p>Вы &nbsp;<span data-js-user-answer class=\"text-bold\"></span>&nbsp; - &nbsp;<span data-js-opponent-answer class=\"text-bold\"></span>&nbsp;&nbsp;<span data-js-opponent-name></span></p></div></div></div><div class=\"time-container\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p data-js-time-passed></p></div></div></div>");}.call(this,"opponent_u_login" in locals_for_with?locals_for_with.opponent_u_login:typeof opponent_u_login!=="undefined"?opponent_u_login:undefined));;return buf.join("");
+	buf.push("<div class=\"icon-container\"><div data-js-user-icon class=\"user-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div></div><div class=\"text-container\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p data-js-my-turn>Ваш ход против:</p><p data-js-game-finish>Ваша игра против:</p><h2>" + (jade.escape((jade_interp = opponent_u_login) == null ? '' : jade_interp)) + "</h2><p>Вы &nbsp;<span data-js-user-answer class=\"text-bold\"></span>&nbsp; - &nbsp;<span data-js-opponent-answer class=\"text-bold\"></span>&nbsp;&nbsp;<span data-js-opponent-name></span></p></div></div></div><div class=\"time-container\"><div class=\"table-middle-block\"><div class=\"table-middle-cell\"><p data-js-time-passed></p></div></div></div><div class=\"icon-container\"><div data-js-game-icon class=\"game-icon\"><div class=\"avatar_bg\"></div><div class=\"avatar\"></div></div></div>");}.call(this,"opponent_u_login" in locals_for_with?locals_for_with.opponent_u_login:typeof opponent_u_login!=="undefined"?opponent_u_login:undefined));;return buf.join("");
 	}
 
 /***/ },
@@ -23346,7 +23361,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	
-	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"line\"><div data-js-search-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-search\"></div>Найти соперника<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-fb class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-facebook\"></div>Новая игра FB<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-vk class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-vk-icon\"></div>Новая игра VK<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-random-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-random\"></div>Случайный соперник<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-last20-games class=\"btn col-xs-12\">20 последних игр<div class=\"btn-arrow\"></div></div></div><div data-js-friends-header class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Список друзей</h3></div></div><div class=\"line\"><div data-js-friend-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
+	buf.push("<div class=\"scroll-content\"><div class=\"container\"><div class=\"line\"><div data-js-search-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-search\"></div>Найти соперника<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-fb class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-facebook\"></div>Новая игра FB<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-new-game-vk class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-vk-icon\"></div>Новая игра VK<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-random-rival class=\"btn col-xs-12 color-dark\"><div class=\"button-icon icon-random\"></div>Случайный соперник<div class=\"btn-arrow\"></div></div></div><div class=\"line\"><div data-js-last20-games class=\"btn col-xs-12 hide\">20 последних игр<div class=\"btn-arrow\"></div></div></div><div data-js-friends-header class=\"line\"><div class=\"col-xs-12\"><h3 class=\"text-header yellow-text\">Список друзей</h3></div></div><div class=\"line\"><div data-js-friend-list class=\"col-xs-12 p-l-0 p-r-0\"></div></div></div></div><div class=\"loading-block\"><div class=\"loading-icon\"></div><div class=\"text-block\"><p>Идет загрузка</p><p>Пожалуйста, подождите</p></div></div>");;return buf.join("");
 	}
 
 /***/ },
@@ -31232,4 +31247,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=application.91b2b986892185c94c8c.js.map
+//# sourceMappingURL=application.243255d5225c52890bb8.js.map

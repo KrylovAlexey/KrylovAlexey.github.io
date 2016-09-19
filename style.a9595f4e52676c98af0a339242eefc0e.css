@@ -1527,6 +1527,239 @@ label.input {
       width: 70px;
       height: 70px; } }
 
+.game-icon {
+  position: relative;
+  width: 46px;
+  height: 46px; }
+  .game-icon .avatar_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; }
+  .game-icon .avatar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; }
+  .game-icon[data-game-icon-status="0"] .avatar_bg {
+    background-color: rgba(0, 0, 0, 0.2); }
+  .game-icon[data-game-icon-status="1"] .avatar_bg {
+    background-color: #52be5d; }
+  .game-icon[data-game-icon-status="2"] .avatar_bg {
+    background-color: #ea5f56; }
+  .game-icon[data-game-icon-status="3"] .avatar_bg {
+    background-color: #eecf7e; }
+  .game-icon[data-game-icon-id="0"] .avatar {
+    background-image: url(images/0.701a3d.png); }
+  .game-icon[data-game-icon-id="1"] .avatar {
+    background-image: url(images/1.0b2830.png); }
+  .game-icon[data-game-icon-id="2"] .avatar {
+    background-image: url(images/2.ab01bb.png); }
+  .game-icon[data-game-icon-id="3"] .avatar {
+    background-image: url(images/3.0e87aa.png); }
+  .game-icon[data-game-icon-id="4"] .avatar {
+    background-image: url(images/4.dc9fe6.png); }
+  .game-icon[data-game-icon-id="5"] .avatar {
+    background-image: url(images/5.e97a86.png); }
+  .game-icon[data-game-icon-id="6"] .avatar {
+    background-image: url(images/6.30056c.png); }
+  .game-icon[data-game-icon-id="7"] .avatar {
+    background-image: url(images/7.9cdf92.png); }
+  .game-icon[data-game-icon-id="8"] .avatar {
+    background-image: url(images/8.607dc7.png); }
+  .game-icon[data-game-icon-id="9"] .avatar {
+    background-image: url(images/9.ffed70.png); }
+  .game-icon[data-game-icon-id="10"] .avatar {
+    background-image: url(images/10.a50e15.png); }
+  .game-icon[data-game-icon-id="11"] .avatar {
+    background-image: url(images/11.bc063e.png); }
+  .game-icon[data-game-icon-id="12"] .avatar {
+    background-image: url(images/12.bed7de.png); }
+  .game-icon[data-game-icon-id="13"] .avatar {
+    background-image: url(images/13.a41902.png); }
+  .game-icon[data-game-icon-id="14"] .avatar {
+    background-image: url(images/14.eb795e.png); }
+  .game-icon[data-game-icon-id="15"] .avatar {
+    background-image: url(images/15.bf1fe0.png); }
+  .game-icon[data-game-icon-id="16"] .avatar {
+    background-image: url(images/16.f8389e.png); }
+  .game-icon[data-game-icon-id="17"] .avatar {
+    background-image: url(images/17.3f4498.png); }
+  .game-icon[data-game-icon-id="18"] .avatar {
+    background-image: url(images/18.c41566.png); }
+  .game-icon[data-game-icon-id="19"] .avatar {
+    background-image: url(images/19.3b8d3b.png); }
+  .game-icon[data-game-icon-id="20"] .avatar {
+    background-image: url(images/20.51675c.png); }
+  .game-icon[data-game-icon-id="21"] .avatar {
+    background-image: url(images/21.c31fa5.png); }
+  .game-icon[data-game-icon-id="22"] .avatar {
+    background-image: url(images/22.903969.png); }
+  .game-icon[data-game-icon-id="23"] .avatar {
+    background-image: url(images/23.dfbafc.png); }
+  .game-icon[data-game-icon-id="24"] .avatar {
+    background-image: url(images/24.960021.png); }
+  .game-icon[data-game-icon-id="25"] .avatar {
+    background-image: url(images/25.8c8128.png); }
+  .game-icon[data-game-icon-id="26"] .avatar {
+    background-image: url(images/26.7da39e.png); }
+  .game-icon[data-game-icon-id="27"] .avatar {
+    background-image: url(images/27.895416.png); }
+  .game-icon[data-game-icon-id="28"] .avatar {
+    background-image: url(images/28.6ce430.png); }
+  .game-icon[data-game-icon-id="29"] .avatar {
+    background-image: url(images/29.c89a3e.png); }
+  .game-icon[data-game-icon-id="30"] .avatar {
+    background-image: url(images/30.8e9813.png); }
+  .game-icon[data-game-icon-id="31"] .avatar {
+    background-image: url(images/31.05fcb3.png); }
+  .game-icon[data-game-icon-id="32"] .avatar {
+    background-image: url(images/32.e1f6be.png); }
+  .game-icon[data-game-icon-id="33"] .avatar {
+    background-image: url(images/33.149cf6.png); }
+  .game-icon[data-game-icon-id="34"] .avatar {
+    background-image: url(images/34.597bdd.png); }
+  .game-icon[data-game-icon-id="35"] .avatar {
+    background-image: url(images/35.9b63b7.png); }
+  .game-icon[data-game-icon-id="36"] .avatar {
+    background-image: url(images/36.a1420f.png); }
+  .game-icon[data-game-icon-id="37"] .avatar {
+    background-image: url(images/37.2533c5.png); }
+  .game-icon[data-game-icon-id="38"] .avatar {
+    background-image: url(images/38.8d424e.png); }
+  .game-icon[data-game-icon-id="39"] .avatar {
+    background-image: url(images/39.8a7dc4.png); }
+  .game-icon[data-game-icon-id="40"] .avatar {
+    background-image: url(images/40.8eede9.png); }
+  .game-icon[data-game-icon-id="41"] .avatar {
+    background-image: url(images/41.1e0e35.png); }
+  .game-icon[data-game-icon-id="42"] .avatar {
+    background-image: url(images/42.5ce83f.png); }
+  .game-icon[data-game-icon-id="43"] .avatar {
+    background-image: url(images/43.f589d9.png); }
+  .game-icon[data-game-icon-id="44"] .avatar {
+    background-image: url(images/44.60e712.png); }
+  .game-icon[data-game-icon-id="45"] .avatar {
+    background-image: url(images/45.2ea670.png); }
+  .game-icon[data-game-icon-id="46"] .avatar {
+    background-image: url(images/46.2f00cf.png); }
+  .game-icon[data-game-icon-id="47"] .avatar {
+    background-image: url(images/47.356d0e.png); }
+  .game-icon[data-game-icon-id="48"] .avatar {
+    background-image: url(images/48.9c5c9e.png); }
+  .game-icon[data-game-icon-id="49"] .avatar {
+    background-image: url(images/49.852735.png); }
+  .game-icon[data-game-icon-id="50"] .avatar {
+    background-image: url(images/50.7fb2c8.png); }
+  .game-icon[data-game-icon-id="101"] .avatar {
+    background-image: url(images/101.0d0f95.png); }
+  .game-icon[data-game-icon-id="102"] .avatar {
+    background-image: url(images/102.ed335c.png); }
+  .game-icon[data-game-icon-id="103"] .avatar {
+    background-image: url(images/103.c28491.png); }
+  .game-icon[data-game-icon-id="104"] .avatar {
+    background-image: url(images/104.52b1ec.png); }
+  .game-icon[data-game-icon-id="105"] .avatar {
+    background-image: url(images/105.42b856.png); }
+  .game-icon[data-game-icon-id="106"] .avatar {
+    background-image: url(images/106.9ba900.png); }
+  .game-icon[data-game-icon-id="107"] .avatar {
+    background-image: url(images/107.1c3908.png); }
+  .game-icon[data-game-icon-id="108"] .avatar {
+    background-image: url(images/108.6ce624.png); }
+  .game-icon[data-game-icon-id="109"] .avatar {
+    background-image: url(images/109.87418e.png); }
+  .game-icon[data-game-icon-id="110"] .avatar {
+    background-image: url(images/110.1dbfe0.png); }
+  .game-icon[data-game-icon-id="111"] .avatar {
+    background-image: url(images/111.84ee69.png); }
+  .game-icon[data-game-icon-id="112"] .avatar {
+    background-image: url(images/112.9ec0d4.png); }
+  .game-icon[data-game-icon-id="113"] .avatar {
+    background-image: url(images/113.2110f6.png); }
+  .game-icon[data-game-icon-id="114"] .avatar {
+    background-image: url(images/114.34a8ef.png); }
+  .game-icon[data-game-icon-id="115"] .avatar {
+    background-image: url(images/115.ab9933.png); }
+  .game-icon[data-game-icon-id="116"] .avatar {
+    background-image: url(images/116.4a2318.png); }
+  .game-icon[data-game-icon-id="117"] .avatar {
+    background-image: url(images/117.38cfc6.png); }
+  .game-icon[data-game-icon-id="118"] .avatar {
+    background-image: url(images/118.38f831.png); }
+  .game-icon[data-game-icon-id="119"] .avatar {
+    background-image: url(images/119.f60296.png); }
+  .game-icon[data-game-icon-id="120"] .avatar {
+    background-image: url(images/120.bee566.png); }
+  .game-icon[data-game-icon-id="121"] .avatar {
+    background-image: url(images/121.f6fdc3.png); }
+  .game-icon[data-game-icon-id="122"] .avatar {
+    background-image: url(images/122.8b4170.png); }
+  .game-icon[data-game-icon-id="123"] .avatar {
+    background-image: url(images/123.f5f6bd.png); }
+  .game-icon[data-game-icon-id="124"] .avatar {
+    background-image: url(images/124.58a638.png); }
+  .game-icon[data-game-icon-id="125"] .avatar {
+    background-image: url(images/125.c89359.png); }
+  .game-icon[data-game-icon-id="126"] .avatar {
+    background-image: url(images/126.1c7e04.png); }
+  .game-icon[data-game-icon-id="127"] .avatar {
+    background-image: url(images/127.5b3327.png); }
+  .game-icon[data-game-icon-id="128"] .avatar {
+    background-image: url(images/128.4eb6c4.png); }
+  .game-icon[data-game-icon-id="129"] .avatar {
+    background-image: url(images/129.8eb58f.png); }
+  .game-icon[data-game-icon-id="130"] .avatar {
+    background-image: url(images/130.efcba8.png); }
+  .game-icon[data-game-icon-id="131"] .avatar {
+    background-image: url(images/131.62f350.png); }
+  .game-icon[data-game-icon-id="132"] .avatar {
+    background-image: url(images/132.537c6a.png); }
+  .game-icon[data-game-icon-id="133"] .avatar {
+    background-image: url(images/133.7dba58.png); }
+  .game-icon[data-game-icon-id="134"] .avatar {
+    background-image: url(images/134.39c7db.png); }
+  .game-icon[data-game-icon-id="135"] .avatar {
+    background-image: url(images/135.870b96.png); }
+  .game-icon[data-game-icon-id="136"] .avatar {
+    background-image: url(images/136.0c6f75.png); }
+  .game-icon[data-game-icon-id="137"] .avatar {
+    background-image: url(images/137.455a32.png); }
+  .game-icon[data-game-icon-id="138"] .avatar {
+    background-image: url(images/138.9dae2c.png); }
+  .game-icon[data-game-icon-id="139"] .avatar {
+    background-image: url(images/139.cbc737.png); }
+  .game-icon[data-game-icon-id="140"] .avatar {
+    background-image: url(images/140.921991.png); }
+  .game-icon[data-game-icon-id="141"] .avatar {
+    background-image: url(images/141.0f9d37.png); }
+  .game-icon[data-game-icon-id="142"] .avatar {
+    background-image: url(images/142.ee4cc3.png); }
+  .game-icon[data-game-icon-id="143"] .avatar {
+    background-image: url(images/143.156b03.png); }
+  .game-icon[data-game-icon-id="144"] .avatar {
+    background-image: url(images/144.3de193.png); }
+  .game-icon[data-game-icon-id="145"] .avatar {
+    background-image: url(images/145.f72ca6.png); }
+  .game-icon[data-game-icon-id="146"] .avatar {
+    background-image: url(images/146.69b568.png); }
+  .game-icon[data-game-icon-id="147"] .avatar {
+    background-image: url(images/147.9d03fe.png); }
+  .game-icon[data-game-icon-id="148"] .avatar {
+    background-image: url(images/148.ba3e7d.png); }
+  .game-icon[data-game-icon-id="149"] .avatar {
+    background-image: url(images/149.4ec622.png); }
+  .game-icon[data-game-icon-id="150"] .avatar {
+    background-image: url(images/150.72ca8f.png); }
+  @media (min-width: 700px) {
+    .game-icon {
+      width: 70px;
+      height: 70px; } }
+
 .list-container {
   color: #fff;
   font-size: 15px; }
@@ -1938,6 +2171,11 @@ label.input {
     width: 40px;
     height: 40px;
     margin: 10px 0; }
+  .games-page .game-item .game-icon {
+    float: right;
+    width: 40px;
+    height: 40px;
+    margin: 10px 0; }
   .games-page .game-item .text-container {
     position: absolute;
     top: 0;
@@ -1978,6 +2216,9 @@ label.input {
   .games-page .right-text {
     font-size: 30px; }
   .games-page .game-item .user-icon {
+    width: 55px;
+    height: 55px; }
+  .games-page .game-item .game-icon {
     width: 55px;
     height: 55px; }
   .games-page .game-item .text-container {
@@ -2716,11 +2957,13 @@ li.user-widget {
 
 .auth-page .vk-icon {
   background-image: url(images/vk.fcd300.png);
-  background-size: 23px 13px; }
+  background-size: 23px 13px;
+  background-color: rgba(61, 101, 86, 0.9); }
 
 .auth-page .fb-icon {
   background-image: url(images/fb.12d324.png);
-  background-size: 10px 23px; }
+  background-size: 10px 23px;
+  background-color: rgba(61, 101, 86, 0.9); }
 /*  COLORS */
 .registration-page .table-middle-block {
   height: 50%;
@@ -2858,4 +3101,4 @@ li.user-widget {
         .chatWidget .editor .input-group .send.touchHover {
           background-image: url(images/btn-send-pressed.af4cb1.png); }
 
-/*# sourceMappingURL=style.603f17487972668575a8e78e00f94708.css.map*/
+/*# sourceMappingURL=style.a9595f4e52676c98af0a339242eefc0e.css.map*/
